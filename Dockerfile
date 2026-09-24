@@ -49,6 +49,9 @@ RUN npm run build
 # Create a new stage to run the application with minimal runtime dependencies
 # where the necessary files are copied from the build stage.
 FROM nginx:1.23.3-alpine
+# Le default.conf livré avec l'image entre en conflit (même server_name "localhost")
+# avec web-athl.conf et gagne silencieusement, ignorant notre fallback SPA.
+RUN rm -f /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist/athl_front/browser /usr/share/nginx/html
 COPY --from=build /usr/src/app/web-athl.conf /etc/nginx/conf.d/web-athl.conf
 
