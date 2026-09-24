@@ -50,10 +50,10 @@ export class ServiceApi {
 
   // Anonyme (site public) : le backend ne renvoie que les services publiés.
   list(): Observable<ServiceSummaryApi[]> {
-    return this.http.get<ServiceSummaryApi[]>(`${this.base}/api/v1/services`);
+    return this.http.get<ServiceSummaryApi[]>(`${this.base}/${environment.endpoints.services.list}`);
   }
 
   getBySlug(slug: string): Observable<ServiceDetailApi> {
-    return this.http.get<ServiceDetailApi>(`${this.base}/api/v1/services/slug/${slug}`);
+    return this.http.get<ServiceDetailApi>(`${this.base}/${environment.endpoints.services.bySlug(slug)}`);
   }
 }

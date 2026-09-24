@@ -21,6 +21,6 @@ export class ApplicationApi {
   private readonly base = environment.apiUrl;
 
   create(payload: JobApplicationPayload): Observable<unknown> {
-    return this.http.post(`${this.base}/api/v1/applications`, payload);
+    return this.http.post(`${this.base}/${environment.endpoints.applications.create}`, payload);
   }
 }

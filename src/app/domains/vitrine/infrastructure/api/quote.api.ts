@@ -18,6 +18,6 @@ export class QuoteApi {
   private readonly base = environment.apiUrl;
 
   create(payload: QuoteRequestPayload): Observable<unknown> {
-    return this.http.post(`${this.base}/api/v1/quotes`, payload);
+    return this.http.post(`${this.base}/${environment.endpoints.quotes.create}`, payload);
   }
 }

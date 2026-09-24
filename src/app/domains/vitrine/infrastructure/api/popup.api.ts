@@ -30,6 +30,6 @@ export class PopupApi {
   private readonly base = environment.apiUrl;
 
   list(): Observable<PopupApiDto[]> {
-    return this.http.get<PopupApiDto[]>(`${this.base}/api/v1/popups`);
+    return this.http.get<PopupApiDto[]>(`${this.base}/${environment.endpoints.popups.list}`);
   }
 }

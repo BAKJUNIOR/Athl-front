@@ -39,6 +39,6 @@ export class JobApi {
 
   // Anonyme (site public) : le backend ne renvoie que les offres publiées.
   list(): Observable<JobOfferApi[]> {
-    return this.http.get<JobOfferApi[]>(`${this.base}/api/v1/jobs`);
+    return this.http.get<JobOfferApi[]>(`${this.base}/${environment.endpoints.jobs.list}`);
   }
 }

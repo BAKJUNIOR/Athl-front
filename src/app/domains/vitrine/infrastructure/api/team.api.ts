@@ -19,6 +19,6 @@ export class TeamApi {
   private readonly base = environment.apiUrl;
 
   list(): Observable<TeamMemberApi[]> {
-    return this.http.get<TeamMemberApi[]>(`${this.base}/api/v1/team`);
+    return this.http.get<TeamMemberApi[]>(`${this.base}/${environment.endpoints.team.list}`);
   }
 }

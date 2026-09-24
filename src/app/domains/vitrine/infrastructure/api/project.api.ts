@@ -24,6 +24,6 @@ export class ProjectApi {
 
   // Anonyme (site public) : le backend ne renvoie que les projets publiés.
   list(): Observable<ProjectApiDto[]> {
-    return this.http.get<ProjectApiDto[]>(`${this.base}/api/v1/projects`);
+    return this.http.get<ProjectApiDto[]>(`${this.base}/${environment.endpoints.projects.list}`);
   }
 }

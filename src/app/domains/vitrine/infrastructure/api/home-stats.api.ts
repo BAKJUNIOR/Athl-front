@@ -18,6 +18,6 @@ export class HomeStatsApi {
   private readonly base = environment.apiUrl;
 
   list(): Observable<HomeStatApiDto[]> {
-    return this.http.get<HomeStatApiDto[]>(`${this.base}/api/v1/home-stats`);
+    return this.http.get<HomeStatApiDto[]>(`${this.base}/${environment.endpoints.homeStats.list}`);
   }
 }

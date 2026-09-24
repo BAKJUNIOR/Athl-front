@@ -15,6 +15,6 @@ export class JobDomainApi {
   private readonly base = environment.apiUrl;
 
   list(): Observable<JobDomainDto[]> {
-    return this.http.get<JobDomainDto[]>(`${this.base}/api/v1/job-domains`);
+    return this.http.get<JobDomainDto[]>(`${this.base}/${environment.endpoints.jobDomains.list}`);
   }
 }

@@ -21,6 +21,6 @@ export class SiteContactApi {
   private readonly base = environment.apiUrl;
 
   get(): Observable<SiteContactApiDto> {
-    return this.http.get<SiteContactApiDto>(`${this.base}/api/v1/site-settings/contact`);
+    return this.http.get<SiteContactApiDto>(`${this.base}/${environment.endpoints.siteContact.get}`);
   }
 }
