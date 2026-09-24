@@ -49,8 +49,13 @@ RUN npm run build
 # Create a new stage to run the application with minimal runtime dependencies
 # where the necessary files are copied from the build stage.
 FROM nginx:1.23.3-alpine
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist/athl_front/browser /usr/share/nginx/html
 COPY --from=build /usr/src/app/web-athl.conf /etc/nginx/conf.d/web-athl.conf
+
+# Test simple : fait échouer le build si le vrai index.html Angular n'a pas remplacé
+# celui par défaut de nginx (ex. si Angular change encore son dossier de sortie).
+RUN test -f /usr/share/nginx/html/index.html && ! grep -q "Welcome to nginx" /usr/share/nginx/html/index.html \
+    || (echo "ERREUR: index.html Angular introuvable ou non copié au bon endroit dans /usr/share/nginx/html" && exit 1)
 
 # Expose the port that the application listens on.
 EXPOSE 80
