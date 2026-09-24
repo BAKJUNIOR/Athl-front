@@ -1,0 +1,67 @@
+@if (loading()) {
+  <section class="phero">
+    <p [appReveal]="80">{{ 'common.loading' | transloco }}</p>
+  </section>
+}
+
+@if (service(); as svc) {
+
+<section class="phero">
+  <div class="phero__eyebrow" appReveal><a routerLink="/services">{{ 'common.nav.services' | transloco }}</a> · {{ 'serviceDetail.serviceLabel' | transloco }} {{ svc.number }}</div>
+  <h1 [appReveal]="80">{{ svc.shortTitle }}</h1>
+  <p [appReveal]="160">{{ svc.lead }}</p>
+  <div class="hero-actions hero-actions--left" [appReveal]="240">
+    <a class="btn btn--light" routerLink="/devis">{{ 'common.requestQuote' | transloco }}</a>
+    <a class="btn btn--ghost" routerLink="/contact">{{ 'serviceDetail.writeToUs' | transloco }}</a>
+  </div>
+</section>
+
+<section class="svc-hero" appReveal>
+  <img [src]="svc.heroImage" [alt]="svc.title" loading="lazy" />
+</section>
+
+<section class="prest">
+  <h2 appReveal>{{ 'serviceDetail.whatWeHandle' | transloco }}</h2>
+  <div class="prest__grid">
+    @for (item of svc.prestations; track item.title; let i = $index) {
+      <div class="prest__item" [appReveal]="60 + i * 70">
+        <div class="prest__t">{{ item.title }}</div>
+        <p>{{ item.description }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="process">
+  <h2 appReveal>{{ 'serviceDetail.howWeWork' | transloco }}</h2>
+  <div class="process__grid">
+    @for (step of svc.process; track step.number; let i = $index) {
+      <div class="pstep" [appReveal]="60 + i * 70">
+        <div class="pstep__n">{{ step.number }}</div>
+        <div class="pstep__t">{{ step.title }}</div>
+        <p>{{ step.description }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="gallery gallery--tight">
+  <h2 appReveal>{{ 'serviceDetail.gallery' | transloco }}</h2>
+  <div class="gallery__grid gallery__grid--3">
+    @for (image of svc.gallery; track image; let i = $index) {
+      <figure class="shot" [appReveal]="60 + i * 80"><img [src]="image" [alt]="svc.title" loading="lazy" /></figure>
+    }
+  </div>
+</section>
+
+<app-cta-banner appReveal [title]="'serviceDetail.cta.title' | transloco" [text]="'common.cta.contactUs' | transloco" [showPhones]="true">
+  <a class="btn btn--light" routerLink="/contact">{{ 'common.contactUs' | transloco }}</a>
+  <a class="btn btn--ghost" routerLink="/projets">{{ 'common.ourWork' | transloco }}</a>
+</app-cta-banner>
+
+<nav class="nextsvc" appReveal>
+  <span>{{ 'serviceDetail.nextService' | transloco }}</span>
+  <a [routerLink]="['/services', next().slug]">{{ next().shortTitle }} <em aria-hidden="true">&rarr;</em></a>
+</nav>
+
+}

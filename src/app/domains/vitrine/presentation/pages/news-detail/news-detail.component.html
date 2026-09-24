@@ -1,0 +1,32 @@
+@if (item(); as n) {
+  <div class="news-detail__back-row wrap">
+    <a class="news-detail__back" routerLink="/actualites"><span aria-hidden="true">&larr;</span> {{ 'news.backToList' | transloco }}</a>
+  </div>
+
+  <div class="news-detail__media" appReveal>
+    <img [src]="n.image" [alt]="n.title" />
+  </div>
+
+  <article class="news-detail wrap">
+    <span class="news-card__tag">{{ n.category }}</span>
+    <h1 [appReveal]="60">{{ n.title }}</h1>
+    <span class="news-detail__date">{{ formatDate(n.date) }}</span>
+
+    <div class="news-detail__body" [appReveal]="120">
+      @for (paragraph of n.body; track paragraph) {
+        <p>{{ paragraph }}</p>
+      }
+    </div>
+
+    @if (n.quote; as quote) {
+      <blockquote class="news-quote" [appReveal]="160">
+        <span class="news-quote__mark" aria-hidden="true">&ldquo;</span>
+        <p>{{ quote.text }}</p>
+        <footer>
+          <span class="news-quote__name">{{ quote.name }}</span>
+          <span class="news-quote__role">{{ quote.role }}</span>
+        </footer>
+      </blockquote>
+    }
+  </article>
+}

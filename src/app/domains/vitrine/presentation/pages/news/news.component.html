@@ -1,0 +1,79 @@
+<section class="news-hero">
+  <div class="wrap">
+    <div class="about-block__eyebrow" appReveal><span></span>{{ 'news.eyebrow' | transloco }}</div>
+    <h1 [appReveal]="80">{{ 'news.title' | transloco }}</h1>
+    <p [appReveal]="160">{{ 'news.subtitle' | transloco }}</p>
+
+    <div class="news-featured" [appReveal]="220">
+      @for (item of featured(); track item.slug) {
+        <a class="news-featured__item" [routerLink]="['/actualites', item.slug]">
+          <div class="news-featured__media"><img [src]="item.image" [alt]="item.title" loading="lazy" /></div>
+          <span class="news-featured__date">{{ formatDate(item.date) }}</span>
+          <h2>{{ item.title }}</h2>
+          <span class="site__cta">{{ 'news.readMore' | transloco }} <span>&rarr;</span></span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="news">
+  <div class="news-filterbar" appReveal>
+    <div class="filterdd" [class.is-open]="filterOpen()">
+      <span class="filterdd__label">{{ 'news.filters.theme' | transloco }}</span>
+      <button class="filterdd__toggle" type="button" [attr.aria-expanded]="filterOpen()" (click)="toggleFilter()">
+        <span class="filterdd__value">
+          @if (!selectedCategories().length) {
+            {{ 'news.filters.all' | transloco }}
+          } @else if (selectedCategories().length === 1) {
+            {{ selectedCategories()[0] }}
+          } @else {
+            {{ selectedCategories().length }} {{ 'news.filters.selected' | transloco }}
+          }
+        </span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+      </button>
+      @if (filterOpen()) {
+        <div class="filterdd__panel" role="group" [attr.aria-label]="'news.filters.theme' | transloco">
+          @for (category of categories(); track category) {
+            <label class="filterdd__option">
+              <input type="checkbox" [checked]="selectedCategories().includes(category)" (change)="toggleCategory(category)" />
+              <span>{{ category }}</span>
+            </label>
+          }
+        </div>
+      }
+    </div>
+    @if (selectedCategories().length) {
+      <button class="filterdd__clear" type="button" (click)="clearFilters()">{{ 'news.filters.clear' | transloco }}</button>
+    }
+  </div>
+  @if (filterOpen()) {
+    <div class="filterdd-backdrop" (click)="filterOpen.set(false)"></div>
+  }
+
+  <div class="news-grid">
+    @for (item of visibleRest(); track item.slug; let i = $index) {
+      <a class="news-card" [routerLink]="['/actualites', item.slug]" [appReveal]="60 + i * 60">
+        <div class="news-card__media"><img [src]="item.image" [alt]="item.title" loading="lazy" /></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">{{ item.category }}</span>
+          <span class="news-card__date">{{ formatDate(item.date) }}</span>
+          <h3>{{ item.title }}</h3>
+          <span class="card__cta">{{ 'news.readMore' | transloco }} <span>&rarr;</span></span>
+        </div>
+      </a>
+    }
+  </div>
+
+  @if (hasMore()) {
+    <div class="news-more">
+      <button class="btn btn--ghost" type="button" (click)="showMore()">{{ 'news.showMore' | transloco }}</button>
+    </div>
+  }
+</section>
+
+<app-cta-banner appReveal [title]="'news.cta.title' | transloco" [text]="'news.cta.text' | transloco">
+  <a class="btn btn--light" routerLink="/contact">{{ 'common.contactUs' | transloco }}</a>
+  <a class="btn btn--ghost" routerLink="/carrieres">{{ 'common.nav.careers' | transloco }}</a>
+</app-cta-banner>

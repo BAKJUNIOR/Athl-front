@@ -1,0 +1,12 @@
+services:
+  imc-front:
+    image: bakjunior58/athl-front:1.0.0
+    container_name: athl-front
+    restart: always
+    networks:
+      - applications-network
+
+networks:
+  applications-network:
+    external: true
+    name: applications-network

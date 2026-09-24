@@ -1,0 +1,21 @@
+<section class="phero">
+  <div class="phero__eyebrow" appReveal>{{ 'projects.eyebrow' | transloco }}</div>
+  <h1 [appReveal]="80">{{ 'projects.title' | transloco }}</h1>
+  <p [appReveal]="160">{{ 'projects.subtitle' | transloco }}</p>
+</section>
+
+<section class="gallery">
+  <div class="gallery__grid">
+    @for (shot of shots(); track shot.image; let i = $index) {
+      <figure class="shot" [class.shot--wide]="shot.wide" [appReveal]="80 * i">
+        <img [src]="shot.image" [alt]="shot.alt" loading="lazy" />
+        <figcaption><span>{{ shot.title }}</span><em>{{ shot.caption }}</em></figcaption>
+      </figure>
+    }
+  </div>
+</section>
+
+<app-cta-banner appReveal [title]="'projects.cta.title' | transloco" [text]="'projects.cta.text' | transloco" mediaImage="images/proj-3.png" [mediaAlt]="'projects.cta.mediaAlt' | transloco">
+  <a class="btn btn--light" routerLink="/devis">{{ 'common.requestQuote' | transloco }}</a>
+  <a class="btn btn--ghost" routerLink="/services">{{ 'common.nav.services' | transloco }}</a>
+</app-cta-banner>

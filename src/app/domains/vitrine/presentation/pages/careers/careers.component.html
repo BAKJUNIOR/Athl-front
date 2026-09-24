@@ -1,0 +1,219 @@
+<section class="phero">
+  <div class="phero__eyebrow" appReveal>{{ 'careers.eyebrow' | transloco }}</div>
+  <h1 class="h1--oneline" [appReveal]="80">{{ 'careers.title' | transloco }}</h1>
+  <p [appReveal]="160" [innerHTML]="'careers.subtitle' | transloco"></p>
+</section>
+
+<section class="jobs">
+  <h2 appReveal>{{ 'careers.jobsTitle' | transloco }}</h2>
+
+  <div class="jobfilter" appReveal>
+    <div class="jobsearch">
+      <span class="jobsearch__icon" aria-hidden="true">&#9906;</span>
+      <input
+        type="search"
+        [placeholder]="'careers.searchPlaceholder' | transloco"
+        [attr.aria-label]="'careers.searchAria' | transloco"
+        [value]="search()"
+        (input)="search.set($any($event.target).value)"
+      />
+      @if (search()) {
+        <button class="jobsearch__clear" type="button" [attr.aria-label]="'common.clearSearch' | transloco" (click)="clearSearch()">&#215;</button>
+      }
+    </div>
+    <div class="chips" role="group" [attr.aria-label]="'careers.filterByDomain' | transloco">
+      <button class="chip" type="button" [class.is-on]="activeTag() === ''" (click)="selectTag('')">{{ 'careers.filters.all' | transloco }}</button>
+      @for (domain of domains(); track domain.id) {
+        <button class="chip" type="button" [class.is-on]="activeTag() === domain.id" (click)="selectTag(domain.id)">{{ domain.label }}</button>
+      }
+    </div>
+    <div class="jobcount" aria-live="polite">{{ jobCountKey() | transloco: { count: filteredJobs().length } }}</div>
+  </div>
+
+  <div class="joblist">
+    @for (job of filteredJobs(); track job.id; let i = $index) {
+      <article class="job" [id]="job.id" [appReveal]="40 + i * 60">
+        <button
+          class="job__head"
+          type="button"
+          [attr.aria-expanded]="isExpanded(job)"
+          [attr.aria-controls]="'panel-' + job.id"
+          (click)="toggle(job)"
+        >
+          <span class="job__tag">{{ job.domain.label }}</span>
+          <span class="job__main">
+            <span class="job__title">{{ job.title }}</span>
+            <span class="job__desc">{{ job.description }}</span>
+            <span class="job__meta">{{ job.meta }}</span>
+            <span class="job__dates">
+              <span class="job__date">{{ 'careers.publishedOn' | transloco }} <time [attr.datetime]="job.publishedAt">{{ formattedDate(job.publishedAt) }}</time></span>
+              <span
+                class="job__deadline"
+                [class.is-soon]="deadlineStatus(job) === 'soon'"
+                [class.is-over]="deadlineStatus(job) === 'over'"
+              >
+                @if (deadlineStatus(job) === 'over') {
+                  {{ 'careers.applicationsClosed' | transloco }}
+                } @else {
+                  {{ 'careers.applyBy' | transloco }} <time [attr.datetime]="job.deadline">{{ formattedDate(job.deadline) }}</time>
+                  @if (deadlineNote(job); as note) {
+                    <em>· {{ note.key | transloco: { days: note.days } }}</em>
+                  }
+                }
+              </span>
+            </span>
+          </span>
+          <span class="job__chevron" aria-hidden="true">&#9662;</span>
+        </button>
+        <div class="job__panel" [id]="'panel-' + job.id" [hidden]="!isExpanded(job)">
+          <div class="job__cols">
+            <div>
+              <div class="job__h">{{ 'careers.missions' | transloco }}</div>
+              <ul>
+                @for (item of job.missions; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </div>
+            <div>
+              <div class="job__h">{{ 'careers.profile' | transloco }}</div>
+              <ul>
+                @for (item of job.profile; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </div>
+          </div>
+          <div class="job__actions">
+            <a class="btn btn--light" href="#candidature" (click)="$event.preventDefault(); applyTo(job)">{{ 'careers.applyToJob' | transloco }}</a>
+            <a class="btn btn--ghost" [href]="'tel:' + job.contactPhone">{{ 'careers.askQuestion' | transloco }}</a>
+            <button class="btn btn--ghost btn--share" type="button" [class.is-done]="sharedJobId() === job.id" (click)="share(job)" [attr.aria-label]="'careers.shareJob' | transloco">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.6" y1="10.6" x2="15.4" y2="6.4" /><line x1="8.6" y1="13.4" x2="15.4" y2="17.6" /></svg>
+              <span class="btn__label">{{ (sharedJobId() === job.id ? 'careers.share.copied' : 'careers.share.share') | transloco }}</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+
+  @if (!filteredJobs().length) {
+    <p class="jobempty">{{ 'careers.noResults' | transloco }} <a href="#candidature">{{ 'careers.spontaneousLink' | transloco }}</a>.</p>
+  }
+</section>
+
+<section class="split">
+  <div class="frame" appReveal>
+    <img src="images/hero-3.png" [attr.alt]="'careers.driverImageAlt' | transloco" loading="lazy" />
+  </div>
+  <div class="split__col split__col--tight" [appReveal]="140">
+    <div>
+      <h2>{{ 'careers.howToApply.title' | transloco }}</h2>
+      <div class="steps">
+        <div class="step"><div class="step__n">1</div><div><div class="step__t">{{ 'careers.howToApply.step1Title' | transloco }}</div><div class="step__d">{{ 'careers.howToApply.step1Text' | transloco }}</div></div></div>
+        <div class="step"><div class="step__n">2</div><div><div class="step__t">{{ 'careers.howToApply.step2Title' | transloco }}</div><div class="step__d">{{ 'careers.howToApply.step2Text' | transloco }}</div></div></div>
+        <div class="step"><div class="step__n">3</div><div><div class="step__t">{{ 'careers.howToApply.step3Title' | transloco }}</div><div class="step__d">{{ 'careers.howToApply.step3Text' | transloco }}</div></div></div>
+      </div>
+      <div class="phones phones--card">
+        <a href="tel:+2250709993347">+225 07 09 99 33 47</a>
+        <a href="tel:+2250758601627">+225 07 58 60 16 27</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apply" id="candidature" #candidature>
+  <div class="apply__intro" appReveal>
+    <div class="phero__eyebrow">{{ 'careers.application' | transloco }}</div>
+    <h2>{{ 'careers.applyForm.title' | transloco }}</h2>
+    <p class="lead">{{ 'careers.applyForm.lead' | transloco }}</p>
+  </div>
+
+  <div class="form-loading-wrap">
+  <form
+    #applyForm
+    class="form"
+    [class.is-sending]="sending()"
+    [appReveal]="120"
+    novalidate
+    (submit)="onApplySubmit($event, applyForm)"
+  >
+    @if (status(); as message) {
+      <p class="form__status" [class.is-err]="!isValid()" [class.is-ok]="isValid()" role="status">
+        <span>{{ message }}</span>
+        <button type="button" class="form__status-close" aria-label="Fermer" (click)="status.set('')">&times;</button>
+      </p>
+    }
+    <div class="field">
+      <label for="f-nom">{{ 'common.form.fullName' | transloco }} <span class="req">*</span></label>
+      <input id="f-nom" name="Nom" type="text" required autocomplete="name" [placeholder]="'common.form.fullNamePlaceholder' | transloco" />
+    </div>
+    <div class="field">
+      <label for="f-tel">{{ 'common.form.phone' | transloco }} <span class="req">*</span></label>
+      <input id="f-tel" name="Téléphone" type="tel" required autocomplete="tel" placeholder="+225 07 00 00 00 00" />
+    </div>
+    <div class="field">
+      <label for="f-mail">{{ 'common.form.email' | transloco }}</label>
+      <input id="f-mail" name="E-mail" type="email" autocomplete="email" placeholder="vous@exemple.com" />
+    </div>
+    <div class="field">
+      <label for="f-poste">{{ 'careers.applyForm.targetRole' | transloco }} <span class="req">*</span></label>
+      <select id="f-poste" name="Poste" required [value]="preselectedPoste()" (change)="onPosteChange($event)">
+        <option value="">{{ 'careers.applyForm.chooseRole' | transloco }}</option>
+        @for (job of jobs(); track job.id) {
+          <option [value]="job.title">{{ job.title }}</option>
+        }
+        <option value="Candidature spontanée">{{ 'careers.applyForm.spontaneous' | transloco }}</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-exp">{{ 'careers.applyForm.experience' | transloco }}</label>
+      <select id="f-exp" name="Expérience">
+        <option value="">{{ 'careers.applyForm.notSpecified' | transloco }}</option>
+        <option value="Moins de 2 ans">{{ 'careers.applyForm.exp.lessThan2' | transloco }}</option>
+        <option value="2 à 5 ans">{{ 'careers.applyForm.exp.between2and5' | transloco }}</option>
+        <option value="5 à 10 ans">{{ 'careers.applyForm.exp.between5and10' | transloco }}</option>
+        <option value="Plus de 10 ans">{{ 'careers.applyForm.exp.moreThan10' | transloco }}</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-ville">{{ 'careers.applyForm.city' | transloco }}</label>
+      <input id="f-ville" name="Ville" type="text" placeholder="Abidjan" />
+    </div>
+
+    <div class="field field--full">
+      <label for="f-msg">{{ 'careers.applyForm.message' | transloco }}</label>
+      <textarea id="f-msg" name="Message" rows="5" [placeholder]="'careers.applyForm.messagePlaceholder' | transloco"></textarea>
+    </div>
+
+    <div class="field field--full">
+      <label for="f-cv">{{ 'careers.applyForm.cv' | transloco }} <span class="req">*</span></label>
+      <app-file-drop
+        #cvDrop
+        name="CV"
+        [required]="true"
+        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+        [label]="'careers.applyForm.dropLabel' | transloco"
+        [browseLabel]="'careers.applyForm.dropBrowse' | transloco"
+        [hint]="'careers.applyForm.dropHint' | transloco"
+        (filesChange)="onCvChange($event)"
+      />
+    </div>
+
+    <div class="field field--full check">
+      <input id="f-ok" name="Consentement" type="checkbox" value="Oui" required checked />
+      <label for="f-ok">{{ 'careers.applyForm.consent' | transloco }} <span class="req">*</span></label>
+    </div>
+
+    <div class="field field--full form__foot">
+      <button class="btn btn--light" type="submit" [disabled]="sending()">{{ 'careers.applyForm.submit' | transloco }}</button>
+      <a class="btn btn--ghost" href="tel:+2250709993347">{{ 'careers.applyForm.applyByPhone' | transloco }}</a>
+    </div>
+  </form>
+  @if (sending()) {
+    <div class="form-loading__overlay" role="status" aria-live="polite" aria-busy="true">
+      <span class="spinner" aria-hidden="true"></span>
+    </div>
+  }
+  </div>
+</section>

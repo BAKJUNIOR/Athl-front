@@ -1,0 +1,371 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "requestQuote": "Request a quote",
+    "learnMore": "Learn more",
+    "contactUs": "Contact us",
+    "ourWork": "Our work",
+    "location": "Abidjan, Côte d'Ivoire",
+    "menu": "Menu",
+    "close": "Close",
+    "clearSearch": "Clear search",
+    "chooseLanguage": "Choose language",
+    "language": "Language",
+    "footerAbout": "Africa Talent Habitat & Logistics — construction, renovation, mobility and import of materials, delivered by skilled teams.",
+    "athlWorkAlt": "ATHL project",
+    "footer": {
+      "aboutTitle": "About ATHL",
+      "companyTitle": "Our company",
+      "officeTitle": "Our office",
+      "sourcingTitle": "Our sourcing regions",
+      "email": "Contact@athl.com",
+      "hub": "Abidjan",
+      "sourcing": {
+        "0": "China",
+        "1": "Turkey",
+        "2": "Morocco",
+        "3": "Europe"
+      },
+      "copyright": "© {{year}} ATHL — All rights reserved",
+      "followUs": "Follow us"
+    },
+    "nav": {
+      "home": "Home",
+      "news": "News",
+      "projects": "Projects",
+      "services": "Services",
+      "careers": "Careers",
+      "about": "About",
+      "contact": "Contact",
+      "search": "Search",
+      "quote": "Quote"
+    },
+    "theme": {
+      "dark": "Dark theme",
+      "light": "Light theme",
+      "enableDark": "Switch to dark theme",
+      "enableLight": "Switch to light theme"
+    },
+    "stats": {
+      "sitesDelivered": "Sites delivered safely and on schedule",
+      "projectValue": "Project value shaped by rigorous planning",
+      "assetValue": "Asset value built in commercial and residential"
+    },
+    "services": {
+      "construction": "Construction project delivery",
+      "renovation": "Renovation & fit-out",
+      "mobility": "Ride-hailing, mobility & delivery",
+      "import": "Import of construction materials"
+    },
+    "cta": {
+      "needAdviceTitle": "Need advice or a quote?",
+      "contactUs": "For more information, get in touch:"
+    },
+    "form": {
+      "fullName": "Full name",
+      "fullNamePlaceholder": "E.g. John Doe",
+      "phone": "Phone",
+      "email": "Email",
+      "optional": "optional",
+      "missingRequired": "Please fill in the required fields (*).",
+      "sending": "Sending…",
+      "sent": "Your request has been sent. We'll get back to you shortly.",
+      "sendError": "Something went wrong, please try again.",
+      "callUs": "Call"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "The expertise that builds.<br><em>The logistics that accelerate.</em>",
+      "subtitle": "Africa Talent Habitat & Logistics: skilled teams, proven methods and a tightly managed supply chain, from the first drawing to delivery.",
+      "aboutUs": "Who we are",
+      "seeWork": "See our work",
+      "imageAlt": "ATHL construction site lifting a structure"
+    },
+    "workforce": {
+      "eyebrow": "Welcome to ATHL",
+      "imageAlt": "Two managers on the construction site",
+      "reviewAlt": "ATHL team reviewing progress on site",
+      "title": "We own every project. We deliver sturdier results",
+      "lead": "Africa Talent Habitat & Logistics brings together experienced professionals, proven methods and a culture of accountability to deliver projects built to last. From construction and renovation to mobility and the import of materials, our teams work with clarity, rigour and know-how.",
+      "quote": "Simplify your construction and logistics projects with a personal approach, from the first drawing to delivery.",
+      "badgeLabel": "Sites delivered",
+      "features": {
+        "projectValue": "Project value",
+        "assetValue": "Asset value"
+      },
+      "videoAlt": "Our teams at work on site",
+      "playCta": "See our work"
+    },
+    "projects": {
+      "eyebrow": "Our sites",
+      "live": "Live now",
+      "sites": {
+        "steel": "Structure and formwork",
+        "lifting": "Lifting and cranage",
+        "interior": "Interior renovation",
+        "port": "Port terminal and import",
+        "building": "Building under construction"
+      },
+      "viewAll": "See all our work",
+      "title": "Sites under way across the country",
+      "subtitle": "See what our teams are building right now",
+      "liveSite": "Live site",
+      "alt": {
+        "steelStructure": "Steel structure",
+        "teamAndCrane": "Team and crane",
+        "teamReviewingPlans": "Team reviewing plans",
+        "highRiseSite": "High-rise construction site",
+        "teamBriefing": "Team briefing"
+      }
+    },
+    "services": {
+      "eyebrow": "What we do",
+      "title": "Our services",
+      "subtitle": "From the construction site to logistics: four trades to run your projects end to end."
+    },
+    "pillars": {
+      "title": "Our 3 core businesses",
+      "subtitle": "One partner to build, supply and move forward.",
+      "btp": {
+        "title": "Construction & renovation",
+        "lead": "The expertise that builds, the logistics that accelerates. ATHL supports you from construction to delivering your materials and transport solutions.",
+        "imageAlt": "ATHL construction site",
+        "items": {
+          "0": "Construction",
+          "1": "Renovation & rehabilitation",
+          "2": "Material supply",
+          "3": "Property management"
+        }
+      },
+      "mobility": {
+        "title": "Mobility & ride-hailing",
+        "lead": "Building the future, supporting the movement. Vehicle rental and mobility solutions for individuals and businesses.",
+        "imageAlt": "ATHL driver behind the wheel, GPS mounted",
+        "items": {
+          "0": "Short and long-term rental",
+          "1": "Professional transport",
+          "2": "Premium ride-hailing service",
+          "3": "Fleet management for businesses"
+        }
+      },
+      "import": {
+        "title": "Import & logistics",
+        "lead": "Your partner to build, supply and move forward. Direct import and distribution of materials from China, Turkey, Morocco and Europe.",
+        "imageAlt": "ATHL import and logistics port",
+        "items": {
+          "0": "Direct import",
+          "1": "Sales & distribution",
+          "2": "Delivery to site",
+          "3": "Special order handling"
+        }
+      }
+    },
+    "testimonials": {
+      "title": "Trusted by project directors",
+      "previous": "Previous testimonial",
+      "next": "Next testimonial"
+    }
+  },
+  "partners": {
+    "eyebrow": "They trust us",
+    "title": "Our partners",
+    "subtitle": "Suppliers, carriers and trusted partners supporting us on every site and every delivery.",
+    "cta": "Become a partner"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Africa Talent Habitat & Logistics",
+    "subtitle": "The expertise that builds, the logistics that accelerate. An Ivorian group bringing together construction, renovation, mobility and the import of materials.",
+    "imageAlt": "ATHL teams on site",
+    "lead": "ATHL brings together experienced professionals, proven methods and a culture of accountability to deliver projects built to last. From construction and renovation to mobility and the import of materials, our teams work with clarity, rigour and know-how.",
+    "meetTeam": "Meet our teams",
+    "values": {
+      "title": "What drives us",
+      "talent": { "n": "Talent", "p": "Skilled, trained and supervised teams — the first material of every project." },
+      "habitat": { "n": "Habitat", "p": "Building and renovating lasting places, designed for the people who will live in them." },
+      "logistics": { "n": "Logistics", "p": "Mastering the supply chain and mobility to keep to deadlines." },
+      "safety": { "n": "Safety", "p": "No delivery excuses a risk: safety drives every decision on site." }
+    },
+    "cta": {
+      "title": "Let's work together",
+      "text": "For a quote, a partnership or an application, our teams can be reached directly."
+    }
+  },
+  "team": {
+    "eyebrow": "Our teams",
+    "title": "The faces behind every project",
+    "subtitle": "A leadership close to the field, reachable and involved on every one of our sites and logistics operations.",
+    "groundTeamsImageAlt": "Managers on the construction site",
+    "joinTeams": "Join our teams",
+    "previous": "Previous member",
+    "next": "Next member",
+    "groundTeams": {
+      "title": "Our field teams",
+      "lead": "Skilled workers, site managers, drivers and logistics staff: every trade is supervised, trained and monitored. This organisation is what lets us meet deadlines without compromising on safety.",
+      "roles": {
+        "workers": "Skilled workers",
+        "supervisors": "Site managers",
+        "drivers": "Drivers",
+        "logisticians": "Logistics staff"
+      }
+    }
+  },
+  "news": {
+    "eyebrow": "News",
+    "title": "What's happening at ATHL",
+    "subtitle": "Completed sites, new partnerships, hiring campaigns: the latest updates from our construction, mobility and import-logistics teams.",
+    "readMore": "Read more",
+    "showMore": "Show more news",
+    "backToList": "Back to all news",
+    "filters": {
+      "theme": "Filter by theme",
+      "all": "All",
+      "selected": "selected",
+      "clear": "Clear filters"
+    },
+    "cta": {
+      "title": "A question about one of our news items?",
+      "text": "Contact us or join our teams."
+    }
+  },
+  "services": {
+    "eyebrow": "Our services",
+    "title": "From the construction site to logistics",
+    "subtitle": "Four complementary trades to run your projects end to end, with a single point of contact."
+  },
+  "serviceDetail": {
+    "serviceLabel": "Service",
+    "writeToUs": "Write to us",
+    "whatWeHandle": "What we handle",
+    "howWeWork": "How we work",
+    "gallery": "Gallery",
+    "nextService": "Next service",
+    "cta": { "title": "Let's talk about your project" }
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "What our teams are building",
+    "subtitle": "New builds, renovations and fit-outs: a look at our delivered and ongoing sites.",
+    "cta": {
+      "title": "Have a project in mind?",
+      "text": "Tell us about your site and we'll get back to you with an estimate.",
+      "mediaAlt": "Team reviewing plans"
+    }
+  },
+  "careers": {
+    "eyebrow": "Careers",
+    "title": "Talent is our first material",
+    "subtitle": "Africa <strong>Talent</strong> Habitat & Logistics: we recruit continuously across our sites, our fleet and our support functions.",
+    "jobsTitle": "The roles we're hiring for",
+    "searchPlaceholder": "Search a role, a trade, a skill…",
+    "searchAria": "Search an opening",
+    "filterByDomain": "Filter by area",
+    "filters": { "all": "All", "countSingular": "{{count}} opening", "countPlural": "{{count}} openings" },
+    "publishedOn": "Posted on",
+    "applyBy": "Applications until",
+    "applicationsClosed": "Applications closed",
+    "deadline": { "lastDay": "last day", "daysLeft": "{{days}} days left" },
+    "missions": "Responsibilities",
+    "profile": "Profile sought",
+    "applyToJob": "Apply for this role",
+    "askQuestion": "Ask a question",
+    "shareJob": "Share this opening",
+    "share": { "share": "Share", "copied": "Link copied", "text": "Job opening at ATHL: {{title}}" },
+    "noResults": "No opening matches your search. Send us a",
+    "spontaneousLink": "spontaneous application",
+    "driverImageAlt": "ATHL driver on a job",
+    "howToApply": {
+      "title": "How to apply",
+      "step1Title": "Call us",
+      "step1Text": "A short call to discuss your trade, your experience and your availability.",
+      "step2Title": "Send your CV",
+      "step2Text": "By WhatsApp to the number that answered, with your certificates and qualifications.",
+      "step3Title": "Interview & trial",
+      "step3Text": "Interview followed by a hands-on trial on site or in the field, depending on the role."
+    },
+    "application": "Application",
+    "applyForm": {
+      "title": "Submit my application",
+      "lead": "Fill in the form and attach your CV. Our teams will get back to you by phone.",
+      "targetRole": "Role applied for",
+      "chooseRole": "Choose a role…",
+      "spontaneous": "Spontaneous application",
+      "experience": "Years of experience",
+      "notSpecified": "Not specified",
+      "exp": {
+        "lessThan2": "Less than 2 years",
+        "between2and5": "2 to 5 years",
+        "between5and10": "5 to 10 years",
+        "moreThan10": "More than 10 years"
+      },
+      "city": "City of residence",
+      "message": "Message",
+      "messagePlaceholder": "Briefly describe your background and your availability.",
+      "cv": "CV",
+      "dropLabel": "Drop your CV here or",
+      "dropBrowse": "browse your files",
+      "dropHint": "PDF, DOC, DOCX, JPG or PNG — 5 MB maximum",
+      "consent": "I authorise ATHL to keep my application for recruitment purposes.",
+      "submit": "Send my application",
+      "applyByPhone": "Apply by phone"
+    }
+  },
+  "quote": {
+    "eyebrow": "Free quote",
+    "title": "Request a quote",
+    "subtitle": "Four fields are enough. We'll call you back within 48 business hours.",
+    "form": {
+      "service": "Service concerned",
+      "chooseService": "Choose a service…",
+      "project": "Your project",
+      "projectPlaceholder": "Nature of the works, location, area, desired timeline…",
+      "files": "Plans or photos",
+      "dropLabel": "Drop your files here or",
+      "dropBrowse": "browse your files",
+      "dropBrowseShort": "browse",
+      "dropHint": "PDF, DOC, JPG, PNG or ZIP — 5 MB total",
+      "consent": "I authorise ATHL to contact me about this request.",
+      "submit": "Send my request"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Need advice or a quote?",
+    "subtitle": "For more information, get in touch — our teams reply directly.",
+    "phoneLabel": "Phone",
+    "phoneNote": "Quotes, sites and applications — also reachable on WhatsApp.",
+    "addressLabel": "Address",
+    "address": "Abidjan<br />Côte d'Ivoire",
+    "addressNote": "Operating in Abidjan and across Côte d'Ivoire.",
+    "socialLabel": "Social",
+    "form": {
+      "eyebrow": "Write to us",
+      "heading": "Send us a message",
+      "subject": "Subject",
+      "subjectPlaceholder": "E.g. Site quote, partnership…",
+      "message": "Message",
+      "messagePlaceholder": "Describe what you need in a few lines…",
+      "consent": "I allow ATHL to contact me back about this message.",
+      "send": "Send message",
+      "reset": "Reset"
+    },
+    "info": {
+      "eyebrow": "Need any help?",
+      "heading": "Get in touch with us",
+      "phoneTitle": "Have any question?",
+      "emailTitle": "Write us an email",
+      "addressTitle": "Visit anytime"
+    },
+    "mapTitle": "Find us"
+  },
+  "search": {
+    "eyebrow": "Search",
+    "title": "Search the site",
+    "subtitle": "Services, team, job openings and pages of the ATHL site.",
+    "placeholder": "Search a service, a trade, a page…",
+    "noResults": "No results for “{{query}}”. Try another term or browse our",
+    "resultsSingular": "{{count}} result",
+    "resultsPlural": "{{count}} results"
+  }
+}

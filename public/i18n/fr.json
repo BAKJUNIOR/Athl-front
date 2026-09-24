@@ -1,0 +1,371 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "requestQuote": "Demander un devis",
+    "learnMore": "En savoir plus",
+    "contactUs": "Nous contacter",
+    "ourWork": "Nos réalisations",
+    "location": "Abidjan, Côte d'Ivoire",
+    "menu": "Menu",
+    "close": "Fermer",
+    "clearSearch": "Effacer la recherche",
+    "chooseLanguage": "Choisir la langue",
+    "language": "Langue",
+    "footerAbout": "Africa Talent Habitat & Logistique — construction, rénovation, mobilité et importation de matériaux, portées par des équipes qualifiées.",
+    "athlWorkAlt": "Réalisation ATHL",
+    "footer": {
+      "aboutTitle": "À propos d'ATHL",
+      "companyTitle": "Notre entreprise",
+      "officeTitle": "Notre bureau",
+      "sourcingTitle": "Nos zones d'approvisionnement",
+      "email": "Contact@athl.com",
+      "hub": "Abidjan",
+      "sourcing": {
+        "0": "Chine",
+        "1": "Turquie",
+        "2": "Maroc",
+        "3": "Europe"
+      },
+      "copyright": "© {{year}} ATHL — Tous droits réservés",
+      "followUs": "Suivez-nous"
+    },
+    "nav": {
+      "home": "Accueil",
+      "news": "Actualités",
+      "projects": "Projets",
+      "services": "Services",
+      "careers": "Carrières",
+      "about": "À propos",
+      "contact": "Contact",
+      "search": "Rechercher",
+      "quote": "Devis"
+    },
+    "theme": {
+      "dark": "Thème sombre",
+      "light": "Thème clair",
+      "enableDark": "Activer le thème sombre",
+      "enableLight": "Activer le thème clair"
+    },
+    "stats": {
+      "sitesDelivered": "Chantiers livrés en toute sécurité et dans les délais",
+      "projectValue": "Valeur de projets façonnée par une planification rigoureuse",
+      "assetValue": "Valeur d'actifs bâtie en commercial et résidentiel"
+    },
+    "services": {
+      "construction": "Réalisation de projets de construction",
+      "renovation": "Rénovation & aménagement",
+      "mobility": "VTC, mobilité & livraison",
+      "import": "Importation de matériaux de construction"
+    },
+    "cta": {
+      "needAdviceTitle": "Besoin de conseils ou d'un devis ?",
+      "contactUs": "Pour plus d'informations, contactez-nous :"
+    },
+    "form": {
+      "fullName": "Nom et prénoms",
+      "fullNamePlaceholder": "Ex. Konan Yao",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "optional": "facultatif",
+      "missingRequired": "Merci de renseigner les champs obligatoires (*).",
+      "sending": "Envoi en cours…",
+      "sent": "Votre demande a bien été envoyée. Nous revenons vers vous rapidement.",
+      "sendError": "Une erreur est survenue, veuillez réessayer.",
+      "callUs": "Appeler"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "L'expertise qui bâtit.<br><em>La logistique qui accélère.</em>",
+      "subtitle": "Africa Talent Habitat & Logistique : des équipes qualifiées, des méthodes éprouvées et une chaîne d'approvisionnement maîtrisée, du premier plan à la livraison.",
+      "aboutUs": "Qui sommes-nous ?",
+      "seeWork": "Voir nos réalisations",
+      "imageAlt": "Chantier ATHL au levage d'une structure"
+    },
+    "workforce": {
+      "eyebrow": "Bienvenue chez ATHL",
+      "imageAlt": "Deux responsables sur le chantier",
+      "reviewAlt": "Équipe ATHL faisant le point sur un chantier",
+      "title": "Nous assumons chaque projet. Nous livrons des résultats plus solides",
+      "lead": "Africa Talent Habitat & Logistique réunit des professionnels expérimentés, des méthodes éprouvées et une culture de la responsabilité pour livrer des projets qui traversent le temps. De la construction et la rénovation à la mobilité et à l'importation de matériaux, nos équipes travaillent avec clarté, rigueur et savoir-faire.",
+      "quote": "Simplifiez vos projets de construction et de logistique grâce à un accompagnement personnalisé, du premier plan à la livraison.",
+      "badgeLabel": "Chantiers livrés",
+      "features": {
+        "projectValue": "Valeur de projets",
+        "assetValue": "Valeur d'actifs"
+      },
+      "videoAlt": "Nos équipes en intervention sur un chantier",
+      "playCta": "Voir nos réalisations"
+    },
+    "projects": {
+      "eyebrow": "Nos chantiers",
+      "live": "En cours",
+      "sites": {
+        "steel": "Structure et coffrage",
+        "lifting": "Levage et grutage",
+        "interior": "Rénovation intérieure",
+        "port": "Terminal portuaire et import",
+        "building": "Immeuble en construction"
+      },
+      "viewAll": "Voir toutes nos réalisations",
+      "title": "Des chantiers en cours partout dans le pays",
+      "subtitle": "Découvrez ce que nos équipes construisent en ce moment",
+      "liveSite": "Chantier en direct",
+      "alt": {
+        "steelStructure": "Structure métallique",
+        "teamAndCrane": "Équipe et grue",
+        "teamReviewingPlans": "Équipe étudiant les plans",
+        "highRiseSite": "Chantier en hauteur",
+        "teamBriefing": "Briefing d'équipe"
+      }
+    },
+    "services": {
+      "eyebrow": "Ce que nous faisons",
+      "title": "Nos services",
+      "subtitle": "Du chantier à la logistique : quatre métiers pour mener vos projets de bout en bout."
+    },
+    "pillars": {
+      "title": "Nos 3 métiers",
+      "subtitle": "Un seul partenaire pour bâtir, approvisionner et avancer.",
+      "btp": {
+        "title": "Construction & rénovation",
+        "lead": "L'expertise qui bâtit, la logistique qui accélère. ATHL vous accompagne de la construction à la livraison de vos matériaux et solutions de transport.",
+        "imageAlt": "Chantier de construction ATHL",
+        "items": {
+          "0": "Construction",
+          "1": "Rénovation & réhabilitation",
+          "2": "Approvisionnement en matériaux",
+          "3": "Gestion immobilière"
+        }
+      },
+      "mobility": {
+        "title": "Mobilité & VTC",
+        "lead": "Construire l'avenir, accompagner le mouvement. Location de véhicules et solutions de mobilité pour particuliers et entreprises.",
+        "imageAlt": "Chauffeur ATHL au volant, GPS embarqué",
+        "items": {
+          "0": "Location courte et longue durée",
+          "1": "Transport professionnel",
+          "2": "Service VTC Premium",
+          "3": "Gestion de flotte pour entreprises"
+        }
+      },
+      "import": {
+        "title": "Import & logistique",
+        "lead": "Votre partenaire pour bâtir, approvisionner et avancer. Importation directe et distribution de matériaux depuis la Chine, la Turquie, le Maroc et l'Europe.",
+        "imageAlt": "Port et logistique d'importation ATHL",
+        "items": {
+          "0": "Importation directe",
+          "1": "Vente & distribution",
+          "2": "Livraison sur chantier",
+          "3": "Traitement de commandes spéciales"
+        }
+      }
+    },
+    "testimonials": {
+      "title": "La confiance des directeurs de projet",
+      "previous": "Témoignage précédent",
+      "next": "Témoignage suivant"
+    }
+  },
+  "partners": {
+    "eyebrow": "Ils nous font confiance",
+    "title": "Nos partenaires",
+    "subtitle": "Des fournisseurs, transporteurs et partenaires de confiance qui nous accompagnent sur chaque chantier et chaque livraison.",
+    "cta": "Devenir partenaire"
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "title": "Africa Talent Habitat & Logistique",
+    "subtitle": "L'expertise qui bâtit, la logistique qui accélère. Un groupe ivoirien qui réunit construction, rénovation, mobilité et importation de matériaux.",
+    "imageAlt": "Équipes ATHL sur le chantier",
+    "lead": "ATHL réunit des professionnels expérimentés, des méthodes éprouvées et une culture de la responsabilité pour livrer des projets qui traversent le temps. De la construction et la rénovation à la mobilité et à l'importation de matériaux, nos équipes travaillent avec clarté, rigueur et savoir-faire.",
+    "meetTeam": "Rencontrer nos équipes",
+    "values": {
+      "title": "Ce qui nous engage",
+      "talent": { "n": "Talent", "p": "Des équipes qualifiées, formées et encadrées — le premier matériau de chaque projet." },
+      "habitat": { "n": "Habitat", "p": "Construire et rénover des lieux durables, pensés pour ceux qui vont les vivre." },
+      "logistics": { "n": "Logistique", "p": "Maîtriser la chaîne d'approvisionnement et la mobilité pour tenir les délais." },
+      "safety": { "n": "Sécurité", "p": "Aucune livraison n'excuse un risque : la sécurité conditionne chaque décision de chantier." }
+    },
+    "cta": {
+      "title": "Travaillons ensemble",
+      "text": "Pour un devis, un partenariat ou une candidature, nos équipes sont joignables directement."
+    }
+  },
+  "team": {
+    "eyebrow": "Nos équipes",
+    "title": "Des visages derrière chaque projet",
+    "subtitle": "Une direction proche du terrain, joignable et engagée sur chacun de nos chantiers comme sur nos opérations logistiques.",
+    "groundTeamsImageAlt": "Responsables sur le chantier",
+    "joinTeams": "Rejoindre nos équipes",
+    "previous": "Membre précédent",
+    "next": "Membre suivant",
+    "groundTeams": {
+      "title": "Nos équipes terrain",
+      "lead": "Ouvriers qualifiés, chefs de chantier, chauffeurs et logisticiens : chaque métier est encadré, formé et suivi. C'est cette organisation qui nous permet de tenir les délais sans transiger sur la sécurité.",
+      "roles": {
+        "workers": "Ouvriers qualifiés",
+        "supervisors": "Chefs de chantier",
+        "drivers": "Chauffeurs",
+        "logisticians": "Logisticiens"
+      }
+    }
+  },
+  "news": {
+    "eyebrow": "Actualités",
+    "title": "Ce qui se passe chez ATHL",
+    "subtitle": "Chantiers livrés, nouveaux partenariats, recrutements : les dernières nouvelles de nos équipes BTP, mobilité et import-logistique.",
+    "readMore": "Lire la suite",
+    "showMore": "Voir plus d'actualités",
+    "backToList": "Retour à toutes nos actualités",
+    "filters": {
+      "theme": "Filtrer par thème",
+      "all": "Toutes",
+      "selected": "sélectionnés",
+      "clear": "Effacer les filtres"
+    },
+    "cta": {
+      "title": "Une question sur une de nos actualités ?",
+      "text": "Contactez-nous ou rejoignez nos équipes."
+    }
+  },
+  "services": {
+    "eyebrow": "Nos services",
+    "title": "Du chantier à la logistique",
+    "subtitle": "Quatre métiers complémentaires pour mener vos projets de bout en bout, avec un seul interlocuteur."
+  },
+  "serviceDetail": {
+    "serviceLabel": "Service",
+    "writeToUs": "Nous écrire",
+    "whatWeHandle": "Ce que nous prenons en charge",
+    "howWeWork": "Comment nous travaillons",
+    "gallery": "En images",
+    "nextService": "Service suivant",
+    "cta": { "title": "Parlons de votre projet" }
+  },
+  "projects": {
+    "eyebrow": "Projets",
+    "title": "Ce que nos équipes construisent",
+    "subtitle": "Constructions neuves, rénovations et aménagements : un aperçu de nos chantiers livrés et en cours.",
+    "cta": {
+      "title": "Un projet en tête ?",
+      "text": "Décrivez-nous votre chantier, nous revenons vers vous avec une estimation.",
+      "mediaAlt": "Équipe étudiant les plans"
+    }
+  },
+  "careers": {
+    "eyebrow": "Carrières",
+    "title": "Le talent est notre premier matériau",
+    "subtitle": "Africa <strong>Talent</strong> Habitat & Logistique : nous recrutons en continu sur nos chantiers, notre flotte et nos fonctions support.",
+    "jobsTitle": "Les métiers que nous recrutons",
+    "searchPlaceholder": "Rechercher un poste, un métier, une compétence…",
+    "searchAria": "Rechercher une offre",
+    "filterByDomain": "Filtrer par domaine",
+    "filters": { "all": "Tous", "countSingular": "{{count}} offre", "countPlural": "{{count}} offres" },
+    "publishedOn": "Publiée le",
+    "applyBy": "Candidatures jusqu'au",
+    "applicationsClosed": "Candidatures clôturées",
+    "deadline": { "lastDay": "dernier jour", "daysLeft": "J-{{days}}" },
+    "missions": "Missions",
+    "profile": "Profil recherché",
+    "applyToJob": "Postuler à ce poste",
+    "askQuestion": "Poser une question",
+    "shareJob": "Partager cette offre",
+    "share": { "share": "Partager", "copied": "Lien copié", "text": "Offre d'emploi chez ATHL : {{title}}" },
+    "noResults": "Aucune offre ne correspond à votre recherche. Envoyez-nous une",
+    "spontaneousLink": "candidature spontanée",
+    "driverImageAlt": "Chauffeur ATHL en mission",
+    "howToApply": {
+      "title": "Comment postuler",
+      "step1Title": "Appelez-nous",
+      "step1Text": "Un échange court pour situer votre métier, votre expérience et vos disponibilités.",
+      "step2Title": "Envoyez votre CV",
+      "step2Text": "Par WhatsApp au numéro qui vous a répondu, avec vos certificats et habilitations.",
+      "step3Title": "Rencontre & essai",
+      "step3Text": "Entretien puis mise en situation sur chantier ou en mission selon le poste."
+    },
+    "application": "Candidature",
+    "applyForm": {
+      "title": "Déposer ma candidature",
+      "lead": "Renseignez le formulaire et joignez votre CV. Nos équipes reviennent vers vous par téléphone.",
+      "targetRole": "Poste visé",
+      "chooseRole": "Choisir un poste…",
+      "spontaneous": "Candidature spontanée",
+      "experience": "Années d'expérience",
+      "notSpecified": "Non précisé",
+      "exp": {
+        "lessThan2": "Moins de 2 ans",
+        "between2and5": "2 à 5 ans",
+        "between5and10": "5 à 10 ans",
+        "moreThan10": "Plus de 10 ans"
+      },
+      "city": "Ville de résidence",
+      "message": "Message",
+      "messagePlaceholder": "Décrivez brièvement votre parcours et vos disponibilités.",
+      "cv": "CV",
+      "dropLabel": "Déposez votre CV ici ou",
+      "dropBrowse": "parcourez vos fichiers",
+      "dropHint": "PDF, DOC, DOCX, JPG ou PNG — 5 Mo maximum",
+      "consent": "J'autorise ATHL à conserver ma candidature pour les besoins du recrutement.",
+      "submit": "Envoyer ma candidature",
+      "applyByPhone": "Postuler par téléphone"
+    }
+  },
+  "quote": {
+    "eyebrow": "Devis gratuit",
+    "title": "Demander un devis",
+    "subtitle": "Quatre champs suffisent. Nous vous rappelons sous 48 h ouvrées.",
+    "form": {
+      "service": "Service concerné",
+      "chooseService": "Choisir un service…",
+      "project": "Votre projet",
+      "projectPlaceholder": "Nature des travaux, lieu, surface, délais souhaités…",
+      "files": "Plans ou photos",
+      "dropLabel": "Déposez vos fichiers ici ou",
+      "dropBrowse": "parcourez vos fichiers",
+      "dropBrowseShort": "parcourez",
+      "dropHint": "PDF, DOC, JPG, PNG ou ZIP — 5 Mo au total",
+      "consent": "J'autorise ATHL à me contacter au sujet de cette demande.",
+      "submit": "Envoyer ma demande"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Besoin de conseils ou d'un devis ?",
+    "subtitle": "Pour plus d'informations, contactez-nous — nos équipes répondent directement.",
+    "phoneLabel": "Téléphone",
+    "phoneNote": "Devis, chantiers et candidatures — également joignables sur WhatsApp.",
+    "addressLabel": "Adresse",
+    "address": "Abidjan<br />Côte d'Ivoire",
+    "addressNote": "Interventions sur Abidjan et l'ensemble du territoire ivoirien.",
+    "socialLabel": "Réseaux",
+    "form": {
+      "eyebrow": "Écrivez-nous",
+      "heading": "Envoyez-nous un message",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Ex. Devis chantier, partenariat…",
+      "message": "Message",
+      "messagePlaceholder": "Décrivez votre besoin en quelques lignes…",
+      "consent": "J'autorise ATHL à me recontacter au sujet de ce message.",
+      "send": "Envoyer le message",
+      "reset": "Réinitialiser"
+    },
+    "info": {
+      "eyebrow": "Besoin d'aide ?",
+      "heading": "Entrer en contact avec nous",
+      "phoneTitle": "Une question ?",
+      "emailTitle": "Écrivez-nous",
+      "addressTitle": "Nous rendre visite"
+    },
+    "mapTitle": "Nous trouver"
+  },
+  "search": {
+    "eyebrow": "Recherche",
+    "title": "Rechercher sur le site",
+    "subtitle": "Services, équipe, offres d'emploi et pages du site ATHL.",
+    "placeholder": "Rechercher un service, un métier, une page…",
+    "noResults": "Aucun résultat pour « {{query}} ». Essayez un autre terme ou consultez nos",
+    "resultsSingular": "{{count}} résultat",
+    "resultsPlural": "{{count}} résultats"
+  }
+}

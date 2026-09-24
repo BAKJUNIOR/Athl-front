@@ -1,0 +1,88 @@
+<section class="phero">
+  <div class="about-block__eyebrow" appReveal><span></span>{{ 'about.eyebrow' | transloco }}</div>
+  <h1 [appReveal]="80">{{ 'about.title' | transloco }}</h1>
+  <p [appReveal]="160">{{ 'about.subtitle' | transloco }}</p>
+</section>
+
+<app-workforce-tabs />
+
+<section class="team-intro">
+  <div class="sites__head" appReveal>
+    <div>
+      <div class="about-block__eyebrow"><span></span>{{ 'team.eyebrow' | transloco }}</div>
+      <h2>{{ 'team.title' | transloco }}</h2>
+      <p class="lead">{{ 'team.subtitle' | transloco }}</p>
+    </div>
+  </div>
+</section>
+<app-team-members />
+
+<section class="split split--rev">
+  <div class="frame" appReveal>
+    <img src="images/team-review.jpg" [attr.alt]="'team.groundTeamsImageAlt' | transloco" loading="lazy" />
+  </div>
+  <div class="split__col" [appReveal]="140">
+    <div>
+      <h2>{{ 'team.groundTeams.title' | transloco }}</h2>
+      <p class="lead">{{ 'team.groundTeams.lead' | transloco }}</p>
+
+      <div class="ground-roles">
+        <div class="ground-role">
+          <span class="ground-role__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 18a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M2 18h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 6v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="4" r="1.4" fill="currentColor"/></svg>
+          </span>
+          <span class="ground-role__label">{{ 'team.groundTeams.roles.workers' | transloco }}</span>
+        </div>
+        <div class="ground-role">
+          <span class="ground-role__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <span class="ground-role__label">{{ 'team.groundTeams.roles.supervisors' | transloco }}</span>
+        </div>
+        <div class="ground-role">
+          <span class="ground-role__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 5.3V9.8M6.4 15.4l3.9-2.6M17.6 15.4l-3.9-2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <span class="ground-role__label">{{ 'team.groundTeams.roles.drivers' | transloco }}</span>
+        </div>
+        <div class="ground-role">
+          <span class="ground-role__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 10l9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 10v7l9 5 9-5v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <span class="ground-role__label">{{ 'team.groundTeams.roles.logisticians' | transloco }}</span>
+        </div>
+      </div>
+
+      <a class="btn btn--light btn--block" routerLink="/carrieres">{{ 'team.joinTeams' | transloco }}</a>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat__num"><app-stat-counter [to]="sitesDelivered().value" [decimals]="sitesDelivered().decimals" [suffix]="sitesDelivered().suffix" /></div>
+        <div class="stat__label">{{ 'common.stats.sitesDelivered' | transloco }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num"><app-stat-counter [to]="projectValue().value" [decimals]="projectValue().decimals" [suffix]="projectValue().suffix" /></div>
+        <div class="stat__label">{{ 'common.stats.projectValue' | transloco }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num"><app-stat-counter [to]="assetValue().value" [decimals]="assetValue().decimals" [suffix]="assetValue().suffix" /></div>
+        <div class="stat__label">{{ 'common.stats.assetValue' | transloco }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <h2 appReveal>{{ 'about.values.title' | transloco }}</h2>
+  <div class="values__grid">
+    <div class="value" [appReveal]="60"><div class="value__n">{{ 'about.values.talent.n' | transloco }}</div><p>{{ 'about.values.talent.p' | transloco }}</p></div>
+    <div class="value" [appReveal]="140"><div class="value__n">{{ 'about.values.habitat.n' | transloco }}</div><p>{{ 'about.values.habitat.p' | transloco }}</p></div>
+    <div class="value" [appReveal]="220"><div class="value__n">{{ 'about.values.logistics.n' | transloco }}</div><p>{{ 'about.values.logistics.p' | transloco }}</p></div>
+    <div class="value" [appReveal]="300"><div class="value__n">{{ 'about.values.safety.n' | transloco }}</div><p>{{ 'about.values.safety.p' | transloco }}</p></div>
+  </div>
+</section>
+
+<app-cta-banner appReveal [title]="'about.cta.title' | transloco" [text]="'about.cta.text' | transloco">
+  <a class="btn btn--light" routerLink="/contact">{{ 'common.contactUs' | transloco }}</a>
+  <a class="btn btn--ghost" routerLink="/carrieres">{{ 'common.nav.careers' | transloco }}</a>
+</app-cta-banner>

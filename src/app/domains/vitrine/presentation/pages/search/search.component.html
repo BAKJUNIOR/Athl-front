@@ -1,0 +1,43 @@
+<section class="phero">
+  <div class="phero__eyebrow">{{ 'search.eyebrow' | transloco }}</div>
+  <h1>{{ 'search.title' | transloco }}</h1>
+  <p>{{ 'search.subtitle' | transloco }}</p>
+</section>
+
+<section class="search-page">
+  <div class="jobsearch search-page__input">
+    <span class="jobsearch__icon" aria-hidden="true">&#9906;</span>
+    <input
+      type="search"
+      [placeholder]="'search.placeholder' | transloco"
+      [attr.aria-label]="'search.eyebrow' | transloco"
+      [value]="query()"
+      (input)="query.set($any($event.target).value)"
+    />
+    @if (query()) {
+      <button class="jobsearch__clear" type="button" [attr.aria-label]="'common.clearSearch' | transloco" (click)="clear()">&#215;</button>
+    }
+  </div>
+
+  @if (query().trim()) {
+    <div class="jobcount">{{ countKey() | transloco: { count: results().length } }}</div>
+
+    @if (!results().length) {
+      <p class="jobempty">{{ 'search.noResults' | transloco: { query: query() } }} <a routerLink="/services">{{ 'common.nav.services' | transloco }}</a>.</p>
+    }
+
+    @for (group of resultsByCategory(); track group.category) {
+      <div class="search-group">
+        <h2 class="search-group__title">{{ group.category }}</h2>
+        <div class="search-group__list">
+          @for (item of group.items; track item.title + item.url) {
+            <a class="search-result" [routerLink]="item.url" [fragment]="item.fragment">
+              <div class="search-result__title">{{ item.title }}</div>
+              <div class="search-result__excerpt">{{ item.excerpt }}</div>
+            </a>
+          }
+        </div>
+      </div>
+    }
+  }
+</section>

@@ -1,0 +1,77 @@
+<section class="phero">
+  <div class="phero__eyebrow" appReveal>{{ 'quote.eyebrow' | transloco }}</div>
+  <h1 [appReveal]="80">{{ 'quote.title' | transloco }}</h1>
+  <p [appReveal]="160">{{ 'quote.subtitle' | transloco }}</p>
+</section>
+
+<section class="devis">
+  <div class="form-loading-wrap">
+  <form
+    #form
+    class="form form--quote"
+    [class.is-sending]="sending()"
+    [appReveal]="80"
+    novalidate
+    (submit)="onSubmit($event, form)"
+  >
+    @if (status(); as message) {
+      <p class="form__status" [class.is-err]="!isValid()" [class.is-ok]="isValid()" role="status">
+        <span>{{ message }}</span>
+        <button type="button" class="form__status-close" aria-label="Fermer" (click)="status.set('')">&times;</button>
+      </p>
+    }
+    <div class="field field--full">
+      <label for="q-service">{{ 'quote.form.service' | transloco }} <span class="req">*</span></label>
+      <select id="q-service" name="Service" required>
+        <option value="">{{ 'quote.form.chooseService' | transloco }}</option>
+        <option value="Réalisation de projets de construction">{{ 'common.services.construction' | transloco }}</option>
+        <option value="Rénovation &amp; aménagement">{{ 'common.services.renovation' | transloco }}</option>
+        <option value="VTC, mobilité &amp; livraison">{{ 'common.services.mobility' | transloco }}</option>
+        <option value="Importation de matériaux">{{ 'common.services.import' | transloco }}</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="q-nom">{{ 'common.form.fullName' | transloco }} <span class="req">*</span></label>
+      <input id="q-nom" name="Nom" type="text" required autocomplete="name" [placeholder]="'common.form.fullNamePlaceholder' | transloco" />
+    </div>
+    <div class="field">
+      <label for="q-tel">{{ 'common.form.phone' | transloco }} <span class="req">*</span></label>
+      <input id="q-tel" name="Téléphone" type="tel" required autocomplete="tel" placeholder="+225 07 00 00 00 00" />
+    </div>
+
+    <div class="field field--full">
+      <label for="q-desc">{{ 'quote.form.project' | transloco }} <span class="req">*</span></label>
+      <textarea id="q-desc" name="Description" rows="5" required [placeholder]="'quote.form.projectPlaceholder' | transloco"></textarea>
+    </div>
+
+    <div class="field field--full">
+      <label for="q-files">{{ 'quote.form.files' | transloco }} <span class="opt">({{ 'common.form.optional' | transloco }})</span></label>
+      <app-file-drop
+        #filesDrop
+        name="Documents"
+        [multiple]="true"
+        [label]="'quote.form.dropLabel' | transloco"
+        [browseLabel]="'quote.form.dropBrowse' | transloco"
+        [hint]="'quote.form.dropHint' | transloco"
+        (filesChange)="onFilesChange($event)"
+      />
+    </div>
+
+    <div class="field field--full check">
+      <input id="q-ok" name="Consentement" type="checkbox" value="Oui" required checked />
+      <label for="q-ok">{{ 'quote.form.consent' | transloco }} <span class="req">*</span></label>
+    </div>
+
+    <div class="field field--full form__foot">
+      <button class="btn btn--light" type="submit" [disabled]="sending()">{{ 'quote.form.submit' | transloco }}</button>
+      <a class="btn btn--ghost" href="tel:+2250778095858">{{ 'common.form.callUs' | transloco }} : +225 07 78 09 58 58</a>
+    </div>
+  </form>
+  @if (sending()) {
+    <div class="form-loading__overlay" role="status" aria-live="polite" aria-busy="true">
+      <span class="spinner" aria-hidden="true"></span>
+    </div>
+  }
+  </div>
+</section>
