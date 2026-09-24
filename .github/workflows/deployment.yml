@@ -1,4 +1,4 @@
-name: deploy athl back
+name: deploy athl front
 on:
   push:
     branches:
