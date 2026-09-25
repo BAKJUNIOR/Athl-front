@@ -6,6 +6,69 @@
 
 <app-workforce-tabs />
 
+<section class="pillars-intro">
+  <div class="sites__head" appReveal>
+    <div>
+      <div class="about-block__eyebrow"><span></span>{{ 'home.services.eyebrow' | transloco }}</div>
+      <h2>{{ 'home.pillars.title' | transloco }}</h2>
+      <p class="lead">{{ 'home.pillars.subtitle' | transloco }}</p>
+    </div>
+  </div>
+
+  <div class="pillars-grid">
+    <article class="pillar-poster" [appReveal]="60">
+      <img src="images/chantier2.jpg" [attr.alt]="'home.pillars.btp.imageAlt' | transloco" loading="lazy" />
+      <div class="pillar-poster__scrim"></div>
+      <span class="pillar-poster__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 21V9l8-5 8 5v12M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="pillar-poster__body">
+        <h3>{{ 'home.pillars.btp.title' | transloco }}</h3>
+        <ul class="pillar-poster__list">
+          <li>{{ 'home.pillars.btp.items.0' | transloco }}</li>
+          <li>{{ 'home.pillars.btp.items.1' | transloco }}</li>
+          <li>{{ 'home.pillars.btp.items.2' | transloco }}</li>
+          <li>{{ 'home.pillars.btp.items.3' | transloco }}</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="pillar-poster" [appReveal]="140">
+      <img src="images/vtc-mobilite.jpg" [attr.alt]="'home.pillars.mobility.imageAlt' | transloco" loading="lazy" />
+      <div class="pillar-poster__scrim"></div>
+      <span class="pillar-poster__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 28l3.2-10.4A4 4 0 0 1 13 15h22a4 4 0 0 1 3.8 2.6L42 28" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" transform="translate(-4 -8) scale(0.55)"/><rect x="4" y="28" width="40" height="10" rx="3" stroke="currentColor" stroke-width="1.8" transform="translate(-4 -8) scale(0.55)"/><circle cx="13" cy="38" r="3.5" stroke="currentColor" stroke-width="1.8" transform="translate(-4 -8) scale(0.55)"/><circle cx="35" cy="38" r="3.5" stroke="currentColor" stroke-width="1.8" transform="translate(-4 -8) scale(0.55)"/></svg>
+      </span>
+      <div class="pillar-poster__body">
+        <h3>{{ 'home.pillars.mobility.title' | transloco }}</h3>
+        <ul class="pillar-poster__list">
+          <li>{{ 'home.pillars.mobility.items.0' | transloco }}</li>
+          <li>{{ 'home.pillars.mobility.items.1' | transloco }}</li>
+          <li>{{ 'home.pillars.mobility.items.2' | transloco }}</li>
+          <li>{{ 'home.pillars.mobility.items.3' | transloco }}</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="pillar-poster" [appReveal]="220">
+      <img src="images/import3.jpg" [attr.alt]="'home.pillars.import.imageAlt' | transloco" loading="lazy" />
+      <div class="pillar-poster__scrim"></div>
+      <span class="pillar-poster__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 10l9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 10v7l9 5 9-5v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      <div class="pillar-poster__body">
+        <h3>{{ 'home.pillars.import.title' | transloco }}</h3>
+        <ul class="pillar-poster__list">
+          <li>{{ 'home.pillars.import.items.0' | transloco }}</li>
+          <li>{{ 'home.pillars.import.items.1' | transloco }}</li>
+          <li>{{ 'home.pillars.import.items.2' | transloco }}</li>
+          <li>{{ 'home.pillars.import.items.3' | transloco }}</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
 <section class="team-intro">
   <div class="sites__head" appReveal>
     <div>
@@ -18,8 +81,10 @@
 <app-team-members />
 
 <section class="split split--rev">
-  <div class="frame" appReveal>
-    <img src="images/team-review.jpg" [attr.alt]="'team.groundTeamsImageAlt' | transloco" loading="lazy" />
+  <div class="frame team-carousel" appReveal>
+    <div class="team-carousel__layer"><img src="images/chantier3.jpg" [attr.alt]="'team.groundTeams.title' | transloco" loading="lazy" /></div>
+    <div class="team-carousel__layer"><img src="images/chantier4.jpg" [attr.alt]="'team.groundTeams.title' | transloco" loading="lazy" /></div>
+    <div class="team-carousel__layer"><img src="images/construction1.jpg" [attr.alt]="'team.groundTeams.title' | transloco" loading="lazy" /></div>
   </div>
   <div class="split__col" [appReveal]="140">
     <div>
@@ -55,34 +120,82 @@
 
       <a class="btn btn--light btn--block" routerLink="/carrieres">{{ 'team.joinTeams' | transloco }}</a>
     </div>
-    <div class="stats">
-      <div class="stat">
-        <div class="stat__num"><app-stat-counter [to]="sitesDelivered().value" [decimals]="sitesDelivered().decimals" [suffix]="sitesDelivered().suffix" /></div>
-        <div class="stat__label">{{ 'common.stats.sitesDelivered' | transloco }}</div>
+    <div class="ground-commitments">
+      <div class="ground-commitment" [appReveal]="60">
+        <span class="ground-role__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <div class="ground-commitment__title">{{ 'team.groundTeams.commitments.safety.title' | transloco }}</div>
+          <p class="ground-commitment__text">{{ 'team.groundTeams.commitments.safety.text' | transloco }}</p>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat__num"><app-stat-counter [to]="projectValue().value" [decimals]="projectValue().decimals" [suffix]="projectValue().suffix" /></div>
-        <div class="stat__label">{{ 'common.stats.projectValue' | transloco }}</div>
+      <div class="ground-commitment" [appReveal]="140">
+        <span class="ground-role__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
+        </span>
+        <div>
+          <div class="ground-commitment__title">{{ 'team.groundTeams.commitments.training.title' | transloco }}</div>
+          <p class="ground-commitment__text">{{ 'team.groundTeams.commitments.training.text' | transloco }}</p>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat__num"><app-stat-counter [to]="assetValue().value" [decimals]="assetValue().decimals" [suffix]="assetValue().suffix" /></div>
-        <div class="stat__label">{{ 'common.stats.assetValue' | transloco }}</div>
+      <div class="ground-commitment" [appReveal]="220">
+        <span class="ground-role__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="7.5" r="2.3" stroke="currentColor" stroke-width="1.8"/><path d="M15.8 13.4c2.6.4 4.4 2.5 4.7 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <div class="ground-commitment__title">{{ 'team.groundTeams.commitments.supervision.title' | transloco }}</div>
+          <p class="ground-commitment__text">{{ 'team.groundTeams.commitments.supervision.text' | transloco }}</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="values">
-  <h2 appReveal>{{ 'about.values.title' | transloco }}</h2>
+  <div class="values__bg"></div>
+  <div class="values__scrim"></div>
+  <div class="wrap values__inner">
+  <div class="about-block__eyebrow" appReveal><span></span>ATHL</div>
+  <h2 [appReveal]="60">{{ 'about.values.title' | transloco }}</h2>
   <div class="values__grid">
-    <div class="value" [appReveal]="60"><div class="value__n">{{ 'about.values.talent.n' | transloco }}</div><p>{{ 'about.values.talent.p' | transloco }}</p></div>
-    <div class="value" [appReveal]="140"><div class="value__n">{{ 'about.values.habitat.n' | transloco }}</div><p>{{ 'about.values.habitat.p' | transloco }}</p></div>
-    <div class="value" [appReveal]="220"><div class="value__n">{{ 'about.values.logistics.n' | transloco }}</div><p>{{ 'about.values.logistics.p' | transloco }}</p></div>
-    <div class="value" [appReveal]="300"><div class="value__n">{{ 'about.values.safety.n' | transloco }}</div><p>{{ 'about.values.safety.p' | transloco }}</p></div>
+    <div class="value" [appReveal]="60">
+      <span class="value__index">01</span>
+      <span class="value__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="7.5" r="2.3" stroke="currentColor" stroke-width="1.8"/><path d="M15.8 13.4c2.6.4 4.4 2.5 4.7 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      <div class="value__n">{{ 'about.values.talent.n' | transloco }}</div>
+      <p>{{ 'about.values.talent.p' | transloco }}</p>
+    </div>
+    <div class="value" [appReveal]="140">
+      <span class="value__index">02</span>
+      <span class="value__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 21V9l8-5 8 5v12M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="value__n">{{ 'about.values.habitat.n' | transloco }}</div>
+      <p>{{ 'about.values.habitat.p' | transloco }}</p>
+    </div>
+    <div class="value" [appReveal]="220">
+      <span class="value__index">03</span>
+      <span class="value__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="8" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><path d="M13 11h4l3 3v2h-7v-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="1.8" stroke="currentColor" stroke-width="1.8"/><circle cx="16.5" cy="18" r="1.8" stroke="currentColor" stroke-width="1.8"/></svg>
+      </span>
+      <div class="value__n">{{ 'about.values.logistics.n' | transloco }}</div>
+      <p>{{ 'about.values.logistics.p' | transloco }}</p>
+    </div>
+    <div class="value" [appReveal]="300">
+      <span class="value__index">04</span>
+      <span class="value__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="value__n">{{ 'about.values.safety.n' | transloco }}</div>
+      <p>{{ 'about.values.safety.p' | transloco }}</p>
+    </div>
+  </div>
   </div>
 </section>
 
-<app-cta-banner appReveal [title]="'about.cta.title' | transloco" [text]="'about.cta.text' | transloco">
+<app-cta-banner appReveal [title]="'about.cta.title' | transloco" [text]="'about.cta.text' | transloco" mediaImage="images/construction.jpg" [mediaAlt]="'about.imageAlt' | transloco">
   <a class="btn btn--light" routerLink="/contact">{{ 'common.contactUs' | transloco }}</a>
   <a class="btn btn--ghost" routerLink="/carrieres">{{ 'common.nav.careers' | transloco }}</a>
 </app-cta-banner>

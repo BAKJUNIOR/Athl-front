@@ -126,7 +126,7 @@
     },
     "pillars": {
       "title": "Our 3 core businesses",
-      "subtitle": "One partner to build, supply and move forward.",
+      "subtitle": "One partner to build, supply and move forward: construction & renovation, mobility & ride-hailing, import & logistics.",
       "btp": {
         "title": "Construction & renovation",
         "lead": "The expertise that builds, the logistics that accelerates. ATHL supports you from construction to delivering your materials and transport solutions.",
@@ -208,6 +208,20 @@
         "supervisors": "Site managers",
         "drivers": "Drivers",
         "logisticians": "Logistics staff"
+      },
+      "commitments": {
+        "safety": {
+          "title": "Safety first",
+          "text": "Protective equipment and strict procedures on every site."
+        },
+        "training": {
+          "title": "Continuous training",
+          "text": "Every trade is trained and monitored throughout each project."
+        },
+        "supervision": {
+          "title": "Close supervision",
+          "text": "Team leaders present on the ground, not just on paper."
+        }
       }
     }
   },
@@ -218,6 +232,15 @@
     "readMore": "Read more",
     "showMore": "Show more news",
     "backToList": "Back to all news",
+    "share": {
+      "title": "Share",
+      "copy": "Copy link",
+      "copied": "Link copied!",
+      "whatsapp": "Share on WhatsApp",
+      "facebook": "Share on Facebook",
+      "linkedin": "Share on LinkedIn",
+      "x": "Share on X"
+    },
     "filters": {
       "theme": "Filter by theme",
       "all": "All",

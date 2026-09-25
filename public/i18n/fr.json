@@ -126,7 +126,7 @@
     },
     "pillars": {
       "title": "Nos 3 métiers",
-      "subtitle": "Un seul partenaire pour bâtir, approvisionner et avancer.",
+      "subtitle": "Un seul partenaire pour bâtir, approvisionner et avancer : construction & rénovation, mobilité & VTC, import & logistique.",
       "btp": {
         "title": "Construction & rénovation",
         "lead": "L'expertise qui bâtit, la logistique qui accélère. ATHL vous accompagne de la construction à la livraison de vos matériaux et solutions de transport.",
@@ -208,6 +208,20 @@
         "supervisors": "Chefs de chantier",
         "drivers": "Chauffeurs",
         "logisticians": "Logisticiens"
+      },
+      "commitments": {
+        "safety": {
+          "title": "Sécurité avant tout",
+          "text": "Équipements de protection et procédures strictes sur chaque chantier."
+        },
+        "training": {
+          "title": "Formation continue",
+          "text": "Chaque métier est formé et suivi tout au long des projets."
+        },
+        "supervision": {
+          "title": "Encadrement de proximité",
+          "text": "Des chefs d'équipe présents sur le terrain, pas seulement sur le papier."
+        }
       }
     }
   },
@@ -218,6 +232,15 @@
     "readMore": "Lire la suite",
     "showMore": "Voir plus d'actualités",
     "backToList": "Retour à toutes nos actualités",
+    "share": {
+      "title": "Partager",
+      "copy": "Copier le lien",
+      "copied": "Lien copié !",
+      "whatsapp": "Partager sur WhatsApp",
+      "facebook": "Partager sur Facebook",
+      "linkedin": "Partager sur LinkedIn",
+      "x": "Partager sur X"
+    },
     "filters": {
       "theme": "Filtrer par thème",
       "all": "Toutes",
