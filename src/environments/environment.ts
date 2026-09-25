@@ -1,7 +1,9 @@
 // Environnement local — API backend lancée en local (voir Athl_logistics-backend).
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'https://api.athl.athl-logistique.com',
+  // Vide en local : on ne veut pas polluer les statistiques de production avec le trafic de développement.
+  googleAnalyticsId: '',
   cloudinary: {
     cloudName: 'drfq0bt4z',
     uploadPreset: 'xbanking',

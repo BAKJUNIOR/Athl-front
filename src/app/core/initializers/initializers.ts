@@ -15,6 +15,7 @@ import { SiteContactApi, SiteContactApiDto } from '../../domains/vitrine/infrast
 import { setSiteContact } from '../../domains/vitrine/infrastructure/data/site-contact.data';
 import { PopupApi, PopupApiDto } from '../../domains/vitrine/infrastructure/api/popup.api';
 import { setPopups } from '../../domains/vitrine/infrastructure/data/popups.data';
+import { AnalyticsService } from '../services/analytics.service';
 
 
 export function initializeServiceCatalog(): Promise<void> {
@@ -78,4 +79,9 @@ export function initializePopupCatalog(): Promise<void> {
   return firstValueFrom(api.list().pipe(catchError(() => of([] as PopupApiDto[])))).then((list) => {
     setPopups(list);
   });
+}
+
+/** Démarre le suivi Google Analytics (no-op si environment.googleAnalyticsId est vide, voir AnalyticsService). */
+export function initializeAnalytics(): void {
+  inject(AnalyticsService).init();
 }

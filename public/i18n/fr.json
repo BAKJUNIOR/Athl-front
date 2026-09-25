@@ -126,7 +126,7 @@
     },
     "pillars": {
       "title": "Nos 3 métiers",
-      "subtitle": "Un seul partenaire pour bâtir, approvisionner et avancer : construction & rénovation, mobilité & VTC, import & logistique.",
+      "subtitle": "Un seul partenaire pour bâtir, approvisionner et avancer : construction & rénovation, mobilité, VTC & livraison, import & logistique.",
       "btp": {
         "title": "Construction & rénovation",
         "lead": "L'expertise qui bâtit, la logistique qui accélère. ATHL vous accompagne de la construction à la livraison de vos matériaux et solutions de transport.",
@@ -139,7 +139,7 @@
         }
       },
       "mobility": {
-        "title": "Mobilité & VTC",
+        "title": "Mobilité, VTC & Livraison",
         "lead": "Construire l'avenir, accompagner le mouvement. Location de véhicules et solutions de mobilité pour particuliers et entreprises.",
         "imageAlt": "Chauffeur ATHL au volant, GPS embarqué",
         "items": {

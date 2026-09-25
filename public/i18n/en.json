@@ -126,7 +126,7 @@
     },
     "pillars": {
       "title": "Our 3 core businesses",
-      "subtitle": "One partner to build, supply and move forward: construction & renovation, mobility & ride-hailing, import & logistics.",
+      "subtitle": "One partner to build, supply and move forward: construction & renovation, mobility, ride-hailing & delivery, import & logistics.",
       "btp": {
         "title": "Construction & renovation",
         "lead": "The expertise that builds, the logistics that accelerates. ATHL supports you from construction to delivering your materials and transport solutions.",
@@ -139,7 +139,7 @@
         }
       },
       "mobility": {
-        "title": "Mobility & ride-hailing",
+        "title": "Mobility, ride-hailing & delivery",
         "lead": "Building the future, supporting the movement. Vehicle rental and mobility solutions for individuals and businesses.",
         "imageAlt": "ATHL driver behind the wheel, GPS mounted",
         "items": {

@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   apiUrl: 'https://api.athl.athl-logistique.com',
+  googleAnalyticsId: 'G-XJSK44PL4B',
   cloudinary: {
     cloudName: 'drfq0bt4z',
     uploadPreset: 'xbanking',
