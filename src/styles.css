@@ -1222,8 +1222,8 @@ html:not([data-theme='light']) .modal__card {
   .logo img { height: 44px; }
   .sites, .services, .quotes, .team { padding-top: 24px; padding-bottom: 72px; }
   .team__grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-  /* Header mobile : recherche, langue et devis sont déjà dans le menu burger */
-  .header__actions > .lang-toggle, .header__actions > .btn, .header__actions > a.icon-btn { display: none; }
+  /* Header mobile : langue et devis sont déjà dans le menu burger ; recherche et thème restent en icônes dans la barre */
+  .header__actions > .lang-toggle, .header__actions > .btn { display: none; }
   .logo { flex: 0 1 auto; min-width: 0; }
   .sites__head { flex-direction: column; align-items: flex-start; }
   .sites__panels { flex-direction: column; height: auto; }

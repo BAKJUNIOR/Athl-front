@@ -81,7 +81,6 @@ import { LanguageService } from '../../../../../core/services/language.service';
       <a routerLink="/carrieres" routerLinkActive="is-active" (click)="menuOpen.set(false)">{{ 'common.nav.careers' | transloco }}</a>
       <a routerLink="/a-propos" routerLinkActive="is-active" (click)="menuOpen.set(false)">{{ 'common.nav.about' | transloco }}</a>
       <a routerLink="/contact" (click)="menuOpen.set(false)">{{ 'common.nav.contact' | transloco }}</a>
-      <a routerLink="/recherche" routerLinkActive="is-active" (click)="menuOpen.set(false)">{{ 'common.nav.search' | transloco }}</a>
       <a href="/devis" (click)="openQuote($event); menuOpen.set(false)">{{ 'common.requestQuote' | transloco }}</a>
       <div class="theme-toggle-row">
         <span>{{ 'common.language' | transloco }}</span>
@@ -90,26 +89,6 @@ import { LanguageService } from '../../../../../core/services/language.service';
           <span aria-hidden="true">/</span>
           <button type="button" [class.is-on]="languageService.lang() === 'en'" (click)="languageService.setLang('en')">EN</button>
         </div>
-      </div>
-      <div class="theme-toggle-row">
-        <span>{{ themeService.theme() === 'dark' ? ('common.theme.dark' | transloco) : ('common.theme.light' | transloco) }}</span>
-        <button
-          class="icon-btn"
-          type="button"
-          [attr.aria-label]="themeService.theme() === 'dark' ? ('common.theme.enableLight' | transloco) : ('common.theme.enableDark' | transloco)"
-          (click)="themeService.toggle()"
-        >
-          @if (themeService.theme() === 'dark') {
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="4.2" />
-              <path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7" />
-            </svg>
-          } @else {
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7Z" />
-            </svg>
-          }
-        </button>
       </div>
     </nav>
   `,
