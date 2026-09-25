@@ -11,6 +11,10 @@ export interface TeamMemberApi {
   photo: string;
   sortOrder: number;
   updatedAt: string;
+  // Pas encore géré par le BO — présent ici pour que la fiche détail l'affiche automatiquement
+  // le jour où le champ existera côté backend, sans autre changement front.
+  bioFr?: string;
+  bioEn?: string;
 }
 
 @Injectable({ providedIn: 'root' })

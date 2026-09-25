@@ -25,11 +25,11 @@ const TESTIMONIALS_FR: Testimonial[] = [
     role: 'Responsable Administrative et Comptable Group',
   },
   {
-    photo: 'images/proj-4.png',
-    initials: 'BO',
-    text: '« Ils ont résolu des problèmes structurels que nous subissions depuis des années, sans jamais interrompre notre activité. Un partenaire rare. »',
-    name: 'Ben Okafor,',
-    role: 'Propriétaire',
+    photo: 'images/team_geran.jpeg',
+    initials: 'GE',
+    text: '« ATHL, c’est une équipe qui tient parole : chaque chantier est mené avec la même exigence, du premier brief à la remise des clés. »',
+    name: 'Gnohéré Johannel Rosalyn Elisée,',
+    role: 'Gérant / Managing Director',
   },
 ];
 
@@ -56,11 +56,11 @@ const TESTIMONIALS_EN: Testimonial[] = [
     role: 'Group Administration & Accounting Manager',
   },
   {
-    photo: 'images/proj-4.png',
-    initials: 'BO',
-    text: '“They fixed structural issues we had been living with for years, without ever interrupting our business. A rare kind of partner.”',
-    name: 'Ben Okafor,',
-    role: 'Owner',
+    photo: 'images/team_geran.jpeg',
+    initials: 'GE',
+    text: '“ATHL is a team that keeps its word: every project is run with the same rigor, from the first brief to the final handover.”',
+    name: 'Gnohéré Johannel Rosalyn Elisée,',
+    role: 'Managing Director',
   },
 ];
 

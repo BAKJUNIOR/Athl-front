@@ -36,6 +36,7 @@
       "services": "Services",
       "careers": "Careers",
       "about": "About",
+      "team": "Team",
       "contact": "Contact",
       "search": "Search",
       "quote": "Quote"
@@ -200,6 +201,16 @@
     "joinTeams": "Join our teams",
     "previous": "Previous member",
     "next": "Next member",
+    "page": {
+      "eyebrow": "Team",
+      "title": "The faces behind ATHL",
+      "subtitle": "A leadership and teams present in the field, listening to every project.",
+      "viewAll": "See the full team"
+    },
+    "detail": {
+      "back": "Back to the team",
+      "contact": "Contact ATHL"
+    },
     "groundTeams": {
       "title": "Our field teams",
       "lead": "Skilled workers, site managers, drivers and logistics staff: every trade is supervised, trained and monitored. This organisation is what lets us meet deadlines without compromising on safety.",

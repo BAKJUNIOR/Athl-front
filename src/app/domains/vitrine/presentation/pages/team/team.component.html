@@ -1,0 +1,17 @@
+<section class="phero">
+  <div class="about-block__eyebrow" appReveal><span></span>{{ 'team.page.eyebrow' | transloco }}</div>
+  <h1 [appReveal]="80">{{ 'team.page.title' | transloco }}</h1>
+  <p [appReveal]="160">{{ 'team.page.subtitle' | transloco }}</p>
+</section>
+
+<section class="team-page wrap">
+  <div class="team-page__grid">
+    @for (member of members(); track member.id; let i = $index) {
+      <a class="team-card" [routerLink]="['/equipe', member.id]" [appReveal]="60 + i * 70">
+        <div class="team-card__media"><img [src]="member.photo" [alt]="member.name" loading="lazy" /></div>
+        <div class="team-card__role">{{ member.role }}</div>
+        <div class="team-card__name">{{ member.name }}</div>
+      </a>
+    }
+  </div>
+</section>

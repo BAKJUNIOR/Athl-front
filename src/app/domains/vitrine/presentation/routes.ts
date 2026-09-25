@@ -5,6 +5,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { NewsComponent } from './pages/news/news.component';
 import { NewsDetailComponent } from './pages/news-detail/news-detail.component';
+import { TeamComponent } from './pages/team/team.component';
+import { TeamDetailComponent } from './pages/team-detail/team-detail.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ServiceDetailComponent } from './pages/service-detail/service-detail.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
@@ -22,7 +24,8 @@ export const routes: Routes = [
       { path: 'a-propos', component: AboutComponent },
       { path: 'actualites', component: NewsComponent },
       { path: 'actualites/:slug', component: NewsDetailComponent },
-      { path: 'equipe', redirectTo: 'actualites' },
+      { path: 'equipe', component: TeamComponent },
+      { path: 'equipe/:id', component: TeamDetailComponent },
       { path: 'services', component: ServicesComponent },
       { path: 'services/:slug', component: ServiceDetailComponent },
       { path: 'projets', component: ProjectsComponent },

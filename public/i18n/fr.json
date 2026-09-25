@@ -36,6 +36,7 @@
       "services": "Services",
       "careers": "Carrières",
       "about": "À propos",
+      "team": "Équipe",
       "contact": "Contact",
       "search": "Rechercher",
       "quote": "Devis"
@@ -200,6 +201,16 @@
     "joinTeams": "Rejoindre nos équipes",
     "previous": "Membre précédent",
     "next": "Membre suivant",
+    "page": {
+      "eyebrow": "Équipe",
+      "title": "Les visages derrière ATHL",
+      "subtitle": "Une direction et des équipes présentes sur le terrain, à l'écoute de chaque projet.",
+      "viewAll": "Voir toute l'équipe"
+    },
+    "detail": {
+      "back": "Retour à l'équipe",
+      "contact": "Contacter ATHL"
+    },
     "groundTeams": {
       "title": "Nos équipes terrain",
       "lead": "Ouvriers qualifiés, chefs de chantier, chauffeurs et logisticiens : chaque métier est encadré, formé et suivi. C'est cette organisation qui nous permet de tenir les délais sans transiger sur la sécurité.",

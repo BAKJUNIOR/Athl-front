@@ -17,8 +17,14 @@ export function getTeamMembers(lang: Lang): TeamMember[] {
   return [...TEAM()]
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((dto) => ({
+      id: dto.id,
       name: dto.name,
       role: (en && dto.roleEn) || dto.roleFr,
       photo: dto.photo,
+      bio: (en && dto.bioEn) || dto.bioFr || undefined,
     }));
+}
+
+export function getTeamMemberById(id: number, lang: Lang): TeamMember | undefined {
+  return getTeamMembers(lang).find((m) => m.id === id);
 }

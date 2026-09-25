@@ -776,6 +776,32 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 .member__body { padding: 22px; }
 .member__name { font-size: 16px; font-weight: 500; color: var(--text); }
 .member__role { margin-top: 6px; font-size: 12px; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+/* ---------- Page Équipe dédiée (/equipe) : portraits ronds, sans encart, esprit "agence" ---------- */
+.team-page { padding: 40px 0 110px; }
+.team-page__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 40px 28px; }
+.team-card { display: block; text-decoration: none; text-align: center; }
+.team-card__media { aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; background: var(--surface); border: 1px solid var(--line); transition: transform .4s cubic-bezier(.22,.68,.24,1), border-color .4s ease; }
+.team-card__media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(45%); transition: filter .4s ease; }
+.team-card:hover .team-card__media { transform: translateY(-6px); border-color: var(--border-hover-accent); }
+.team-card:hover .team-card__media img { filter: grayscale(0%); }
+.team-card__role { margin-top: 18px; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-light); }
+.team-card__name { margin-top: 4px; font-size: 15px; font-weight: 500; color: var(--text); }
+
+/* ---------- Fiche détail d'un membre (/equipe/:id) ---------- */
+.team-detail { padding: 24px 0 120px; display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.team-detail__media { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--surface); border: 1px solid var(--line); }
+.team-detail__media img { width: 100%; height: 100%; object-fit: cover; }
+.team-detail__body { padding-top: 12px; }
+.team-detail__role { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-light); }
+.team-detail__body h1 { margin: 14px 0 0; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; font-weight: 600; color: var(--text); }
+.team-detail__bio { margin: 24px 0 0; max-width: 520px; font-size: 14.5px; line-height: 1.9; color: var(--muted); font-weight: 300; }
+.team-detail__body .btn { margin-top: 32px; }
+@media (max-width: 720px) {
+  .team-detail { grid-template-columns: minmax(0, 1fr); }
+  .team-detail__media { aspect-ratio: 4 / 3; }
+}
+
 .split--rev .frame { order: 2; }
 .split__col--tight { justify-content: flex-start; }
 

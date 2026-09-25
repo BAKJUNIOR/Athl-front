@@ -28,6 +28,7 @@ import { LanguageService } from '../../../../../core/services/language.service';
         <a routerLink="/actualites" routerLinkActive="is-active">{{ 'common.nav.news' | transloco }}</a>
         <a routerLink="/carrieres" routerLinkActive="is-active">{{ 'common.nav.careers' | transloco }}</a>
         <a routerLink="/a-propos" routerLinkActive="is-active">{{ 'common.nav.about' | transloco }}</a>
+        <a routerLink="/equipe" routerLinkActive="is-active">{{ 'common.nav.team' | transloco }}</a>
       </nav>
 
       <div class="header__actions">
@@ -80,6 +81,7 @@ import { LanguageService } from '../../../../../core/services/language.service';
       <a routerLink="/actualites" routerLinkActive="is-active" (click)="menuOpen.set(false)">{{ 'common.nav.news' | transloco }}</a>
       <a routerLink="/carrieres" routerLinkActive="is-active" (click)="menuOpen.set(false)">{{ 'common.nav.careers' | transloco }}</a>
       <a routerLink="/a-propos" routerLinkActive="is-active" (click)="menuOpen.set(false)">{{ 'common.nav.about' | transloco }}</a>
+      <a routerLink="/equipe" routerLinkActive="is-active" (click)="menuOpen.set(false)">{{ 'common.nav.team' | transloco }}</a>
       <a routerLink="/contact" (click)="menuOpen.set(false)">{{ 'common.nav.contact' | transloco }}</a>
       <a href="/devis" (click)="openQuote($event); menuOpen.set(false)">{{ 'common.requestQuote' | transloco }}</a>
       <div class="theme-toggle-row">

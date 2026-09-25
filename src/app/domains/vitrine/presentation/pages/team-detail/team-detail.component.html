@@ -1,0 +1,19 @@
+@if (member(); as m) {
+  <div class="news-detail__back-row wrap">
+    <a class="news-detail__back" routerLink="/equipe"><span aria-hidden="true">&larr;</span> {{ 'team.detail.back' | transloco }}</a>
+  </div>
+
+  <article class="team-detail wrap">
+    <div class="team-detail__media" appReveal>
+      <img [src]="m.photo" [alt]="m.name" />
+    </div>
+    <div class="team-detail__body">
+      <span class="team-detail__role" [appReveal]="60">{{ m.role }}</span>
+      <h1 [appReveal]="120">{{ m.name }}</h1>
+      @if (m.bio) {
+        <p class="team-detail__bio" [appReveal]="180">{{ m.bio }}</p>
+      }
+      <a class="btn btn--light" routerLink="/contact" [appReveal]="220">{{ 'team.detail.contact' | transloco }}</a>
+    </div>
+  </article>
+}
