@@ -22,10 +22,17 @@ import { setPopups } from '../../domains/vitrine/infrastructure/data/popups.data
 import { AnalyticsService } from '../services/analytics.service';
 
 
+// Distingue une liste vide légitime (réponse 200, aucun service publié) d'un échec réel (API
+// injoignable/erreur) : seul le second cas déclenche le repli sur contenu figé, voir services.data.ts.
 export function initializeServiceCatalog(): Promise<void> {
   const api = inject(ServiceApi);
-  return firstValueFrom(api.list().pipe(catchError(() => of([] as ServiceSummaryApi[])))).then((list) => {
-    setServiceSummaries(list);
+  return firstValueFrom(
+    api.list().pipe(
+      map((list) => ({ list, failed: false })),
+      catchError(() => of({ list: [] as ServiceSummaryApi[], failed: true })),
+    ),
+  ).then(({ list, failed }) => {
+    setServiceSummaries(list, failed);
   });
 }
 
