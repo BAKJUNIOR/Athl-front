@@ -797,15 +797,15 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 .team-detail__body h1 { margin: 14px 0 0; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; font-weight: 600; color: var(--text); }
 .team-detail__bio { margin: 24px 0 0; max-width: 640px; font-size: 14.5px; line-height: 1.9; color: var(--muted); font-weight: 300; white-space: pre-line; }
 .team-detail__body .btn {
-  align-self: flex-end; margin-top: auto; margin-bottom: 110px;
-  background: var(--accent); color: #fff; padding: 16px 32px; border-radius: 999px; font-weight: 600;
-  box-shadow: 0 16px 36px -14px rgba(249,115,22,.55);
+  align-self: flex-end; margin-top: auto; margin-bottom: 110px; margin-right: 28px;
+  background: #111; color: #fff; padding: 18px 38px; font-size: 14px; border-radius: 999px; font-weight: 600;
+  box-shadow: 0 16px 36px -14px rgba(0,0,0,.45);
 }
-.team-detail__body .btn:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 20px 42px -14px rgba(249,115,22,.7); }
+.team-detail__body .btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 20px 42px -14px rgba(249,115,22,.6); }
 @media (max-width: 720px) {
   .team-detail { grid-template-columns: minmax(0, 1fr); }
   .team-detail__media { aspect-ratio: 4 / 3; }
-  .team-detail__body .btn { align-self: stretch; margin-top: 32px; margin-bottom: 0; justify-content: center; }
+  .team-detail__body .btn { align-self: stretch; margin-top: 32px; margin-bottom: 0; margin-right: 0; justify-content: center; }
 }
 
 .split--rev .frame { order: 2; }
