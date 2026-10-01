@@ -18,6 +18,14 @@ export function setProjects(list: ProjectApiDto[]): void {
   PROJECTS.set(list ?? []);
 }
 
+/** Image du projet marqué "à la une" dans le BO — utilisée pour la vignette globale du bloc
+ * "Bienvenue chez ATHL" (accueil et À propos). Repli sur le premier projet publié si aucun
+ * n'est marqué à la une, undefined si la galerie est vide. */
+export function getFeaturedProjectImage(): string | undefined {
+  const list = PROJECTS();
+  return (list.find((p) => p.featured) ?? list[0])?.image;
+}
+
 export function getShots(lang: Lang): Shot[] {
   const en = lang === 'en';
   return PROJECTS().map((dto) => {

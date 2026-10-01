@@ -23,11 +23,17 @@ export const environment = {
     team: {
       list: 'api/v1/team',
     },
-    homeStats: {
-      list: 'api/v1/home-stats',
-    },
     siteContact: {
       get: 'api/v1/site-settings/contact',
+    },
+    aboutPage: {
+      get: 'api/v1/about-page',
+    },
+    partners: {
+      get: 'api/v1/partners',
+    },
+    contactPage: {
+      get: 'api/v1/contact-page',
     },
     popups: {
       list: 'api/v1/popups',

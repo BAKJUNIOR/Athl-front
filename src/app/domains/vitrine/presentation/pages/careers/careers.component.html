@@ -115,8 +115,8 @@
         <div class="step"><div class="step__n">3</div><div><div class="step__t">{{ 'careers.howToApply.step3Title' | transloco }}</div><div class="step__d">{{ 'careers.howToApply.step3Text' | transloco }}</div></div></div>
       </div>
       <div class="phones phones--card">
-        <a href="tel:+2250709993347">+225 07 09 99 33 47</a>
-        <a href="tel:+2250758601627">+225 07 58 60 16 27</a>
+        @if (contact().phone2) { <a [href]="telHref(contact().phone2)">{{ contact().phone2 }}</a> }
+        @if (contact().phone3) { <a [href]="telHref(contact().phone3)">{{ contact().phone3 }}</a> }
       </div>
     </div>
   </div>
@@ -207,7 +207,7 @@
 
     <div class="field field--full form__foot">
       <button class="btn btn--light" type="submit" [disabled]="sending()">{{ 'careers.applyForm.submit' | transloco }}</button>
-      <a class="btn btn--ghost" href="tel:+2250709993347">{{ 'careers.applyForm.applyByPhone' | transloco }}</a>
+      <a class="btn btn--ghost" [href]="telHref(contact().phone2)">{{ 'careers.applyForm.applyByPhone' | transloco }}</a>
     </div>
   </form>
   @if (sending()) {

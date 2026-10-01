@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { JobOffer, deadlineStatus, daysUntilDeadline } from '../../../domain/job-offer.entity';
 import { getJobDomains, getJobOffers } from '../../../infrastructure/data/jobs.data';
+import { getSiteContact } from '../../../infrastructure/data/site-contact.data';
 import { RevealDirective } from '../../components/reveal.directive';
 import { FileDropComponent } from '../../components/file-drop/file-drop.component';
 import { normalizeText } from '../../../../../core/utils/text.util';
@@ -25,6 +26,7 @@ export class CareersComponent {
 
   readonly jobs = computed(() => getJobOffers(this.languageService.lang()));
   readonly domains = computed(() => getJobDomains(this.languageService.lang()));
+  readonly contact = computed(() => getSiteContact(this.languageService.lang()));
 
   readonly search = signal('');
   readonly activeTag = signal<number | ''>('');
@@ -193,5 +195,9 @@ export class CareersComponent {
           this.status.set(this.transloco.translate('common.form.sendError'));
         },
       });
+  }
+
+  telHref(phone: string): string {
+    return `tel:${phone.replace(/\s+/g, '')}`;
   }
 }

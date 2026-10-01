@@ -7,7 +7,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { RevealDirective } from '../../components/reveal.directive';
 import { getSiteContact } from '../../../infrastructure/data/site-contact.data';
+import { getContactPage } from '../../../infrastructure/data/contact-page.data';
 import { QuoteApi } from '../../../infrastructure/api/quote.api';
+import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
   selector: 'app-contact',
@@ -18,11 +20,15 @@ export class ContactComponent {
   private readonly sanitizer = inject(DomSanitizer);
   private readonly transloco = inject(TranslocoService);
   private readonly quoteApi = inject(QuoteApi);
+  private readonly languageService = inject(LanguageService);
 
-  readonly contact = computed(() => getSiteContact());
+  readonly contact = computed(() => getSiteContact(this.languageService.lang()));
+  readonly page = computed(() => getContactPage(this.languageService.lang()));
 
-  readonly mapUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-    `https://www.google.com/maps?q=${encodeURIComponent('Abidjan, Côte d\'Ivoire')}&output=embed`,
+  readonly mapUrl = computed<SafeResourceUrl>(() =>
+    this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://www.google.com/maps?q=${encodeURIComponent(this.contact().mapLocation)}&output=embed`,
+    ),
   );
 
   protected readonly status = signal('');

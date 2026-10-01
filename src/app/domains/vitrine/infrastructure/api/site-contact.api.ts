@@ -13,6 +13,11 @@ export interface SiteContactApiDto {
   youtubeUrl: string | null;
   instagramUrl: string | null;
   linkedinUrl: string | null;
+  tiktokUrl: string | null;
+  contactEmail: string | null;
+  footerAboutFr: string | null;
+  footerAboutEn: string | null;
+  mapLocation: string | null;
 }
 
 @Injectable({ providedIn: 'root' })

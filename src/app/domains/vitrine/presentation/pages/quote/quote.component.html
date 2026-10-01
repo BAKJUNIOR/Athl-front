@@ -65,7 +65,7 @@
 
     <div class="field field--full form__foot">
       <button class="btn btn--light" type="submit" [disabled]="sending()">{{ 'quote.form.submit' | transloco }}</button>
-      <a class="btn btn--ghost" href="tel:+2250778095858">{{ 'common.form.callUs' | transloco }} : +225 07 78 09 58 58</a>
+      <a class="btn btn--ghost" [href]="telHref(contact().phone1)">{{ 'common.form.callUs' | transloco }} : {{ contact().phone1 }}</a>
     </div>
   </form>
   @if (sending()) {

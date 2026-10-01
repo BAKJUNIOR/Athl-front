@@ -1,48 +1,34 @@
-// Bandeau « Nos partenaires » : deux rangées de logos qui défilent en sens inverse (pause au survol).
+// Bandeau « Nos partenaires » : une rangée de logos qui défile (pause au survol).
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter, map } from 'rxjs';
-import { TranslocoPipe } from '@jsverse/transloco';
 import { RevealDirective } from '../reveal.directive';
-import { PARTNERS, Partner } from '../../../infrastructure/data/partners.data';
+import { Partner, getPartnersSection } from '../../../infrastructure/data/partners.data';
+import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
   selector: 'app-partners',
-  imports: [RouterLink, TranslocoPipe, RevealDirective],
+  imports: [RouterLink, RevealDirective],
   template: `
     @if (!hidden()) {
       <section class="partners" id="partenaires">
         <div class="partners__head" appReveal>
           <div>
-            <div class="about-block__eyebrow"><span></span>{{ 'partners.eyebrow' | transloco }}</div>
-            <h2>{{ 'partners.title' | transloco }}</h2>
-            <p class="lead">{{ 'partners.subtitle' | transloco }}</p>
+            <div class="about-block__eyebrow"><span></span>{{ section().eyebrow }}</div>
+            <h2>{{ section().title }}</h2>
+            <p class="lead">{{ section().subtitle }}</p>
           </div>
           @if (!onContactPage()) {
-            <a class="btn btn--ghost" routerLink="/contact">{{ 'partners.cta' | transloco }}</a>
+            <a class="btn btn--ghost" routerLink="/contact">{{ section().ctaLabel }}</a>
           }
         </div>
 
         <div class="marquee" [appReveal]="120">
           <div class="marquee__row">
             <div class="marquee__track">
-              @for (p of loop; track $index) {
-                <div class="partner" [attr.aria-hidden]="$index >= partners.length ? true : null">
-                  @if (p.logo) {
-                    <span class="partner__logo" role="img" [attr.aria-label]="p.name" [style.--logo]="'url(' + p.logo + ')'"></span>
-                  } @else {
-                    <span class="partner__mark">{{ initial(p) }}</span>
-                    <span class="partner__name">{{ p.name }}</span>
-                  }
-                </div>
-              }
-            </div>
-          </div>
-          <div class="marquee__row marquee__row--rev">
-            <div class="marquee__track">
-              @for (p of reversedLoop; track $index) {
-                <div class="partner" [attr.aria-hidden]="$index >= partners.length ? true : null">
+              @for (p of loop(); track $index) {
+                <div class="partner" [attr.aria-hidden]="$index >= partners().length ? true : null">
                   @if (p.logo) {
                     <span class="partner__logo" role="img" [attr.aria-label]="p.name" [style.--logo]="'url(' + p.logo + ')'"></span>
                   } @else {
@@ -60,6 +46,7 @@ import { PARTNERS, Partner } from '../../../infrastructure/data/partners.data';
 })
 export class PartnersComponent {
   private readonly router = inject(Router);
+  private readonly languageService = inject(LanguageService);
   private readonly currentPath = toSignal(
     this.router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd),
@@ -72,11 +59,11 @@ export class PartnersComponent {
   protected readonly onContactPage = computed(() => this.currentPath().startsWith('/contact'));
   protected readonly hidden = computed(() => this.currentPath().startsWith('/actualites'));
 
-  protected readonly partners: Partner[] = PARTNERS;
+  protected readonly section = computed(() => getPartnersSection(this.languageService.lang()));
+  protected readonly partners = computed(() => this.section().partners);
   // Un « demi-tour » du défilement = 2 copies de la liste (assez large pour remplir l'écran), affiché 2 fois pour boucler sans saut.
-  private readonly half: Partner[] = [...PARTNERS, ...PARTNERS];
-  protected readonly loop: Partner[] = [...this.half, ...this.half];
-  protected readonly reversedLoop: Partner[] = [...this.half].reverse().concat([...this.half].reverse());
+  private readonly half = computed(() => [...this.partners(), ...this.partners()]);
+  protected readonly loop = computed(() => [...this.half(), ...this.half()]);
 
   protected initial(p: Partner): string {
     const n = p.name.trim().match(/\d+$/);

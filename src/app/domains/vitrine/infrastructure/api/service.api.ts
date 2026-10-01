@@ -32,14 +32,14 @@ export interface ServiceSummaryApi {
   leadFr: string;
   leadEn: string;
   image: string | null;
+  heroImage: string | null;
+  prestations: ServicePrestationApi[];
   status: 'draft' | 'published';
   updatedAt: string;
 }
 
 export interface ServiceDetailApi extends ServiceSummaryApi {
-  heroImage: string | null;
   gallery: string[];
-  prestations: ServicePrestationApi[];
   process: ServiceProcessStepApi[];
 }
 

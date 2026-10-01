@@ -1,7 +1,7 @@
 // Modal "Demander un devis", ouvrable depuis n'importe quelle page via QuoteModalService.
 // Soumet directement à l'API backend (POST /api/v1/quotes) : les pièces jointes sont uploadées
 // vers Cloudinary côté client au préalable, seules leurs URLs sont envoyées au backend.
-import { Component, ViewChild, effect, inject, signal } from '@angular/core';
+import { Component, ViewChild, computed, effect, inject, signal } from '@angular/core';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { forkJoin, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
@@ -9,6 +9,8 @@ import { FileDropComponent } from '../../components/file-drop/file-drop.componen
 import { QuoteModalService } from '../../services/quote-modal.service';
 import { QuoteApi } from '../../../infrastructure/api/quote.api';
 import { CloudinaryUploadService } from '../../../../../core/services/cloudinary-upload.service';
+import { getSiteContact } from '../../../infrastructure/data/site-contact.data';
+import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
   selector: 'app-quote-modal',
@@ -78,7 +80,7 @@ import { CloudinaryUploadService } from '../../../../../core/services/cloudinary
 
           <div class="field field--full form__foot">
             <button class="btn btn--light" type="submit" [disabled]="sending()">{{ 'quote.form.submit' | transloco }}</button>
-            <a class="btn btn--ghost" href="tel:+2250778095858">{{ 'common.form.callUs' | transloco }} : +225 07 78 09 58 58</a>
+            <a class="btn btn--ghost" [href]="telHref(contact().phone1)">{{ 'common.form.callUs' | transloco }} : {{ contact().phone1 }}</a>
           </div>
         </form>
         @if (sending()) {
@@ -96,6 +98,9 @@ export class QuoteModalComponent {
   private readonly quoteApi = inject(QuoteApi);
   private readonly cloudinary = inject(CloudinaryUploadService);
   private readonly transloco = inject(TranslocoService);
+  private readonly languageService = inject(LanguageService);
+
+  protected readonly contact = computed(() => getSiteContact(this.languageService.lang()));
 
   protected readonly status = signal('');
   protected readonly isValid = signal(false);
@@ -167,5 +172,9 @@ export class QuoteModalComponent {
           this.status.set(this.transloco.translate('common.form.sendError'));
         },
       });
+  }
+
+  telHref(phone: string): string {
+    return `tel:${phone.replace(/\s+/g, '')}`;
   }
 }

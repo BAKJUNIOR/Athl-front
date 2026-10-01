@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { getSiteContact } from '../../../infrastructure/data/site-contact.data';
 import { ThemeService } from '../../../../../core/services/theme.service';
+import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
   selector: 'app-footer',
@@ -21,7 +22,7 @@ import { ThemeService } from '../../../../../core/services/theme.service';
           </div>
           <h3>{{ 'common.footer.aboutTitle' | transloco }}</h3>
           <span class="footer__rule"></span>
-          <p class="footer__about">{{ 'common.footerAbout' | transloco }}</p>
+          <p class="footer__about">{{ contact().footerAbout }}</p>
           <div class="footer__meta">
             <svg class="footer__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -69,7 +70,7 @@ import { ThemeService } from '../../../../../core/services/theme.service';
               <rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/>
               <path d="m4.5 7 7.5 5.5L19.5 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <a href="mailto:contact@athl.com">{{ 'common.footer.email' | transloco }}</a>
+            <a [href]="'mailto:' + contact().contactEmail">{{ contact().contactEmail }}</a>
           </div>
         </div>
 
@@ -131,7 +132,11 @@ import { ThemeService } from '../../../../../core/services/theme.service';
             } @else {
               <a routerLink="/contact" aria-label="LinkedIn">in</a>
             }
-            <a href="https://www.tiktok.com/@africatalentconsulting" target="_blank" rel="noopener" aria-label="TikTok">&#9835;</a>
+            @if (contact().tiktokUrl) {
+              <a [href]="contact().tiktokUrl!" target="_blank" rel="noopener" aria-label="TikTok">&#9835;</a>
+            } @else {
+              <a routerLink="/contact" aria-label="TikTok">&#9835;</a>
+            }
           </div>
         </div>
       </div>
@@ -140,6 +145,7 @@ import { ThemeService } from '../../../../../core/services/theme.service';
 })
 export class FooterComponent {
   protected readonly themeService = inject(ThemeService);
-  readonly contact = computed(() => getSiteContact());
+  private readonly languageService = inject(LanguageService);
+  readonly contact = computed(() => getSiteContact(this.languageService.lang()));
   readonly year = new Date().getFullYear();
 }

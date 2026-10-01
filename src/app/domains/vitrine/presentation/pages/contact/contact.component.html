@@ -1,13 +1,13 @@
 <section class="phero">
-  <div class="about-block__eyebrow" appReveal><span></span>{{ 'contact.eyebrow' | transloco }}</div>
-  <h1 [appReveal]="80">{{ 'contact.title' | transloco }}</h1>
-  <p [appReveal]="160">{{ 'contact.subtitle' | transloco }}</p>
+  <div class="about-block__eyebrow" appReveal><span></span>{{ page().hero.eyebrow }}</div>
+  <h1 [appReveal]="80">{{ page().hero.title }}</h1>
+  <p [appReveal]="160">{{ page().hero.subtitle }}</p>
 </section>
 
 <section class="contact-new">
   <div class="contact-layout">
     <div class="contact-form-col" appReveal>
-      <div class="about-block__eyebrow"><span></span>{{ 'contact.form.eyebrow' | transloco }}</div>
+      <div class="about-block__eyebrow"><span></span>{{ page().writeToUsEyebrow }}</div>
       <h2>{{ 'contact.form.heading' | transloco }}</h2>
 
       <div class="form-loading-wrap">
@@ -56,9 +56,9 @@
     </div>
 
     <div class="contact-info-col" [appReveal]="140">
-      <div class="about-block__eyebrow"><span></span>{{ 'contact.info.eyebrow' | transloco }}</div>
-      <h2>{{ 'contact.info.heading' | transloco }}</h2>
-      <p class="lead">{{ 'contact.subtitle' | transloco }}</p>
+      <div class="about-block__eyebrow"><span></span>{{ page().info.eyebrow }}</div>
+      <h2>{{ page().info.heading }}</h2>
+      <p class="lead">{{ page().hero.subtitle }}</p>
 
       <div class="info-cards">
         <div class="info-card">
@@ -66,13 +66,13 @@
             <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.2 2.4 3.2 4.4 5.6 5.6l1.9-1.9c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1v3.4c0 .6-.4 1-1 1C10.9 20.2 3.8 13.1 3.8 4.9c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <div>
-            <div class="info-card__title">{{ 'contact.info.phoneTitle' | transloco }}</div>
+            <div class="info-card__title">{{ page().phone.title }}</div>
             <div class="phones">
               @if (contact().phone1) { <a [href]="telHref(contact().phone1)">{{ contact().phone1 }}</a> }
               @if (contact().phone2) { <a [href]="telHref(contact().phone2)">{{ contact().phone2 }}</a> }
               @if (contact().phone3) { <a [href]="telHref(contact().phone3)">{{ contact().phone3 }}</a> }
             </div>
-            <p class="info-card__note">{{ 'contact.phoneNote' | transloco }}</p>
+            <p class="info-card__note">{{ page().phone.note }}</p>
           </div>
         </div>
 
@@ -81,8 +81,8 @@
             <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
           <div>
-            <div class="info-card__title">{{ 'contact.info.emailTitle' | transloco }}</div>
-            <div class="phones"><a href="mailto:contact&#64;athl.com">contact&#64;athl.com</a></div>
+            <div class="info-card__title">{{ page().email.title }}</div>
+            <div class="phones"><a [href]="'mailto:' + contact().contactEmail">{{ contact().contactEmail }}</a></div>
           </div>
         </div>
 
@@ -91,9 +91,9 @@
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
           </span>
           <div>
-            <div class="info-card__title">{{ 'contact.info.addressTitle' | transloco }}</div>
+            <div class="info-card__title">{{ page().address.title }}</div>
             <div class="ccard__big" [innerHTML]="contact().address"></div>
-            <p class="info-card__note">{{ 'contact.addressNote' | transloco }}</p>
+            <p class="info-card__note">{{ page().address.note }}</p>
           </div>
         </div>
       </div>
@@ -105,13 +105,13 @@
           @if (contact().youtubeUrl) { <a [href]="contact().youtubeUrl!" target="_blank" rel="noopener" aria-label="YouTube">&#9658;</a> }
           @if (contact().instagramUrl) { <a [href]="contact().instagramUrl!" target="_blank" rel="noopener" aria-label="Instagram">&#9906;</a> }
           @if (contact().linkedinUrl) { <a [href]="contact().linkedinUrl!" target="_blank" rel="noopener" aria-label="LinkedIn">in</a> }
-          <a href="https://www.tiktok.com/@africatalentconsulting" target="_blank" rel="noopener" aria-label="TikTok">&#9835;</a>
+          @if (contact().tiktokUrl) { <a [href]="contact().tiktokUrl!" target="_blank" rel="noopener" aria-label="TikTok">&#9835;</a> }
         </div>
       </div>
     </div>
   </div>
 
   <div class="contact-map" [appReveal]="220">
-    <iframe [src]="mapUrl" [title]="'contact.mapTitle' | transloco" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe [src]="mapUrl()" [title]="'contact.mapTitle' | transloco" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>

@@ -29,9 +29,12 @@ function summaryToService(dto: ServiceSummaryApi, lang: Lang): Service {
     shortTitle: (en && dto.shortTitleEn) || dto.shortTitleFr || dto.titleFr,
     lead: (en && dto.leadEn) || dto.leadFr,
     image: dto.image ?? '',
-    // Non fournis par le résumé — seule la page détail les a réellement besoin (voir plus haut).
-    heroImage: dto.image ?? '',
-    prestations: [],
+    heroImage: dto.heroImage ?? dto.image ?? '',
+    prestations: (dto.prestations ?? []).map((p) => ({
+      title: (en && p.titleEn) || p.titleFr,
+      description: (en && p.descriptionEn) || p.descriptionFr,
+    })),
+    // Non fourni par le résumé — seule la page détail en a réellement besoin (voir plus haut).
     process: [],
     gallery: [],
   };
