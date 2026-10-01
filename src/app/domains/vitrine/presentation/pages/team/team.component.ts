@@ -15,4 +15,8 @@ export class TeamComponent {
   private readonly languageService = inject(LanguageService);
 
   readonly members = computed(() => getTeamMembers(this.languageService.lang()));
+  // Les 2 premiers (ordre défini côté BO/backend) sont mis en avant en haut de page,
+  // le reste de l'équipe s'affiche ensuite en grille.
+  readonly leaders = computed(() => this.members().slice(0, 2));
+  readonly rest = computed(() => this.members().slice(2));
 }
