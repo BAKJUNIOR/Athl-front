@@ -122,11 +122,6 @@ import { LanguageService } from '../../../../../core/services/language.service';
             } @else {
               <a routerLink="/contact" aria-label="YouTube">&#9658;</a>
             }
-            @if (contact().instagramUrl) {
-              <a [href]="contact().instagramUrl!" target="_blank" rel="noopener" aria-label="Instagram">&#9906;</a>
-            } @else {
-              <a routerLink="/contact" aria-label="Instagram">&#9906;</a>
-            }
             @if (contact().linkedinUrl) {
               <a [href]="contact().linkedinUrl!" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
             } @else {
