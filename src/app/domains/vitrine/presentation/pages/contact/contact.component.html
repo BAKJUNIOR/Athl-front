@@ -116,6 +116,6 @@
   </div>
 
   <div class="contact-map" [appReveal]="220">
-    <iframe [src]="mapUrl()" [title]="'contact.mapTitle' | transloco" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe [src]="mapUrl()" [title]="'contact.mapTitle' | transloco" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="geolocation 'none'"></iframe>
   </div>
 </section>
