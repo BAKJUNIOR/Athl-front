@@ -789,17 +789,23 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 .team-card__name { margin-top: 4px; font-size: 15px; font-weight: 500; color: var(--text); }
 
 /* ---------- Fiche détail d'un membre (/equipe/:id) ---------- */
-.team-detail { padding: 24px 0 120px; display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.team-detail { padding: 24px 0 120px; display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: stretch; }
 .team-detail__media { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--surface); border: 1px solid var(--line); }
 .team-detail__media img { width: 100%; height: 100%; object-fit: cover; }
-.team-detail__body { padding-top: 12px; }
+.team-detail__body { padding-top: 12px; display: flex; flex-direction: column; min-height: 100%; }
 .team-detail__role { display: block; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-light); }
 .team-detail__body h1 { margin: 14px 0 0; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; font-weight: 600; color: var(--text); }
 .team-detail__bio { margin: 24px 0 0; max-width: 640px; font-size: 14.5px; line-height: 1.9; color: var(--muted); font-weight: 300; white-space: pre-line; }
-.team-detail__body .btn { margin-top: 32px; }
+.team-detail__body .btn {
+  align-self: flex-end; margin-top: auto;
+  background: var(--accent); color: #fff; padding: 16px 32px; border-radius: 999px; font-weight: 600;
+  box-shadow: 0 16px 36px -14px rgba(249,115,22,.55);
+}
+.team-detail__body .btn:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 20px 42px -14px rgba(249,115,22,.7); }
 @media (max-width: 720px) {
   .team-detail { grid-template-columns: minmax(0, 1fr); }
   .team-detail__media { aspect-ratio: 4 / 3; }
+  .team-detail__body .btn { align-self: stretch; margin-top: 32px; justify-content: center; }
 }
 
 .split--rev .frame { order: 2; }
