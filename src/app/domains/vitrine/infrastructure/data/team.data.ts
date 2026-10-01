@@ -27,6 +27,8 @@ const FALLBACK_TEAM: TeamMemberApi[] = [
     quoteFr: '« De la première visite à la livraison, tout était documenté et dans le budget. Les équipes ont traité le chantier comme le leur. »',
     quoteEn: '“From the first visit to handover, everything was documented and on budget. The teams treated the site as if it were their own.”',
     initials: 'EN',
+    bioFr: 'Emmanuel est le Directeur Général du Groupe ATHL. Il pilote la stratégie globale de l’entreprise et veille à la cohérence des activités de construction, de logistique et d’importation de matériaux portées par les équipes.\n\nSous sa direction, ATHL s’est développé en gardant la même exigence sur chaque chantier : respect des délais, maîtrise du budget et accompagnement des clients du premier contact jusqu’à la livraison.',
+    bioEn: 'Emmanuel is the Group Chief Executive Officer of ATHL. He drives the company’s overall strategy and ensures consistency across its construction, logistics and materials import activities.\n\nUnder his leadership, ATHL has grown while keeping the same rigor on every project: respecting deadlines, managing budgets carefully, and supporting clients from first contact through to handover.',
   },
   {
     id: 2,
@@ -39,6 +41,8 @@ const FALLBACK_TEAM: TeamMemberApi[] = [
     quoteFr: '« ATHL, c’est une équipe qui tient parole : chaque chantier est mené avec la même exigence, du premier brief à la remise des clés. »',
     quoteEn: '“ATHL is a team that keeps its word: every project is run with the same rigor, from the first brief to the final handover.”',
     initials: 'GE',
+    bioFr: 'Gnohéré est Gérant d’ATHL, en charge de la gestion opérationnelle quotidienne de l’entreprise. Il coordonne les équipes sur le terrain pour garantir que chaque projet avance dans les règles de l’art et dans le respect des engagements pris auprès des clients.\n\nIl est particulièrement attaché à la qualité d’exécution et à la sécurité sur les chantiers, deux piliers qui guident l’ensemble des interventions d’ATHL.',
+    bioEn: 'Gnohéré is the Managing Director of ATHL, responsible for the company’s day-to-day operations. He coordinates teams on the ground to ensure every project moves forward to a high standard and in line with commitments made to clients.\n\nHe places particular emphasis on execution quality and site safety, two pillars that guide all of ATHL’s work.',
   },
   {
     id: 3,
@@ -51,6 +55,8 @@ const FALLBACK_TEAM: TeamMemberApi[] = [
     quoteFr: '« ATHL a mené une rénovation complexe avec professionnalisme et précision. Leur souci du détail et leur culture sécurité font vraiment la différence. »',
     quoteEn: '“ATHL carried out a complex renovation with professionalism and precision. Their attention to detail and safety culture really make the difference.”',
     initials: 'ET',
+    bioFr: 'Elisabeth est Responsable Administrative et Comptable chez ATHL. Elle supervise la gestion financière et administrative de l’entreprise, garantissant la rigueur nécessaire au bon fonctionnement de chaque projet.\n\nSon attention au détail et sa rigueur contribuent directement à la fiabilité d’ATHL vis-à-vis de ses clients et de ses partenaires.',
+    bioEn: 'Elisabeth is the Administration and Accounting Manager at ATHL. She oversees the company’s financial and administrative management, ensuring the rigor needed for every project to run smoothly.\n\nHer attention to detail and thoroughness directly contribute to ATHL’s reliability with clients and partners alike.',
   },
   {
     id: 4,
@@ -63,6 +69,8 @@ const FALLBACK_TEAM: TeamMemberApi[] = [
     quoteFr: '« L’équipe a dépassé nos attentes à chaque étape. Communication claire, planning respecté, et un bâtiment dont nos équipes sont fières. »',
     quoteEn: '“The team exceeded our expectations at every stage. Clear communication, the schedule was met, and a building our teams are proud of.”',
     initials: 'BC',
+    bioFr: 'Alain Cédric est Responsable Communication du Groupe ATHL. Il porte la voix de l’entreprise, valorise le travail des équipes et veille à ce que chaque projet mené par ATHL soit visible et bien compris par ses clients et partenaires.\n\nIl travaille en lien étroit avec l’ensemble des équipes pour partager les réalisations d’ATHL et renforcer la relation de confiance avec ses clients.',
+    bioEn: 'Alain Cédric is the Group Communications Manager at ATHL. He carries the company’s voice, highlights the team’s work, and ensures that every project ATHL delivers is clearly communicated to clients and partners.\n\nHe works closely with all teams to share ATHL’s achievements and strengthen trust with its clients.',
   },
 ];
 
