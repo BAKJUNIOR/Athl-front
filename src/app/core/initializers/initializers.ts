@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { catchError, firstValueFrom, of } from 'rxjs';
+import { catchError, firstValueFrom, map, of } from 'rxjs';
 import { ServiceApi, ServiceSummaryApi } from '../../domains/vitrine/infrastructure/api/service.api';
 import { setServiceSummaries } from '../../domains/vitrine/infrastructure/data/services.data';
 import { JobApi, JobOfferApi } from '../../domains/vitrine/infrastructure/api/job.api';
@@ -7,6 +7,8 @@ import { JobDomainApi, JobDomainDto } from '../../domains/vitrine/infrastructure
 import { setJobDomains, setJobOffers } from '../../domains/vitrine/infrastructure/data/jobs.data';
 import { TeamApi, TeamMemberApi } from '../../domains/vitrine/infrastructure/api/team.api';
 import { setTeamMembers } from '../../domains/vitrine/infrastructure/data/team.data';
+import { TestimonialApi, TestimonialApiDto } from '../../domains/vitrine/infrastructure/api/testimonial.api';
+import { setTestimonials } from '../../domains/vitrine/infrastructure/data/testimonials.data';
 import { ProjectApi, ProjectApiDto } from '../../domains/vitrine/infrastructure/api/project.api';
 import { setProjects } from '../../domains/vitrine/infrastructure/data/projects.data';
 import { SiteContactApi, SiteContactApiDto } from '../../domains/vitrine/infrastructure/api/site-contact.api';
@@ -45,11 +47,31 @@ export function initializeJobDomainCatalog(): Promise<void> {
   });
 }
 
-/** Même principe, pour l'équipe dirigeante (page Équipe). */
+/** Même principe, pour l'équipe dirigeante (page Équipe). Distingue une liste vide légitime
+ *  (réponse 200, personne listé côté BO) d'un échec réel (API injoignable/erreur) : seul le
+ *  second cas déclenche le repli sur contenu figé, voir team.data.ts. */
 export function initializeTeamCatalog(): Promise<void> {
   const api = inject(TeamApi);
-  return firstValueFrom(api.list().pipe(catchError(() => of([] as TeamMemberApi[])))).then((list) => {
-    setTeamMembers(list);
+  return firstValueFrom(
+    api.list().pipe(
+      map((list) => ({ list, failed: false })),
+      catchError(() => of({ list: [] as TeamMemberApi[], failed: true })),
+    ),
+  ).then(({ list, failed }) => {
+    setTeamMembers(list, failed);
+  });
+}
+
+/** Même principe, pour les témoignages clients (carrousel accueil). */
+export function initializeTestimonialsCatalog(): Promise<void> {
+  const api = inject(TestimonialApi);
+  return firstValueFrom(
+    api.list().pipe(
+      map((list) => ({ list, failed: false })),
+      catchError(() => of({ list: [] as TestimonialApiDto[], failed: true })),
+    ),
+  ).then(({ list, failed }) => {
+    setTestimonials(list, failed);
   });
 }
 

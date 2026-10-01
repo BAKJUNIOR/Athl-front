@@ -23,6 +23,9 @@ export const environment = {
     team: {
       list: 'api/v1/team',
     },
+    testimonials: {
+      list: 'api/v1/testimonials',
+    },
     siteContact: {
       get: 'api/v1/site-settings/contact',
     },

@@ -1,6 +1,11 @@
-// Source de données statique pour le domaine "Testimonial". Les noms ne sont pas traduits ; texte et fonction le sont.
+// Source de données du domaine "Testimonial", branchée sur l'API Athl_logistics-backend
+// (voir core/initializers). Repli sur le contenu réel qui était figé ici avant le passage en
+// base UNIQUEMENT si l'API est injoignable ou en erreur — jamais si elle répond simplement avec
+// une liste vide (état normal, pas une panne).
+import { signal } from '@angular/core';
 import { Testimonial } from '../../domain/testimonial.entity';
 import { Lang } from '../../../../core/services/language.service';
+import { TestimonialApiDto } from '../api/testimonial.api';
 
 const TESTIMONIALS_FR: Testimonial[] = [
   {
@@ -64,8 +69,29 @@ const TESTIMONIALS_EN: Testimonial[] = [
   },
 ];
 
-const TESTIMONIALS_BY_LANG: Record<Lang, Testimonial[]> = { fr: TESTIMONIALS_FR, en: TESTIMONIALS_EN };
+const FALLBACK_BY_LANG: Record<Lang, Testimonial[]> = { fr: TESTIMONIALS_FR, en: TESTIMONIALS_EN };
+
+const TESTIMONIALS = signal<TestimonialApiDto[]>([]);
+const TESTIMONIALS_API_FAILED = signal(false);
+
+export function setTestimonials(list: TestimonialApiDto[], apiFailed = false): void {
+  TESTIMONIALS.set(list ?? []);
+  TESTIMONIALS_API_FAILED.set(apiFailed);
+}
 
 export function getTestimonials(lang: Lang): Testimonial[] {
-  return TESTIMONIALS_BY_LANG[lang];
+  if (TESTIMONIALS_API_FAILED()) {
+    return FALLBACK_BY_LANG[lang];
+  }
+
+  const en = lang === 'en';
+  return [...TESTIMONIALS()]
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((dto) => ({
+      photo: dto.photo,
+      initials: dto.initials,
+      text: (en && dto.textEn) || dto.textFr,
+      name: dto.name,
+      role: (en && dto.roleEn) || dto.roleFr,
+    }));
 }
