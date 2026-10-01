@@ -11,10 +11,12 @@ export interface TeamMemberApi {
   photo: string;
   sortOrder: number;
   updatedAt: string;
-  // Pas encore géré par le BO — présent ici pour que la fiche détail l'affiche automatiquement
-  // le jour où le champ existera côté backend, sans autre changement front.
   bioFr?: string;
   bioEn?: string;
+  // Si renseignée, ce membre apparaît aussi dans le carrousel de témoignages de l'accueil.
+  quoteFr?: string;
+  quoteEn?: string;
+  initials?: string;
 }
 
 @Injectable({ providedIn: 'root' })

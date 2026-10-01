@@ -7,8 +7,6 @@ import { JobDomainApi, JobDomainDto } from '../../domains/vitrine/infrastructure
 import { setJobDomains, setJobOffers } from '../../domains/vitrine/infrastructure/data/jobs.data';
 import { TeamApi, TeamMemberApi } from '../../domains/vitrine/infrastructure/api/team.api';
 import { setTeamMembers } from '../../domains/vitrine/infrastructure/data/team.data';
-import { TestimonialApi, TestimonialApiDto } from '../../domains/vitrine/infrastructure/api/testimonial.api';
-import { setTestimonials } from '../../domains/vitrine/infrastructure/data/testimonials.data';
 import { ProjectApi, ProjectApiDto } from '../../domains/vitrine/infrastructure/api/project.api';
 import { setProjects } from '../../domains/vitrine/infrastructure/data/projects.data';
 import { SiteContactApi, SiteContactApiDto } from '../../domains/vitrine/infrastructure/api/site-contact.api';
@@ -62,18 +60,6 @@ export function initializeTeamCatalog(): Promise<void> {
   });
 }
 
-/** Même principe, pour les témoignages clients (carrousel accueil). */
-export function initializeTestimonialsCatalog(): Promise<void> {
-  const api = inject(TestimonialApi);
-  return firstValueFrom(
-    api.list().pipe(
-      map((list) => ({ list, failed: false })),
-      catchError(() => of({ list: [] as TestimonialApiDto[], failed: true })),
-    ),
-  ).then(({ list, failed }) => {
-    setTestimonials(list, failed);
-  });
-}
 
 /** Même principe, pour la galerie de réalisations (page Projets). */
 export function initializeProjectCatalog(): Promise<void> {

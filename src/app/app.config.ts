@@ -5,7 +5,7 @@ import { provideTransloco } from '@jsverse/transloco';
 import { routes } from './app.routes';
 import { TranslocoHttpLoader } from './core/services/transloco-loader';
 import { resolveInitialLang } from './core/services/language.service';
-import { initializeServiceCatalog, initializeJobCatalog, initializeJobDomainCatalog, initializeTeamCatalog, initializeTestimonialsCatalog, initializeProjectCatalog, initializeSiteContactCatalog, initializePopupCatalog, initializeAboutPage, initializePartnersSection, initializeContactPage, initializeAnalytics } from './core/initializers/initializers';
+import { initializeServiceCatalog, initializeJobCatalog, initializeJobDomainCatalog, initializeTeamCatalog, initializeProjectCatalog, initializeSiteContactCatalog, initializePopupCatalog, initializeAboutPage, initializePartnersSection, initializeContactPage, initializeAnalytics } from './core/initializers/initializers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(initializeJobCatalog),
     provideAppInitializer(initializeJobDomainCatalog),
     provideAppInitializer(initializeTeamCatalog),
-    provideAppInitializer(initializeTestimonialsCatalog),
     provideAppInitializer(initializeProjectCatalog),
     provideAppInitializer(initializeSiteContactCatalog),
     provideAppInitializer(initializePopupCatalog),

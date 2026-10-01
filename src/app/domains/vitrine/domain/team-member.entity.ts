@@ -5,7 +5,10 @@ export interface TeamMember {
   name: string;
   role: string;
   photo: string;
-  // Optionnelle : le backend ne l'envoie pas encore aujourd'hui (pas de champ bio côté BO).
   // La fiche détail d'un membre l'affiche seulement quand elle est renseignée.
   bio?: string;
+  // Si renseignée, ce membre apparaît aussi dans le carrousel de témoignages de l'accueil
+  // (voir testimonials.data.ts, qui filtre getTeamMembers() sur ce champ).
+  quote?: string;
+  initials?: string;
 }
