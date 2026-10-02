@@ -925,9 +925,11 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 .pdetail-others__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
 .pdetail-others__nav { display: flex; gap: 10px; }
 .pdetail-others__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.pdetail-others__item { display: block; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; background: var(--surface); border: 1px solid var(--line); transition: transform .4s cubic-bezier(.22,.68,.24,1); }
+.pdetail-others__item { display: block; transition: transform .4s cubic-bezier(.22,.68,.24,1); }
 .pdetail-others__item:hover { transform: translateY(-4px); }
-.pdetail-others__item img { width: 100%; height: 100%; object-fit: cover; }
+.pdetail-others__media { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; background: var(--surface); border: 1px solid var(--line); }
+.pdetail-others__media img { width: 100%; height: 100%; object-fit: cover; }
+.pdetail-others__title { display: block; margin-top: 14px; font-size: 14px; font-weight: 500; color: var(--text); }
 @media (max-width: 760px) {
   .pdetail-others__grid { grid-template-columns: 1fr; }
 }

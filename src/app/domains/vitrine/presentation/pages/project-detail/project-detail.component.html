@@ -57,7 +57,8 @@
       <div class="pdetail-others__grid">
         @for (o of visibleOthers(); track o.slug) {
           <a class="pdetail-others__item" [routerLink]="['/projets', o.slug]">
-            <img [src]="o.thumbnail" [alt]="o.title" loading="lazy" />
+            <div class="pdetail-others__media"><img [src]="o.thumbnail" [alt]="o.title" loading="lazy" /></div>
+            <span class="pdetail-others__title">{{ o.title }}</span>
           </a>
         }
       </div>
