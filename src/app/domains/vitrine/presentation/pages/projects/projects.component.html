@@ -4,15 +4,60 @@
   <p [appReveal]="160">{{ 'projects.subtitle' | transloco }}</p>
 </section>
 
-<section class="gallery">
-  <div class="gallery__grid">
-    @for (shot of shots(); track shot.image; let i = $index) {
-      <figure class="shot" [class.shot--wide]="shot.wide" [appReveal]="80 * i">
-        <img [src]="shot.image" [alt]="shot.alt" loading="lazy" />
-        <figcaption><span>{{ shot.title }}</span><em>{{ shot.caption }}</em></figcaption>
-      </figure>
+<section class="wrap proj-services" appReveal>
+  <div class="proj-services__list" role="tablist">
+    @for (s of services(); track s.slug) {
+      <button
+        type="button"
+        role="tab"
+        class="proj-service-tab"
+        [class.is-on]="activeService() === s.slug"
+        [attr.aria-selected]="activeService() === s.slug"
+        (click)="selectService(s.slug)"
+      >
+        {{ s.title }}
+      </button>
     }
   </div>
+</section>
+
+<section class="wrap proj-showcase">
+  @for (row of rows(); track $index) {
+    @if (row.length === 3) {
+      <div class="proj-row" [appReveal]="60">
+        <div class="proj-row__stack">
+          @for (p of [row[0], row[1]]; track p.slug) {
+            <a class="proj-thumb" [routerLink]="['/projets', p.slug]">
+              <img [src]="p.thumbnail" [alt]="p.title" loading="lazy" />
+            </a>
+          }
+        </div>
+        <a class="proj-featured" [routerLink]="['/projets', row[2].slug]">
+          <img [src]="row[2].thumbnail" [alt]="row[2].title" loading="lazy" />
+          <div class="proj-featured__caption">
+            <span class="proj-featured__location">{{ row[2].location }}</span>
+            <strong class="proj-featured__title">{{ row[2].title }}</strong>
+            <span class="proj-featured__year">{{ row[2].year }}</span>
+          </div>
+        </a>
+      </div>
+    } @else {
+      <div class="proj-row proj-row--plain">
+        @for (p of row; track p.slug) {
+          <a class="proj-featured proj-featured--sm" [routerLink]="['/projets', p.slug]">
+            <img [src]="p.thumbnail" [alt]="p.title" loading="lazy" />
+            <div class="proj-featured__caption">
+              <span class="proj-featured__location">{{ p.location }}</span>
+              <strong class="proj-featured__title">{{ p.title }}</strong>
+              <span class="proj-featured__year">{{ p.year }}</span>
+            </div>
+          </a>
+        }
+      </div>
+    }
+  } @empty {
+    <p class="proj-empty">{{ 'projects.empty' | transloco }}</p>
+  }
 </section>
 
 <app-cta-banner appReveal [title]="'projects.cta.title' | transloco" [text]="'projects.cta.text' | transloco" mediaImage="images/proj-3.png" [mediaAlt]="'projects.cta.mediaAlt' | transloco">

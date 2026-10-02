@@ -1,0 +1,66 @@
+@if (project(); as p) {
+  <div class="news-detail__back-row wrap">
+    <a class="news-detail__back" routerLink="/projets"><span aria-hidden="true">&larr;</span> {{ 'projectDetail.back' | transloco }}</a>
+  </div>
+
+  <article class="pdetail wrap">
+    <div class="pdetail__hero" appReveal>
+      <img [src]="heroImage()" [alt]="p.title" />
+      @if (p.images.length > 1) {
+        <button type="button" class="pdetail__arrow pdetail__arrow--prev" [attr.aria-label]="'projectDetail.previous' | transloco" (click)="previousImage()">&larr;</button>
+        <button type="button" class="pdetail__arrow pdetail__arrow--next" [attr.aria-label]="'projectDetail.next' | transloco" (click)="nextImage()">&rarr;</button>
+        <div class="pdetail__dots">
+          @for (img of p.images; track img; let i = $index) {
+            <button type="button" class="pdetail__dot" [class.is-on]="activeImage() % p.images.length === i" [attr.aria-label]="i + 1" (click)="activeImage.set(i)"></button>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="pdetail__head" [appReveal]="80">
+      <span class="pdetail__eyebrow">{{ p.location }}</span>
+      <h1>{{ p.title }}</h1>
+    </div>
+
+    <div class="pdetail__body" [appReveal]="140">
+      <p>{{ p.description[0] }}</p>
+      <p>{{ p.description[1] }}</p>
+    </div>
+
+    <div class="pdetail__info" [appReveal]="180">
+      <div class="pdetail__info-row">
+        <span>{{ 'projectDetail.location' | transloco }}</span>
+        <strong>{{ p.location }}</strong>
+      </div>
+      <div class="pdetail__info-row">
+        <span>{{ 'projectDetail.typology' | transloco }}</span>
+        <strong>{{ p.typology }}</strong>
+      </div>
+      <div class="pdetail__info-row">
+        <span>{{ 'projectDetail.date' | transloco }}</span>
+        <strong>{{ p.year }}</strong>
+      </div>
+    </div>
+  </article>
+
+  @if (others().length) {
+    <section class="pdetail-others wrap" [appReveal]="220">
+      <div class="pdetail-others__head">
+        <h2>{{ 'projectDetail.otherProjects' | transloco }}</h2>
+        @if (others().length > 3) {
+          <div class="pdetail-others__nav">
+            <button type="button" class="arrow" [attr.aria-label]="'projectDetail.previous' | transloco" (click)="previousOthers()">&larr;</button>
+            <button type="button" class="arrow arrow--solid" [attr.aria-label]="'projectDetail.next' | transloco" (click)="nextOthers()">&rarr;</button>
+          </div>
+        }
+      </div>
+      <div class="pdetail-others__grid">
+        @for (o of visibleOthers(); track o.slug) {
+          <a class="pdetail-others__item" [routerLink]="['/projets', o.slug]">
+            <img [src]="o.thumbnail" [alt]="o.title" loading="lazy" />
+          </a>
+        }
+      </div>
+    </section>
+  }
+}

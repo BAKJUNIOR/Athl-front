@@ -280,13 +280,23 @@
   },
   "projects": {
     "eyebrow": "Projets",
-    "title": "Ce que nos équipes construisent",
-    "subtitle": "Constructions neuves, rénovations et aménagements : un aperçu de nos chantiers livrés et en cours.",
+    "title": "Ce que nos équipes réalisent",
+    "subtitle": "Construction, import & logistique, mobilité : un aperçu de nos projets livrés et en cours, par métier.",
+    "empty": "Aucun projet pour ce métier pour l'instant.",
     "cta": {
       "title": "Un projet en tête ?",
       "text": "Décrivez-nous votre chantier, nous revenons vers vous avec une estimation.",
       "mediaAlt": "Équipe étudiant les plans"
     }
+  },
+  "projectDetail": {
+    "back": "Retour aux projets",
+    "location": "Localisation",
+    "typology": "Typologie",
+    "date": "Date",
+    "otherProjects": "Autres projets",
+    "previous": "Précédent",
+    "next": "Suivant"
   },
   "careers": {
     "eyebrow": "Carrières",

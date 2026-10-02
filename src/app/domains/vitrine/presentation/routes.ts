@@ -10,6 +10,7 @@ import { TeamDetailComponent } from './pages/team-detail/team-detail.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ServiceDetailComponent } from './pages/service-detail/service-detail.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { QuoteComponent } from './pages/quote/quote.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -29,6 +30,7 @@ export const routes: Routes = [
       { path: 'services', component: ServicesComponent },
       { path: 'services/:slug', component: ServiceDetailComponent },
       { path: 'projets', component: ProjectsComponent },
+      { path: 'projets/:slug', component: ProjectDetailComponent },
       { path: 'carrieres', component: CareersComponent },
       { path: 'devis', component: QuoteComponent },
       { path: 'contact', component: ContactComponent },

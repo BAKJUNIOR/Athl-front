@@ -280,13 +280,23 @@
   },
   "projects": {
     "eyebrow": "Projects",
-    "title": "What our teams are building",
-    "subtitle": "New builds, renovations and fit-outs: a look at our delivered and ongoing sites.",
+    "title": "What our teams deliver",
+    "subtitle": "Construction, import & logistics, mobility: a look at our delivered and ongoing projects, by business line.",
+    "empty": "No project for this business line yet.",
     "cta": {
       "title": "Have a project in mind?",
       "text": "Tell us about your site and we'll get back to you with an estimate.",
       "mediaAlt": "Team reviewing plans"
     }
+  },
+  "projectDetail": {
+    "back": "Back to projects",
+    "location": "Location",
+    "typology": "Typology",
+    "date": "Date",
+    "otherProjects": "Other projects",
+    "previous": "Previous",
+    "next": "Next"
   },
   "careers": {
     "eyebrow": "Careers",
