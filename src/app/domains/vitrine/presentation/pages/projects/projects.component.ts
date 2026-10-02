@@ -1,13 +1,12 @@
-// Page "Projets" (galerie de réalisations) du site vitrine ATHL.
-// MOCK temporaire : données en dur (voir infrastructure/data/projects-mock.data.ts), pas d'appel
-// API pour l'instant — à revoir une fois la vue validée (voir discussion tables projects/services).
-import { Component, computed, inject, signal } from '@angular/core';
+// Page "Projets" (galerie de réalisations, groupée par métier) du site vitrine ATHL.
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { RevealDirective } from '../../components/reveal.directive';
 import { CtaBannerComponent } from '../../components/cta-banner/cta-banner.component';
 import { LanguageService } from '../../../../../core/services/language.service';
-import { getMockProjectServices, getMockProjectsByService, ProjectItemView } from '../../../infrastructure/data/projects-mock.data';
+import { getProjectsByService, ProjectSummary } from '../../../infrastructure/data/projects.data';
+import { getServices } from '../../../infrastructure/data/services.data';
 
 @Component({
   selector: 'app-projects',
@@ -17,21 +16,28 @@ import { getMockProjectServices, getMockProjectsByService, ProjectItemView } fro
 export class ProjectsComponent {
   private readonly languageService = inject(LanguageService);
 
-  readonly services = computed(() => getMockProjectServices(this.languageService.lang()));
+  // Les 3 métiers réels (voir /api/v1/services), pas seulement ceux qui ont déjà un projet
+  // publié : un onglet vide affiche "projects.empty" plutôt que de disparaître.
+  readonly services = computed(() =>
+    getServices(this.languageService.lang()).map((s) => ({ slug: s.slug, title: s.shortTitle || s.title })),
+  );
   readonly activeService = signal<string>('');
 
   constructor() {
-    // Service actif par défaut = le premier (Construction & rénovation).
-    const list = this.services();
-    if (list.length) this.activeService.set(list[0].slug);
+    effect(() => {
+      const list = this.services();
+      if (list.length && !list.some((s) => s.slug === this.activeService())) {
+        this.activeService.set(list[0].slug);
+      }
+    });
   }
 
-  readonly projects = computed(() => getMockProjectsByService(this.activeService(), this.languageService.lang()));
+  readonly projects = computed(() => getProjectsByService(this.activeService(), this.languageService.lang()));
 
   // Regroupe les projets par 3 pour le motif de grille (2 vignettes empilées + 1 grande à droite).
   readonly rows = computed(() => {
     const list = this.projects();
-    const chunks: ProjectItemView[][] = [];
+    const chunks: ProjectSummary[][] = [];
     for (let i = 0; i < list.length; i += 3) chunks.push(list.slice(i, i + 3));
     return chunks;
   });

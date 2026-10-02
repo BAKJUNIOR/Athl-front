@@ -7,7 +7,7 @@ import { JobDomainApi, JobDomainDto } from '../../domains/vitrine/infrastructure
 import { setJobDomains, setJobOffers } from '../../domains/vitrine/infrastructure/data/jobs.data';
 import { TeamApi, TeamMemberApi } from '../../domains/vitrine/infrastructure/api/team.api';
 import { setTeamMembers } from '../../domains/vitrine/infrastructure/data/team.data';
-import { ProjectApi, ProjectApiDto } from '../../domains/vitrine/infrastructure/api/project.api';
+import { ProjectApi, ProjectSummaryApiDto } from '../../domains/vitrine/infrastructure/api/project.api';
 import { setProjects } from '../../domains/vitrine/infrastructure/data/projects.data';
 import { SiteContactApi, SiteContactApiDto } from '../../domains/vitrine/infrastructure/api/site-contact.api';
 import { setSiteContact } from '../../domains/vitrine/infrastructure/data/site-contact.data';
@@ -68,11 +68,18 @@ export function initializeTeamCatalog(): Promise<void> {
 }
 
 
-/** Même principe, pour la galerie de réalisations (page Projets). */
+/** Même principe, pour la galerie de réalisations (page Projets, groupée par métier). Distingue
+ *  une liste vide légitime (aucun projet publié) d'un échec réel (API injoignable/erreur) —
+ *  voir projects.data.ts. */
 export function initializeProjectCatalog(): Promise<void> {
   const api = inject(ProjectApi);
-  return firstValueFrom(api.list().pipe(catchError(() => of([] as ProjectApiDto[])))).then((list) => {
-    setProjects(list);
+  return firstValueFrom(
+    api.list().pipe(
+      map((list) => ({ list, failed: false })),
+      catchError(() => of({ list: [] as ProjectSummaryApiDto[], failed: true })),
+    ),
+  ).then(({ list, failed }) => {
+    setProjects(list, failed);
   });
 }
 

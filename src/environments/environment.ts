@@ -21,6 +21,7 @@ export const environment = {
     },
     projects: {
       list: 'api/v1/projects',
+      bySlug: (slug: string) => `api/v1/projects/slug/${slug}`,
     },
     team: {
       list: 'api/v1/team',

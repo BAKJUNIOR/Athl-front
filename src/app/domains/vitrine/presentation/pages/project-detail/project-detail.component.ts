@@ -1,12 +1,45 @@
-// Fiche détail d'un projet (/projets/:slug). MOCK temporaire, voir projects.component.ts.
+// Fiche détail d'un projet (/projets/:slug).
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { HttpErrorResponse } from '@angular/common/http';
+import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { map } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { RevealDirective } from '../../components/reveal.directive';
-import { LanguageService } from '../../../../../core/services/language.service';
-import { getMockProjectBySlug, getMockProjectsByService } from '../../../infrastructure/data/projects-mock.data';
+import { LanguageService, Lang } from '../../../../../core/services/language.service';
+import { ProjectApi, ProjectDetailApiDto } from '../../../infrastructure/api/project.api';
+import { getProjectsByService, ProjectSummary } from '../../../infrastructure/data/projects.data';
+
+interface ProjectDetailView {
+  slug: string;
+  serviceSlug: string;
+  title: string;
+  location: string;
+  typology: string;
+  year: string;
+  images: string[];
+  description: [string, string];
+}
+
+function splitDescription(text: string): [string, string] {
+  const parts = (text ?? '').split('\n\n');
+  return [parts[0] ?? '', parts[1] ?? ''];
+}
+
+function toView(dto: ProjectDetailApiDto, lang: Lang): ProjectDetailView {
+  const en = lang === 'en';
+  const images = dto.gallery?.length ? dto.gallery : [dto.image];
+  return {
+    slug: dto.slug,
+    serviceSlug: dto.serviceSlug,
+    title: (en && dto.titleEn) || dto.titleFr,
+    location: (en && dto.locationEn) || dto.locationFr,
+    typology: (en && dto.typologyEn) || dto.typologyFr,
+    year: dto.year,
+    images,
+    description: splitDescription((en && dto.descriptionEn) || dto.descriptionFr),
+  };
+}
 
 @Component({
   selector: 'app-project-detail',
@@ -16,37 +49,57 @@ import { getMockProjectBySlug, getMockProjectsByService } from '../../../infrast
 export class ProjectDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly projectApi = inject(ProjectApi);
   private readonly languageService = inject(LanguageService);
 
   private readonly slug = toSignal(this.route.paramMap.pipe(map((params) => params.get('slug') ?? '')), {
     initialValue: this.route.snapshot.paramMap.get('slug') ?? '',
   });
 
-  readonly project = computed(() => getMockProjectBySlug(this.slug(), this.languageService.lang()));
+  // Un seul appel réseau par slug (pas par changement de langue : on garde la réponse brute
+  // bilingue, comme service-detail.component.ts).
+  private readonly rawDetail = toSignal(
+    toObservable(this.slug).pipe(
+      switchMap((slug) =>
+        this.projectApi.getBySlug(slug).pipe(
+          map((dto) => ({ dto, notFound: false })),
+          catchError((err: HttpErrorResponse) => of({ dto: null as ProjectDetailApiDto | null, notFound: err.status !== 0 })),
+        ),
+      ),
+    ),
+    { initialValue: null },
+  );
 
-  readonly others = computed(() => {
+  readonly loading = computed(() => this.rawDetail() === null);
+
+  readonly project = computed(() => {
+    const raw = this.rawDetail();
+    return raw?.dto ? toView(raw.dto, this.languageService.lang()) : null;
+  });
+
+  readonly others = computed((): ProjectSummary[] => {
     const p = this.project();
     if (!p) return [];
-    return getMockProjectsByService(p.serviceSlug, this.languageService.lang()).filter((o) => o.slug !== p.slug);
+    return getProjectsByService(p.serviceSlug, this.languageService.lang()).filter((o) => o.slug !== p.slug);
   });
 
   // ── Carrousel hero ──
   readonly activeImage = signal(0);
   readonly heroImage = computed(() => {
     const p = this.project();
-    if (!p) return '';
+    if (!p || !p.images.length) return '';
     return p.images[this.activeImage() % p.images.length];
   });
 
   previousImage(): void {
     const p = this.project();
-    if (!p) return;
+    if (!p || !p.images.length) return;
     this.activeImage.update((i) => (i - 1 + p.images.length) % p.images.length);
   }
 
   nextImage(): void {
     const p = this.project();
-    if (!p) return;
+    if (!p || !p.images.length) return;
     this.activeImage.update((i) => (i + 1) % p.images.length);
   }
 
@@ -72,9 +125,10 @@ export class ProjectDetailComponent {
   }
 
   constructor() {
-    // Slug inconnu : on renvoie vers la liste plutôt que d'afficher une fiche vide.
+    // Slug inconnu/dépublié : on renvoie vers la liste plutôt que d'afficher une fiche vide.
     effect(() => {
-      if (this.slug() && !this.project()) {
+      const raw = this.rawDetail();
+      if (raw?.notFound) {
         this.router.navigate(['/projets']);
       }
     });

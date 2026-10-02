@@ -1,8 +1,11 @@
-// Source de données du domaine "Project" (galerie /projets), branchée sur l'API backend.
-// Chargée une fois au démarrage (voir core/initializers) et mise en cache dans un signal.
+// Source de données du domaine "Project" (galerie /projets, groupée par métier), branchée sur
+// l'API backend. Le résumé est chargé une fois au démarrage (voir core/initializers) et mis en
+// cache ici dans un signal. Le détail complet d'un projet (description, galerie, typologie)
+// n'est en revanche pas dans ce résumé : la page /projets/:slug le récupère à la demande via
+// ProjectApi.getBySlug (voir project-detail.component.ts).
 import { signal } from '@angular/core';
 import { Lang } from '../../../../core/services/language.service';
-import { ProjectApiDto } from '../api/project.api';
+import { ProjectSummaryApiDto } from '../api/project.api';
 
 export interface Shot {
   image: string;
@@ -12,10 +15,21 @@ export interface Shot {
   wide?: boolean;
 }
 
-const PROJECTS = signal<ProjectApiDto[]>([]);
+export interface ProjectSummary {
+  slug: string;
+  serviceSlug: string;
+  title: string;
+  location: string;
+  year: string;
+  thumbnail: string;
+}
 
-export function setProjects(list: ProjectApiDto[]): void {
+const PROJECTS = signal<ProjectSummaryApiDto[]>([]);
+const PROJECTS_API_FAILED = signal(false);
+
+export function setProjects(list: ProjectSummaryApiDto[], apiFailed = false): void {
   PROJECTS.set(list ?? []);
+  PROJECTS_API_FAILED.set(apiFailed);
 }
 
 /** Image du projet marqué "à la une" dans le BO — utilisée pour la vignette globale du bloc
@@ -28,14 +42,47 @@ export function getFeaturedProjectImage(): string | undefined {
 
 export function getShots(lang: Lang): Shot[] {
   const en = lang === 'en';
-  return PROJECTS().map((dto) => {
-    const title = (en && dto.titleEn) || dto.titleFr;
-    return {
-      image: dto.image,
-      alt: title,
-      title,
-      caption: (en && dto.captionEn) || dto.captionFr,
-      wide: dto.wide,
-    };
-  });
+  return [...PROJECTS()]
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((dto) => {
+      const title = (en && dto.titleEn) || dto.titleFr;
+      return {
+        image: dto.image,
+        alt: title,
+        title,
+        caption: (en && dto.locationEn) || dto.locationFr,
+      };
+    });
+}
+
+export function getProjectServices(lang: Lang): { slug: string; title: string }[] {
+  const en = lang === 'en';
+  const seen = new Map<string, string>();
+  for (const dto of PROJECTS()) {
+    if (!seen.has(dto.serviceSlug)) {
+      seen.set(dto.serviceSlug, (en && dto.titleEn) || dto.titleFr);
+    }
+  }
+  return [...seen.entries()].map(([slug, title]) => ({ slug, title }));
+}
+
+export function getProjectsByService(serviceSlug: string, lang: Lang): ProjectSummary[] {
+  const en = lang === 'en';
+  return [...PROJECTS()]
+    .filter((dto) => dto.serviceSlug === serviceSlug)
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((dto) => ({
+      slug: dto.slug,
+      serviceSlug: dto.serviceSlug,
+      title: (en && dto.titleEn) || dto.titleFr,
+      location: (en && dto.locationEn) || dto.locationFr,
+      year: dto.year,
+      thumbnail: dto.image,
+    }));
+}
+
+/** true si l'API projets est injoignable/en erreur (voir core/initializers) — permet aux pages
+ * de distinguer "aucun projet publié" (état normal) d'une vraie panne. */
+export function isProjectsApiFailed(): boolean {
+  return PROJECTS_API_FAILED();
 }
