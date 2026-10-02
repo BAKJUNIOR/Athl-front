@@ -90,6 +90,9 @@ export class NewsDetailComponent {
     return raw?.dto ? toView(raw.dto, this.languageService.lang()) : null;
   });
 
+  // www.athl-logistique.com est le domaine final visé, mais son DNS ne pointe pas encore sur ce
+  // serveur — site.athl-logistique.com est le domaine réellement en ligne pour l'instant (tests
+  // et présentation). À remplacer par www.athl-logistique.com une fois le DNS repointé.
   private readonly siteUrl = 'https://site.athl-logistique.com';
 
   // Utilisé uniquement par "Copier le lien" — les icônes réseaux (Facebook/LinkedIn/YouTube)
