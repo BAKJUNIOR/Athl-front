@@ -1,6 +1,6 @@
 import { ApplicationConfig, isDevMode, provideAppInitializer, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideTransloco } from '@jsverse/transloco';
 import { routes } from './app.routes';
 import { TranslocoHttpLoader } from './core/services/transloco-loader';
@@ -10,7 +10,9 @@ import { initializeServiceCatalog, initializeJobCatalog, initializeJobDomainCata
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    // Remonte en haut de page à chaque navigation (sauf retour arrière, où la position est
+    // restaurée) — sans ça, le routeur garde le scroll de la page précédente.
+    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' })),
     provideHttpClient(),
     provideAppInitializer(initializeServiceCatalog),
     provideAppInitializer(initializeJobCatalog),
