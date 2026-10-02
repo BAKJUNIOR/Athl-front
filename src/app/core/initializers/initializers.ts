@@ -15,6 +15,8 @@ import { SiteContactApi, SiteContactApiDto } from '../../domains/vitrine/infrast
 import { setSiteContact } from '../../domains/vitrine/infrastructure/data/site-contact.data';
 import { AboutPageApi, AboutPageApiDto } from '../../domains/vitrine/infrastructure/api/about-page.api';
 import { setAboutPage } from '../../domains/vitrine/infrastructure/data/about-page.data';
+import { HomePageApi, HomePageApiDto } from '../../domains/vitrine/infrastructure/api/home-page.api';
+import { setHomePage } from '../../domains/vitrine/infrastructure/data/home-page.data';
 import { PartnersApi, PartnersSectionApiDto } from '../../domains/vitrine/infrastructure/api/partners.api';
 import { setPartnersSection } from '../../domains/vitrine/infrastructure/data/partners.data';
 import { ContactPageApi, ContactPageApiDto } from '../../domains/vitrine/infrastructure/api/contact-page.api';
@@ -119,6 +121,14 @@ export function initializeAboutPage(): Promise<void> {
   const api = inject(AboutPageApi);
   return firstValueFrom(api.get().pipe(catchError(() => of(null as AboutPageApiDto | null)))).then((content) => {
     setAboutPage(content);
+  });
+}
+
+/** Même principe, pour le contenu de la page d'accueil (bandeau + cartes "Nos 3 métiers"). */
+export function initializeHomePage(): Promise<void> {
+  const api = inject(HomePageApi);
+  return firstValueFrom(api.get().pipe(catchError(() => of(null as HomePageApiDto | null)))).then((content) => {
+    setHomePage(content);
   });
 }
 

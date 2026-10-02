@@ -34,6 +34,9 @@ export const environment = {
     aboutPage: {
       get: 'api/v1/about-page',
     },
+    homePage: {
+      get: 'api/v1/home-page',
+    },
     partners: {
       get: 'api/v1/partners',
     },

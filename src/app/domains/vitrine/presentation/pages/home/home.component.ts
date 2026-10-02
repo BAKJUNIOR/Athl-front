@@ -8,6 +8,7 @@ import { CtaBannerComponent } from '../../components/cta-banner/cta-banner.compo
 import { TestimonialCarouselComponent } from '../../components/testimonial-carousel/testimonial-carousel.component';
 import { getServices } from '../../../infrastructure/data/services.data';
 import { getFeaturedShots } from '../../../infrastructure/data/projects.data';
+import { getHomeHero, getHomePillar } from '../../../infrastructure/data/home-page.data';
 import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
@@ -17,6 +18,11 @@ import { LanguageService } from '../../../../../core/services/language.service';
 })
 export class HomeComponent {
   private readonly languageService = inject(LanguageService);
+
+  readonly hero = computed(() => getHomeHero(this.languageService.lang()));
+  readonly pillarConstruction = computed(() => getHomePillar('construction', this.languageService.lang()));
+  readonly pillarMobility = computed(() => getHomePillar('mobility', this.languageService.lang()));
+  readonly pillarImport = computed(() => getHomePillar('import', this.languageService.lang()));
 
   readonly services = computed(() => getServices(this.languageService.lang()));
 

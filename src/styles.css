@@ -247,16 +247,11 @@ app-header .header { padding: 14px 0; }
 .hero__media {
   position: absolute; inset: 0;
   background-size: cover; background-position: center 30%; background-repeat: no-repeat; background-attachment: fixed;
+  /* Défilement du hero : N photos (voir BO, nombre variable), une seule visible à la fois,
+     fondu enchaîné en boucle continue — durée et délai calculés par image côté composant
+     (voir home.component.html) pour s'adapter au nombre réel d'images. */
+  opacity: 0; animation-name: hero-fade-multi; animation-timing-function: ease-in-out; animation-iteration-count: infinite;
 }
-/* Défilement du hero : 5 photos, une seule visible à la fois, fondu enchaîné en boucle continue. */
-.hero__media--1, .hero__media--2, .hero__media--3, .hero__media--4, .hero__media--5 {
-  opacity: 0; animation: hero-fade-multi 30s ease-in-out infinite;
-}
-.hero__media--1 { animation-delay: 0s; }
-.hero__media--2 { animation-delay: -6s; }
-.hero__media--3 { animation-delay: -12s; }
-.hero__media--4 { animation-delay: -18s; }
-.hero__media--5 { animation-delay: -24s; }
 @keyframes hero-fade-multi {
   0% { opacity: 0; }
   3.6% { opacity: 1; }
