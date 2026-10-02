@@ -99,19 +99,20 @@
       "playCta": "See our work"
     },
     "projects": {
-      "eyebrow": "Our sites",
+      "eyebrow": "Our work",
       "live": "Live now",
       "sites": {
         "steel": "Structure and formwork",
         "lifting": "Lifting and cranage",
         "interior": "Interior renovation",
         "port": "Port terminal and import",
-        "building": "Building under construction"
+        "building": "Building under construction",
+        "mobility": "Ride-hailing fleet in service"
       },
       "viewAll": "See all our work",
-      "title": "Sites under way across the country",
-      "subtitle": "See what our teams are building right now",
-      "liveSite": "Live site",
+      "title": "Projects under way across the country",
+      "subtitle": "See what our teams are delivering right now, from the site to the road",
+      "liveSite": "Live project",
       "alt": {
         "steelStructure": "Steel structure",
         "teamAndCrane": "Team and crane",

@@ -99,19 +99,20 @@
       "playCta": "Voir nos réalisations"
     },
     "projects": {
-      "eyebrow": "Nos chantiers",
+      "eyebrow": "Nos réalisations",
       "live": "En cours",
       "sites": {
         "steel": "Structure et coffrage",
         "lifting": "Levage et grutage",
         "interior": "Rénovation intérieure",
         "port": "Terminal portuaire et import",
-        "building": "Immeuble en construction"
+        "building": "Immeuble en construction",
+        "mobility": "Flotte VTC en service"
       },
       "viewAll": "Voir toutes nos réalisations",
-      "title": "Des chantiers en cours partout dans le pays",
-      "subtitle": "Découvrez ce que nos équipes construisent en ce moment",
-      "liveSite": "Chantier en direct",
+      "title": "Des projets en cours partout dans le pays",
+      "subtitle": "Découvrez ce que nos équipes réalisent en ce moment, du chantier à la route",
+      "liveSite": "Projet en direct",
       "alt": {
         "steelStructure": "Structure métallique",
         "teamAndCrane": "Équipe et grue",

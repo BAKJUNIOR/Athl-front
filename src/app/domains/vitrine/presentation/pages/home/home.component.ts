@@ -20,10 +20,12 @@ export class HomeComponent {
 
   readonly services = computed(() => getServices(this.languageService.lang()));
 
-  // Chantiers : vrais projets publiés depuis le back-office s'il y en a, sinon photos de repli.
+  // Projets : vrais projets publiés depuis le back-office s'il y en a, sinon photos de repli.
+  // Représente les 3 métiers (construction, import/logistique, mobilité), pas seulement la
+  // construction — voir AboutPageContent.pillars.
   private static readonly FALLBACK_SITES = [
     { image: 'images/proj-1.png', titleKey: 'home.projects.sites.steel' },
-    { image: 'images/proj-2.png', titleKey: 'home.projects.sites.lifting' },
+    { image: 'images/vtc-mobilite.jpg', titleKey: 'home.projects.sites.mobility' },
     { image: 'images/proj-4.png', titleKey: 'home.projects.sites.interior' },
     { image: 'images/proj-5.png', titleKey: 'home.projects.sites.port' },
     { image: 'images/card-construction.jpg', titleKey: 'home.projects.sites.building' },
