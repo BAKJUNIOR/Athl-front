@@ -90,7 +90,7 @@ export class NewsDetailComponent {
     return raw?.dto ? toView(raw.dto, this.languageService.lang()) : null;
   });
 
-  private readonly siteUrl = 'https://site.athl-logistique.com';
+  private readonly siteUrl = 'https://www.athl-logistique.com';
 
   // Utilisé uniquement par "Copier le lien" — les icônes réseaux (Facebook/LinkedIn/YouTube)
   // pointent désormais directement vers les liens saisis dans le BO pour cette actualité,
