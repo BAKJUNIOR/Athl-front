@@ -7,7 +7,7 @@ import { WorkforceTabsComponent } from '../../components/workforce-tabs/workforc
 import { CtaBannerComponent } from '../../components/cta-banner/cta-banner.component';
 import { TestimonialCarouselComponent } from '../../components/testimonial-carousel/testimonial-carousel.component';
 import { getServices } from '../../../infrastructure/data/services.data';
-import { getShots } from '../../../infrastructure/data/projects.data';
+import { getFeaturedShots } from '../../../infrastructure/data/projects.data';
 import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
@@ -20,22 +20,14 @@ export class HomeComponent {
 
   readonly services = computed(() => getServices(this.languageService.lang()));
 
-  // Projets : vrais projets publiés depuis le back-office s'il y en a, sinon photos de repli.
-  // Représente les 3 métiers (construction, import/logistique, mobilité), pas seulement la
-  // construction — voir AboutPageContent.pillars.
-  private static readonly FALLBACK_SITES = [
-    { image: 'images/proj-1.png', titleKey: 'home.projects.sites.steel' },
-    { image: 'images/vtc-mobilite.jpg', titleKey: 'home.projects.sites.mobility' },
-    { image: 'images/proj-4.png', titleKey: 'home.projects.sites.interior' },
-    { image: 'images/proj-5.png', titleKey: 'home.projects.sites.port' },
-    { image: 'images/card-construction.jpg', titleKey: 'home.projects.sites.building' },
-  ];
+  // Projets mis en avant (case "Mis en avant sur l'accueil" cochée dans le BO) UNIQUEMENT —
+  // pas de repli sur du contenu inventé : si rien n'est coché, la section entière est masquée
+  // (voir home.component.html).
   readonly activeSite = signal(0);
-  readonly sites = computed(() => {
-    const real = getShots(this.languageService.lang()).slice(0, 5);
-    return real.length
-      ? real.map((s) => ({ image: s.image, title: s.title, caption: s.caption, titleKey: '' }))
-      : HomeComponent.FALLBACK_SITES.map((s) => ({ ...s, title: '', caption: '' }));
-  });
+  readonly sites = computed(() =>
+    getFeaturedShots(this.languageService.lang())
+      .slice(0, 5)
+      .map((s) => ({ image: s.image, title: s.title, caption: s.caption })),
+  );
 
 }

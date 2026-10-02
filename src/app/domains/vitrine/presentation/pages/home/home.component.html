@@ -70,6 +70,7 @@
   </div>
 </section>
 
+@if (sites().length) {
 <section class="sites" id="projects">
   <div class="sites__head" appReveal>
     <div>
@@ -92,13 +93,13 @@
         (focus)="activeSite.set(i)"
         (click)="activeSite.set(i)"
       >
-        <img [src]="s.image" [alt]="s.titleKey ? (s.titleKey | transloco) : s.title" loading="lazy" />
+        <img [src]="s.image" [alt]="s.title" loading="lazy" />
         <div class="site__scrim"></div>
         <div class="site__num">0{{ i + 1 }}</div>
-        <div class="site__vt" aria-hidden="true">{{ s.titleKey ? (s.titleKey | transloco) : s.title }}</div>
+        <div class="site__vt" aria-hidden="true">{{ s.title }}</div>
         <div class="site__body">
           <span class="site__tag"><i></i>{{ 'home.projects.live' | transloco }}</span>
-          <h3>{{ s.titleKey ? (s.titleKey | transloco) : s.title }}</h3>
+          <h3>{{ s.title }}</h3>
           @if (s.caption) { <p>{{ s.caption }}</p> }
           <a class="site__cta" routerLink="/projets">{{ 'home.projects.viewAll' | transloco }} <span>&rarr;</span></a>
         </div>
@@ -106,6 +107,7 @@
     }
   </div>
 </section>
+}
 
 <app-testimonial-carousel />
 

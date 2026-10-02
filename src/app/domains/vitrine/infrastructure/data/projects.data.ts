@@ -40,9 +40,13 @@ export function getFeaturedProjectImage(): string | undefined {
   return (list.find((p) => p.featured) ?? list[0])?.image;
 }
 
-export function getShots(lang: Lang): Shot[] {
+/** Mosaïque "Nos réalisations" de l'accueil : UNIQUEMENT les projets marqués "à la une" dans
+ *  le BO (featured=true), triés par ordre d'affichage. Vide si aucun n'est coché — pas de repli
+ *  sur du contenu inventé, voir home.component.html qui masque toute la section dans ce cas. */
+export function getFeaturedShots(lang: Lang): Shot[] {
   const en = lang === 'en';
   return [...PROJECTS()]
+    .filter((dto) => dto.featured)
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((dto) => {
       const title = (en && dto.titleEn) || dto.titleFr;
@@ -53,17 +57,6 @@ export function getShots(lang: Lang): Shot[] {
         caption: (en && dto.locationEn) || dto.locationFr,
       };
     });
-}
-
-export function getProjectServices(lang: Lang): { slug: string; title: string }[] {
-  const en = lang === 'en';
-  const seen = new Map<string, string>();
-  for (const dto of PROJECTS()) {
-    if (!seen.has(dto.serviceSlug)) {
-      seen.set(dto.serviceSlug, (en && dto.titleEn) || dto.titleFr);
-    }
-  }
-  return [...seen.entries()].map(([slug, title]) => ({ slug, title }));
 }
 
 export function getProjectsByService(serviceSlug: string, lang: Lang): ProjectSummary[] {
