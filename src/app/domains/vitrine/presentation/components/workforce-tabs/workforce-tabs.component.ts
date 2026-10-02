@@ -109,16 +109,25 @@ const TAB_ICONS = [
               <a class="btn btn--light about-block__cta" routerLink="/services">{{ 'common.learnMore' | transloco }}</a>
             </div>
 
-            <a class="about-block__video" routerLink="/projets" [attr.aria-label]="'home.workforce.playCta' | transloco">
+            <button type="button" class="about-block__video" (click)="videoOpen.set(true)" [attr.aria-label]="'home.workforce.playCta' | transloco">
               <img [src]="videoImage()" [attr.alt]="'home.workforce.videoAlt' | transloco" />
               <span class="about-block__play" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
               </span>
-            </a>
+            </button>
           </div>
         }
       </div>
     </section>
+
+    @if (videoOpen()) {
+      <div class="video-lightbox" (click)="videoOpen.set(false)">
+        <button type="button" class="video-lightbox__close" (click)="videoOpen.set(false)" [attr.aria-label]="'common.close' | transloco">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+        </button>
+        <video class="video-lightbox__video" [src]="videoSrc" controls autoplay (click)="$event.stopPropagation()"></video>
+      </div>
+    }
   `,
 })
 export class WorkforceTabsComponent {
@@ -139,4 +148,7 @@ export class WorkforceTabsComponent {
   // Toujours la même vignette, quel que soit l'onglet actif (voir composant) — le projet
   // marqué "à la une" dans le BO, avec repli sur l'image statique si la galerie est vide.
   readonly videoImage = computed(() => getFeaturedProjectImage() ?? 'images/proj-2.png');
+
+  readonly videoSrc = 'images/video_athl.mp4';
+  readonly videoOpen = signal(false);
 }
