@@ -17,9 +17,10 @@ export class ProjectsComponent {
   private readonly languageService = inject(LanguageService);
 
   // Les 3 métiers réels (voir /api/v1/services), pas seulement ceux qui ont déjà un projet
-  // publié : un onglet vide affiche "projects.empty" plutôt que de disparaître.
+  // publié : un onglet vide affiche "projects.empty" plutôt que de disparaître. Nom complet
+  // (pas shortTitle), pour matcher le sélecteur "Métier" du formulaire Projet côté BO.
   readonly services = computed(() =>
-    getServices(this.languageService.lang()).map((s) => ({ slug: s.slug, title: s.shortTitle || s.title })),
+    getServices(this.languageService.lang()).map((s) => ({ slug: s.slug, title: s.title })),
   );
   readonly activeService = signal<string>('');
 
