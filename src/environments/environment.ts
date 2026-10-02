@@ -23,6 +23,10 @@ export const environment = {
       list: 'api/v1/projects',
       bySlug: (slug: string) => `api/v1/projects/slug/${slug}`,
     },
+    news: {
+      list: 'api/v1/news',
+      bySlug: (slug: string) => `api/v1/news/slug/${slug}`,
+    },
     team: {
       list: 'api/v1/team',
     },

@@ -4,7 +4,8 @@
   <p [appReveal]="160">{{ 'quote.subtitle' | transloco }}</p>
 </section>
 
-<section class="devis">
+<section class="devis-wrap">
+  <div class="devis">
   <div class="form-loading-wrap">
   <form
     #form
@@ -73,5 +74,10 @@
       <span class="spinner" aria-hidden="true"></span>
     </div>
   }
+  </div>
+  </div>
+
+  <div class="devis__visual" appReveal aria-hidden="true">
+    <img src="images/devis.png" alt="" />
   </div>
 </section>

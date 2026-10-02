@@ -36,7 +36,10 @@
       "services": "Services",
       "careers": "Carrières",
       "about": "À propos",
+      "aboutDesc": "Notre histoire, nos métiers",
       "team": "Équipe",
+      "teamDesc": "Les personnes derrière ATHL",
+      "company": "Entreprise",
       "contact": "Contact",
       "search": "Rechercher",
       "quote": "Devis"
@@ -131,7 +134,7 @@
       "subtitle": "Un seul partenaire pour bâtir, approvisionner et avancer : construction & rénovation, mobilité, VTC & livraison, import & logistique.",
       "btp": {
         "title": "Construction & rénovation",
-        "lead": "L'expertise qui bâtit, la logistique qui accélère. ATHL vous accompagne de la construction à la livraison de vos matériaux et solutions de transport.",
+        "lead": "Chantiers neufs, rénovations, approvisionnement : nos équipes mènent vos travaux du premier coup de pioche à la livraison.",
         "imageAlt": "Chantier de construction ATHL",
         "items": {
           "0": "Construction",
@@ -142,7 +145,7 @@
       },
       "mobility": {
         "title": "Mobilité, VTC & Livraison",
-        "lead": "Construire l'avenir, accompagner le mouvement. Location de véhicules et solutions de mobilité pour particuliers et entreprises.",
+        "lead": "Véhicules, chauffeurs, livraisons : des solutions de mobilité fiables pour vos trajets, professionnels comme personnels.",
         "imageAlt": "Chauffeur ATHL au volant, GPS embarqué",
         "items": {
           "0": "Location courte et longue durée",
@@ -153,7 +156,7 @@
       },
       "import": {
         "title": "Import & logistique",
-        "lead": "Votre partenaire pour bâtir, approvisionner et avancer. Importation directe et distribution de matériaux depuis la Chine, la Turquie, le Maroc et l'Europe.",
+        "lead": "De la Chine à l'Europe jusqu'à vos chantiers : nous importons et livrons vos matériaux de A à Z.",
         "imageAlt": "Port et logistique d'importation ATHL",
         "items": {
           "0": "Importation directe",
@@ -248,10 +251,9 @@
       "title": "Partager",
       "copy": "Copier le lien",
       "copied": "Lien copié !",
-      "whatsapp": "Partager sur WhatsApp",
-      "facebook": "Partager sur Facebook",
-      "linkedin": "Partager sur LinkedIn",
-      "x": "Partager sur X"
+      "facebook": "Voir sur Facebook",
+      "linkedin": "Voir sur LinkedIn",
+      "youtube": "Voir sur YouTube"
     },
     "filters": {
       "theme": "Filtrer par thème",

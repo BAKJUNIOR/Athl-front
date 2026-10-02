@@ -1,12 +1,58 @@
 // Page de détail d'une actualité ATHL (/actualites/:slug).
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { HttpErrorResponse } from '@angular/common/http';
+import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { map } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { RevealDirective } from '../../components/reveal.directive';
-import { getNewsBySlug } from '../../../infrastructure/data/news.data';
-import { LanguageService } from '../../../../../core/services/language.service';
+import { LanguageService, Lang } from '../../../../../core/services/language.service';
+import { NewsApi, NewsDetailApiDto } from '../../../infrastructure/api/news.api';
+
+interface NewsQuoteView {
+  text: string;
+  name: string;
+  role: string;
+}
+
+interface NewsDetailView {
+  slug: string;
+  image: string;
+  date: string;
+  category: string;
+  title: string;
+  body: string[];
+  quote: NewsQuoteView | null;
+  // Republication de CETTE actualité sur nos réseaux, saisie à la main dans le BO (pas les
+  // comptes généraux du site, voir SiteContact) — affichés uniquement si renseignés.
+  facebookUrl: string | null;
+  linkedinUrl: string | null;
+  youtubeUrl: string | null;
+}
+
+function toView(dto: NewsDetailApiDto, lang: Lang): NewsDetailView {
+  const en = lang === 'en';
+  const body = (en && dto.bodyEn) || dto.bodyFr;
+  const quoteText = (en && dto.quoteTextEn) || dto.quoteTextFr;
+  return {
+    slug: dto.slug,
+    image: dto.image,
+    date: dto.date,
+    category: (en && dto.categoryEn) || dto.categoryFr,
+    title: (en && dto.titleEn) || dto.titleFr,
+    body: (body ?? '').split('\n\n').filter((p) => p.trim().length > 0),
+    quote: quoteText
+      ? {
+          text: quoteText,
+          name: (en && dto.quoteNameEn) || dto.quoteNameFr,
+          role: (en && dto.quoteRoleEn) || dto.quoteRoleFr,
+        }
+      : null,
+    facebookUrl: dto.facebookUrl || null,
+    linkedinUrl: dto.linkedinUrl || null,
+    youtubeUrl: dto.youtubeUrl || null,
+  };
+}
 
 @Component({
   selector: 'app-news-detail',
@@ -16,30 +62,47 @@ import { LanguageService } from '../../../../../core/services/language.service';
 export class NewsDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly newsApi = inject(NewsApi);
   private readonly languageService = inject(LanguageService);
 
   private readonly slug = toSignal(this.route.paramMap.pipe(map((params) => params.get('slug') ?? '')), {
     initialValue: this.route.snapshot.paramMap.get('slug') ?? '',
   });
 
-  readonly item = computed(() => getNewsBySlug(this.slug(), this.languageService.lang()));
+  // Un seul appel réseau par slug (pas par changement de langue : on garde la réponse brute
+  // bilingue), même principe que project-detail.component.ts.
+  private readonly rawDetail = toSignal(
+    toObservable(this.slug).pipe(
+      switchMap((slug) =>
+        this.newsApi.getBySlug(slug).pipe(
+          map((dto) => ({ dto, notFound: false })),
+          catchError((err: HttpErrorResponse) => of({ dto: null as NewsDetailApiDto | null, notFound: err.status !== 0 })),
+        ),
+      ),
+    ),
+    { initialValue: null },
+  );
+
+  readonly loading = computed(() => this.rawDetail() === null);
+
+  readonly item = computed(() => {
+    const raw = this.rawDetail();
+    return raw?.dto ? toView(raw.dto, this.languageService.lang()) : null;
+  });
 
   private readonly siteUrl = 'https://site.athl-logistique.com';
 
+  // Utilisé uniquement par "Copier le lien" — les icônes réseaux (Facebook/LinkedIn/YouTube)
+  // pointent désormais directement vers les liens saisis dans le BO pour cette actualité,
+  // pas vers une URL de partage générique.
   readonly shareUrl = computed(() => `${this.siteUrl}/actualites/${this.slug()}`);
   readonly copied = signal(false);
 
-  readonly whatsappUrl = computed(() => `https://wa.me/?text=${encodeURIComponent(`${this.item()?.title ?? ''} — ${this.shareUrl()}`)}`);
-  readonly facebookUrl = computed(() => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.shareUrl())}`);
-  readonly linkedinUrl = computed(() => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(this.shareUrl())}`);
-  readonly xUrl = computed(
-    () => `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.item()?.title ?? '')}&url=${encodeURIComponent(this.shareUrl())}`,
-  );
-
   constructor() {
-    // Slug inconnu : on renvoie vers la liste plutôt que d'afficher une page vide.
+    // Slug inconnu/dépubliée : on renvoie vers la liste plutôt que d'afficher une page vide.
     effect(() => {
-      if (this.slug() && !this.item()) {
+      const raw = this.rawDetail();
+      if (raw?.notFound) {
         this.router.navigate(['/actualites']);
       }
     });

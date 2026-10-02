@@ -4,6 +4,7 @@
 // distinguer des vraies demandes de devis dans le back-office.
 import { Component, computed, inject, signal } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { RevealDirective } from '../../components/reveal.directive';
 import { getSiteContact } from '../../../infrastructure/data/site-contact.data';
@@ -13,7 +14,7 @@ import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
   selector: 'app-contact',
-  imports: [RevealDirective, TranslocoPipe],
+  imports: [RouterLink, RevealDirective, TranslocoPipe],
   templateUrl: './contact.component.html',
 })
 export class ContactComponent {

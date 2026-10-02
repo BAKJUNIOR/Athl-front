@@ -36,7 +36,10 @@
       "services": "Services",
       "careers": "Careers",
       "about": "About",
+      "aboutDesc": "Our story, our expertise",
       "team": "Team",
+      "teamDesc": "The people behind ATHL",
+      "company": "Company",
       "contact": "Contact",
       "search": "Search",
       "quote": "Quote"
@@ -131,7 +134,7 @@
       "subtitle": "One partner to build, supply and move forward: construction & renovation, mobility, ride-hailing & delivery, import & logistics.",
       "btp": {
         "title": "Construction & renovation",
-        "lead": "The expertise that builds, the logistics that accelerates. ATHL supports you from construction to delivering your materials and transport solutions.",
+        "lead": "New builds, renovations, materials supply: our teams run your projects from first dig to handover.",
         "imageAlt": "ATHL construction site",
         "items": {
           "0": "Construction",
@@ -142,7 +145,7 @@
       },
       "mobility": {
         "title": "Mobility, ride-hailing & delivery",
-        "lead": "Building the future, supporting the movement. Vehicle rental and mobility solutions for individuals and businesses.",
+        "lead": "Vehicles, drivers, deliveries: reliable mobility solutions for your trips, professional or personal.",
         "imageAlt": "ATHL driver behind the wheel, GPS mounted",
         "items": {
           "0": "Short and long-term rental",
@@ -153,7 +156,7 @@
       },
       "import": {
         "title": "Import & logistics",
-        "lead": "Your partner to build, supply and move forward. Direct import and distribution of materials from China, Turkey, Morocco and Europe.",
+        "lead": "From China and Europe to your site: we import and deliver your materials end to end.",
         "imageAlt": "ATHL import and logistics port",
         "items": {
           "0": "Direct import",
@@ -248,10 +251,9 @@
       "title": "Share",
       "copy": "Copy link",
       "copied": "Link copied!",
-      "whatsapp": "Share on WhatsApp",
-      "facebook": "Share on Facebook",
-      "linkedin": "Share on LinkedIn",
-      "x": "Share on X"
+      "facebook": "View on Facebook",
+      "linkedin": "View on LinkedIn",
+      "youtube": "View on YouTube"
     },
     "filters": {
       "theme": "Filter by theme",

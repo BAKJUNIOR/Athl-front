@@ -9,6 +9,8 @@ import { TeamApi, TeamMemberApi } from '../../domains/vitrine/infrastructure/api
 import { setTeamMembers } from '../../domains/vitrine/infrastructure/data/team.data';
 import { ProjectApi, ProjectSummaryApiDto } from '../../domains/vitrine/infrastructure/api/project.api';
 import { setProjects } from '../../domains/vitrine/infrastructure/data/projects.data';
+import { NewsApi, NewsSummaryApiDto } from '../../domains/vitrine/infrastructure/api/news.api';
+import { setNews } from '../../domains/vitrine/infrastructure/data/news.data';
 import { SiteContactApi, SiteContactApiDto } from '../../domains/vitrine/infrastructure/api/site-contact.api';
 import { setSiteContact } from '../../domains/vitrine/infrastructure/data/site-contact.data';
 import { AboutPageApi, AboutPageApiDto } from '../../domains/vitrine/infrastructure/api/about-page.api';
@@ -80,6 +82,19 @@ export function initializeProjectCatalog(): Promise<void> {
     ),
   ).then(({ list, failed }) => {
     setProjects(list, failed);
+  });
+}
+
+/** Même principe, pour les actualités (page /actualites). */
+export function initializeNewsCatalog(): Promise<void> {
+  const api = inject(NewsApi);
+  return firstValueFrom(
+    api.list().pipe(
+      map((list) => ({ list, failed: false })),
+      catchError(() => of({ list: [] as NewsSummaryApiDto[], failed: true })),
+    ),
+  ).then(({ list, failed }) => {
+    setNews(list, failed);
   });
 }
 
