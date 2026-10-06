@@ -802,16 +802,15 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 
 /* ---------- Page Équipe dédiée (/equipe) : portraits carrés, sans encart, esprit "agence" ---------- */
 .team-page { padding: 40px 0 110px; }
-.team-page__leaders {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 120px;
-  margin-bottom: 56px;
+/* Une seule grille, portraits tous identiques : 4 par ligne sur grand écran, alignés en haut même
+   si un rôle passe sur 2 lignes ; au-delà de 4 membres, ça passe à la ligne sans changer de taille. */
+.team-page__grid {
+  display: grid; grid-template-columns: repeat(auto-fit, 240px); justify-content: center;
+  align-items: start; gap: 48px 32px;
 }
-.team-page__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px 28px; }
-.team-card { display: block; text-decoration: none; text-align: center; width: 200px; }
-.team-card--lg { width: 260px; }
+.team-card { display: block; text-decoration: none; text-align: center; }
 .team-card__media { width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); transition: transform .4s cubic-bezier(.22,.68,.24,1), border-color .4s ease; }
-.team-card--lg .team-card__media { width: 260px; }
-.team-card__media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(45%); transition: filter .4s ease; }
+.team-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(45%); transition: filter .4s ease; }
 .team-card:hover .team-card__media { transform: translateY(-6px); border-color: var(--border-hover-accent); }
 .team-card:hover .team-card__media img { filter: grayscale(0%); }
 .team-card__role { margin-top: 18px; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-light); }
@@ -832,6 +831,7 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 }
 .team-detail__body .btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 20px 42px -14px rgba(249,115,22,.6); }
 @media (max-width: 720px) {
+  .team-page__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 16px; }
   .team-detail { grid-template-columns: minmax(0, 1fr); }
   .team-detail__media { aspect-ratio: 4 / 3; }
   .team-detail__body .btn { align-self: stretch; margin-top: 32px; margin-bottom: 0; margin-right: 0; justify-content: center; }
