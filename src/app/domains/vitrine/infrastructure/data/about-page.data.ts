@@ -233,6 +233,8 @@ export interface AboutWorkforceTab {
   title: string;
   image: string;
   heroImage: string;
+  /** Lien saisi dans le BO (YouTube, Vimeo ou .mp4) ; absent = pas de vidéo sur cet onglet. */
+  videoUrl?: string | null;
   lead: string;
   bullets: string[];
   stats: AboutWorkforceStat[];
@@ -288,6 +290,7 @@ export function getAboutPage(lang: Lang): AboutPageContent {
           title: (en ? t.titleEn : t.titleFr) || '',
           image: t.image || '',
           heroImage: t.heroImage || t.image || '',
+          videoUrl: t.videoUrl || null,
           lead: (en ? t.leadEn : t.leadFr) || '',
           bullets: [t.bullet1Fr && (en ? t.bullet1En : t.bullet1Fr), t.bullet2Fr && (en ? t.bullet2En : t.bullet2Fr), t.bullet3Fr && (en ? t.bullet3En : t.bullet3Fr), t.bullet4Fr && (en ? t.bullet4En : t.bullet4Fr)].filter((b): b is string => !!b),
           stats: (t.stats ?? []).map((s) => ({

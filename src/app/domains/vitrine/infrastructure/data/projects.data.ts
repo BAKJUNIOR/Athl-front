@@ -32,14 +32,6 @@ export function setProjects(list: ProjectSummaryApiDto[], apiFailed = false): vo
   PROJECTS_API_FAILED.set(apiFailed);
 }
 
-/** Image du projet marqué "à la une" dans le BO — utilisée pour la vignette globale du bloc
- * "Bienvenue chez ATHL" (accueil et À propos). Repli sur le premier projet publié si aucun
- * n'est marqué à la une, undefined si la galerie est vide. */
-export function getFeaturedProjectImage(): string | undefined {
-  const list = PROJECTS();
-  return (list.find((p) => p.featured) ?? list[0])?.image;
-}
-
 /** Mosaïque "Nos réalisations" de l'accueil : UNIQUEMENT les projets marqués "à la une" dans
  *  le BO (featured=true), triés par ordre d'affichage. Vide si aucun n'est coché — pas de repli
  *  sur du contenu inventé, voir home.component.html qui masque toute la section dans ce cas. */
