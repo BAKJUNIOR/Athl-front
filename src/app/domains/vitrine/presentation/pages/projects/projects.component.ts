@@ -5,7 +5,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { RevealDirective } from '../../components/reveal.directive';
 import { CtaBannerComponent } from '../../components/cta-banner/cta-banner.component';
 import { LanguageService } from '../../../../../core/services/language.service';
-import { getProjectsByService, ProjectSummary } from '../../../infrastructure/data/projects.data';
+import { getProjectsByService } from '../../../infrastructure/data/projects.data';
 import { getServices } from '../../../infrastructure/data/services.data';
 
 @Component({
@@ -34,14 +34,6 @@ export class ProjectsComponent {
   }
 
   readonly projects = computed(() => getProjectsByService(this.activeService(), this.languageService.lang()));
-
-  // Regroupe les projets par 3 pour le motif de grille (2 vignettes empilées + 1 grande à droite).
-  readonly rows = computed(() => {
-    const list = this.projects();
-    const chunks: ProjectSummary[][] = [];
-    for (let i = 0; i < list.length; i += 3) chunks.push(list.slice(i, i + 3));
-    return chunks;
-  });
 
   selectService(slug: string): void {
     this.activeService.set(slug);

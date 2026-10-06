@@ -22,40 +22,21 @@
 </section>
 
 <section class="wrap proj-showcase">
-  @for (row of rows(); track $index) {
-    @if (row.length === 3) {
-      <div class="proj-row" [appReveal]="60">
-        <div class="proj-row__stack">
-          @for (p of [row[0], row[1]]; track p.slug) {
-            <a class="proj-thumb" [routerLink]="['/projets', p.slug]">
-              <img [src]="p.thumbnail" [alt]="p.title" loading="lazy" />
-            </a>
-          }
-        </div>
-        <a class="proj-featured" [routerLink]="['/projets', row[2].slug]">
-          <img [src]="row[2].thumbnail" [alt]="row[2].title" loading="lazy" />
-          <div class="proj-featured__caption">
-            <span class="proj-featured__location">{{ row[2].location }}</span>
-            <strong class="proj-featured__title">{{ row[2].title }}</strong>
-            <span class="proj-featured__year">{{ row[2].year }}</span>
+  @if (projects().length) {
+    <!-- Motif de 6 répété : 2 vignettes empilées + 1 grande, puis 3 vignettes (voir .proj-grid). -->
+    <div class="proj-grid" [appReveal]="60">
+      @for (p of projects(); track p.slug) {
+        <a class="proj-tile" [routerLink]="['/projets', p.slug]">
+          <img [src]="p.thumbnail" [alt]="p.title" loading="lazy" />
+          <div class="proj-tile__caption">
+            <span class="proj-tile__location">{{ p.location }}</span>
+            <strong class="proj-tile__title">{{ p.title }}</strong>
+            <span class="proj-tile__year">{{ p.year }}</span>
           </div>
         </a>
-      </div>
-    } @else {
-      <div class="proj-row proj-row--plain">
-        @for (p of row; track p.slug) {
-          <a class="proj-featured proj-featured--sm" [routerLink]="['/projets', p.slug]">
-            <img [src]="p.thumbnail" [alt]="p.title" loading="lazy" />
-            <div class="proj-featured__caption">
-              <span class="proj-featured__location">{{ p.location }}</span>
-              <strong class="proj-featured__title">{{ p.title }}</strong>
-              <span class="proj-featured__year">{{ p.year }}</span>
-            </div>
-          </a>
-        }
-      </div>
-    }
-  } @empty {
+      }
+    </div>
+  } @else {
     <p class="proj-empty">{{ 'projects.empty' | transloco }}</p>
   }
 </section>

@@ -5,21 +5,9 @@
 </section>
 
 <section class="team-page wrap">
-  @if (leaders().length) {
-    <div class="team-page__leaders">
-      @for (member of leaders(); track member.id; let i = $index) {
-        <a class="team-card team-card--lg" [routerLink]="['/equipe', member.id]" [appReveal]="60 + i * 70">
-          <div class="team-card__media"><img [src]="member.photo" [alt]="member.name" loading="lazy" /></div>
-          <div class="team-card__role">{{ member.role }}</div>
-          <div class="team-card__name">{{ member.name }}</div>
-        </a>
-      }
-    </div>
-  }
-
-  @if (rest().length) {
+  @if (members().length) {
     <div class="team-page__grid">
-      @for (member of rest(); track member.id; let i = $index) {
+      @for (member of members(); track member.id; let i = $index) {
         <a class="team-card" [routerLink]="['/equipe', member.id]" [appReveal]="60 + i * 70">
           <div class="team-card__media"><img [src]="member.photo" [alt]="member.name" loading="lazy" /></div>
           <div class="team-card__role">{{ member.role }}</div>
