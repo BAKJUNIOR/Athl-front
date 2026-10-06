@@ -18,6 +18,7 @@ export interface AboutWorkforceTabApi {
   titleEn: string;
   image: string;
   heroImage: string;
+  videoUrl: string | null;
   leadFr: string;
   leadEn: string;
   bullet1Fr: string;

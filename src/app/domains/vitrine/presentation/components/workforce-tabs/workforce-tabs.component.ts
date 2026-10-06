@@ -1,18 +1,14 @@
-// Bloc « Bienvenue chez ATHL » : présentation des métiers par onglets (accueil et page À propos).
-// Le contenu vient de la ressource "À propos" du BO (voir about-page.data.ts) — c'est la MÊME
-// donnée qui alimente ce bloc sur les deux pages (édité une seule fois dans le BO), et elle est
-// distincte des fiches Services même si elle décrit les mêmes 3 métiers.
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, HostListener, inject, signal } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { RevealDirective } from '../reveal.directive';
 import { StatCounterComponent } from '../stat-counter/stat-counter.component';
 import { getAboutPage } from '../../../infrastructure/data/about-page.data';
-import { getFeaturedProjectImage } from '../../../infrastructure/data/projects.data';
 import { LanguageService } from '../../../../../core/services/language.service';
+import { parseVideoUrl, VideoSource } from '../../../../../core/utils/video-url.util';
 
-// Icônes des onglets : décoratives et liées à la position (1er/2e/3e onglet), pas au contenu —
-// pas de champ "icône" côté BO pour l'instant.
+
 const TAB_ICONS = [
   'M4 21V9l8-5 8 5v12M9 21v-6h6v6',
   'M6 28l3.2-10.4A4 4 0 0 1 13 15h22a4 4 0 0 1 3.8 2.6L42 28',
@@ -109,23 +105,37 @@ const TAB_ICONS = [
               <a class="btn btn--light about-block__cta" routerLink="/services">{{ 'common.learnMore' | transloco }}</a>
             </div>
 
-            <button type="button" class="about-block__video" (click)="videoOpen.set(true)" [attr.aria-label]="'home.workforce.playCta' | transloco">
-              <img [src]="videoImage()" [attr.alt]="'home.workforce.videoAlt' | transloco" />
-              <span class="about-block__play" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
-              </span>
-            </button>
+            <!-- Vidéo propre à l'onglet (lien saisi dans le BO), vignette = sa petite photo ; masquée sans lien valide. -->
+            @if (activeVideo()) {
+              <button type="button" class="about-block__video" (click)="videoOpen.set(true)" [attr.aria-label]="'home.workforce.playCta' | transloco">
+                <img [src]="t.image || t.heroImage" [attr.alt]="'home.workforce.videoAlt' | transloco" />
+                <span class="about-block__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+                </span>
+              </button>
+            }
           </div>
         }
       </div>
     </section>
 
-    @if (videoOpen()) {
+    @if (videoOpen() && activeVideo(); as video) {
       <div class="video-lightbox" (click)="videoOpen.set(false)">
         <button type="button" class="video-lightbox__close" (click)="videoOpen.set(false)" [attr.aria-label]="'common.close' | transloco">
           <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
         </button>
-        <video class="video-lightbox__video" [src]="videoSrc" controls autoplay (click)="$event.stopPropagation()"></video>
+        @if (video.kind === 'file') {
+          <video class="video-lightbox__video" [src]="video.fileUrl" controls autoplay playsinline (click)="$event.stopPropagation()"></video>
+        } @else {
+          <iframe
+            class="video-lightbox__video video-lightbox__frame"
+            [src]="embedUrl()"
+            title="Vidéo"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowfullscreen
+            (click)="$event.stopPropagation()"
+          ></iframe>
+        }
       </div>
     }
   `,
@@ -145,10 +155,18 @@ export class WorkforceTabsComponent {
     return tab ? [tab] : [];
   });
 
-  // Toujours la même vignette, quel que soit l'onglet actif (voir composant) — le projet
-  // marqué "à la une" dans le BO, avec repli sur l'image statique si la galerie est vide.
-  readonly videoImage = computed(() => getFeaturedProjectImage() ?? 'images/proj-2.png');
-
-  readonly videoSrc = 'images/video_athl.mp4';
+  private readonly sanitizer = inject(DomSanitizer);
   readonly videoOpen = signal(false);
+  // Vidéo de l'onglet actif : lien du BO converti en lecteur YouTube/Vimeo ou fichier (voir video-url.util).
+  readonly activeVideo = computed((): VideoSource | null => parseVideoUrl(this.activeTabList()[0]?.videoUrl));
+  // URL d'iframe reconstruite par parseVideoUrl à partir de l'identifiant seul, donc sûre à intégrer.
+  readonly embedUrl = computed((): SafeResourceUrl | null => {
+    const video = this.activeVideo();
+    return video && video.kind !== 'file' ? this.sanitizer.bypassSecurityTrustResourceUrl(video.embedUrl) : null;
+  });
+
+  @HostListener('document:keydown.escape')
+  closeVideo(): void {
+    this.videoOpen.set(false);
+  }
 }
