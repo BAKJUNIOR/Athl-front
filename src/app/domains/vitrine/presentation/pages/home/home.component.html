@@ -6,8 +6,7 @@
       [attr.aria-label]="i === 0 ? ('home.hero.imageAlt' | transloco) : null"
       [attr.aria-hidden]="i === 0 ? null : 'true'"
       [style.background-image]="'url(' + image + ')'"
-      [style.animation-duration.s]="hero().images.length * 6"
-      [style.animation-delay.s]="-(i * 6)"
+      [class.is-on]="activeHeroImage() % hero().images.length === i"
     ></div>
   }
   <div class="hero__scrim"></div>
