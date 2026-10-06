@@ -1,5 +1,5 @@
 // Page d'accueil du site vitrine ATHL.
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { RevealDirective } from '../../components/reveal.directive';
@@ -20,6 +20,11 @@ export class HomeComponent {
   private readonly languageService = inject(LanguageService);
 
   readonly hero = computed(() => getHomeHero(this.languageService.lang()));
+
+  // Images de fond : une seule visible, dans l'ordre défini dans le BO (glisser-déposer),
+  // 6 s chacune puis fondu vers la suivante, quel que soit leur nombre.
+  private static readonly HERO_SLIDE_MS = 6000;
+  readonly activeHeroImage = signal(0);
   readonly pillarConstruction = computed(() => getHomePillar('construction', this.languageService.lang()));
   readonly pillarMobility = computed(() => getHomePillar('mobility', this.languageService.lang()));
   readonly pillarImport = computed(() => getHomePillar('import', this.languageService.lang()));
@@ -35,5 +40,13 @@ export class HomeComponent {
       .slice(0, 5)
       .map((s) => ({ image: s.image, title: s.title, caption: s.caption })),
   );
+
+  constructor() {
+    const timer = setInterval(() => {
+      const count = this.hero().images.length;
+      this.activeHeroImage.update((i) => (count > 1 ? (i + 1) % count : 0));
+    }, HomeComponent.HERO_SLIDE_MS);
+    inject(DestroyRef).onDestroy(() => clearInterval(timer));
+  }
 
 }
