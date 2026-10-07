@@ -1356,7 +1356,9 @@ html:not([data-theme='light']) .modal__card {
   .split__col { min-height: 0; gap: 40px; }
   .frame { height: auto; }
   .frame img { height: 420px; }
-  .about-block { grid-template-columns: minmax(0, 1fr); gap: 64px; }
+  .about-block { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  /* Une seule colonne (tablette, mobile) : le texte passe avant les images. */
+  .about-block__content { order: -1; }
   .about-block__media { margin-bottom: 20px; }
   .hero-cards { grid-template-columns: repeat(2, minmax(0,1fr)); margin-top: -60px; gap: 20px; }
   .hero-card:last-child { grid-column: 1 / -1; }
