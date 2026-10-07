@@ -9,6 +9,7 @@ import { signal } from '@angular/core';
 import { TeamMember } from '../../domain/team-member.entity';
 import { Lang } from '../../../../core/services/language.service';
 import { TeamMemberApi } from '../api/team.api';
+import { cleanLabel } from '../../../../core/utils/text.util';
 
 const TEAM = signal<TeamMemberApi[]>([]);
 const TEAM_API_FAILED = signal(false);
@@ -86,8 +87,8 @@ export function getTeamMembers(lang: Lang): TeamMember[] {
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((dto) => ({
       id: dto.id,
-      name: dto.name,
-      role: (en && dto.roleEn) || dto.roleFr,
+      name: cleanLabel(dto.name),
+      role: cleanLabel((en && dto.roleEn) || dto.roleFr),
       photo: dto.photo,
       bio: (en && dto.bioEn) || dto.bioFr || undefined,
       quote: (en && dto.quoteEn) || dto.quoteFr || undefined,

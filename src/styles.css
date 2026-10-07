@@ -801,13 +801,15 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
   display: grid; grid-template-columns: repeat(auto-fit, 240px); justify-content: center;
   align-items: start; gap: 48px 32px;
 }
-.team-card { display: block; text-decoration: none; text-align: center; }
+/* Photo / nom / poste sur 3 rangées partagées par toute la ligne de la grille (subgrid) : un nom
+   ou un poste sur 2 lignes ne décale plus les cartes voisines. */
+.team-card { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; text-decoration: none; text-align: center; }
 .team-card__media { width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); transition: transform .4s cubic-bezier(.22,.68,.24,1), border-color .4s ease; }
 .team-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(45%); transition: filter .4s ease; }
 .team-card:hover .team-card__media { transform: translateY(-6px); border-color: var(--border-hover-accent); }
 .team-card:hover .team-card__media img { filter: grayscale(0%); }
-.team-card__role { margin-top: 18px; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-light); }
-.team-card__name { margin-top: 4px; font-size: 15px; font-weight: 500; color: var(--text); }
+.team-card__role { margin-top: 6px; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-light); }
+.team-card__name { margin-top: 18px; font-size: 15px; font-weight: 500; color: var(--text); }
 
 /* ---------- Fiche détail d'un membre (/equipe/:id) ---------- */
 .team-detail { padding: 24px 0 120px; display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: stretch; }

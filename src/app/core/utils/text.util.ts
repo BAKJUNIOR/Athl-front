@@ -5,3 +5,15 @@ export function normalizeText(text: string): string {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
 }
+
+// Nettoie un libellé court saisi dans le BO (nom, poste) : espaces multiples ou en bord,
+// espaces collés aux parenthèses, ponctuation traînante — ex. "Cédric," -> "Cédric",
+// "( ATHL)" -> "(ATHL)".
+export function cleanLabel(text: string | null | undefined): string {
+  return (text ?? '')
+    .replace(/\s+/g, ' ')
+    .replace(/\(\s+/g, '(')
+    .replace(/\s+\)/g, ')')
+    .trim()
+    .replace(/[\s,;:]+$/, '');
+}

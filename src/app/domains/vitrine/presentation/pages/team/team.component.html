@@ -10,8 +10,8 @@
       @for (member of members(); track member.id; let i = $index) {
         <a class="team-card" [routerLink]="['/equipe', member.id]" [appReveal]="60 + i * 70">
           <div class="team-card__media"><img [src]="member.photo" [alt]="member.name" loading="lazy" /></div>
-          <div class="team-card__role">{{ member.role }}</div>
           <div class="team-card__name">{{ member.name }}</div>
+          <div class="team-card__role">{{ member.role }}</div>
         </a>
       }
     </div>
