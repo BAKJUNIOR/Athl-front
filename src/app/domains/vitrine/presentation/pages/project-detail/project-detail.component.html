@@ -5,7 +5,10 @@
 
   <article class="pdetail wrap">
     <div class="pdetail__hero" appReveal>
-      <img [src]="heroImage()" [alt]="p.title" />
+      <!-- Clic sur la photo : agrandie seule en plein écran (voir .image-lightbox). -->
+      <button type="button" class="pdetail__zoom" (click)="lightboxOpen.set(true)" [attr.aria-label]="'projectDetail.enlarge' | transloco">
+        <img [src]="heroImage()" [alt]="p.title" />
+      </button>
       @if (p.images.length > 1) {
         <button type="button" class="pdetail__arrow pdetail__arrow--prev" [attr.aria-label]="'projectDetail.previous' | transloco" (click)="previousImage()">&larr;</button>
         <button type="button" class="pdetail__arrow pdetail__arrow--next" [attr.aria-label]="'projectDetail.next' | transloco" (click)="nextImage()">&rarr;</button>
@@ -63,5 +66,19 @@
         }
       </div>
     </section>
+  }
+
+  @if (lightboxOpen()) {
+    <div class="image-lightbox" (click)="lightboxOpen.set(false)" role="dialog" aria-modal="true" [attr.aria-label]="p.title">
+      <button type="button" class="image-lightbox__close" (click)="lightboxOpen.set(false)" [attr.aria-label]="'common.close' | transloco">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      </button>
+      <img class="image-lightbox__img" [src]="heroImage()" [alt]="p.title" (click)="$event.stopPropagation()" />
+      @if (p.images.length > 1) {
+        <button type="button" class="image-lightbox__nav image-lightbox__nav--prev" [attr.aria-label]="'projectDetail.previous' | transloco" (click)="$event.stopPropagation(); previousImage()">&larr;</button>
+        <button type="button" class="image-lightbox__nav image-lightbox__nav--next" [attr.aria-label]="'projectDetail.next' | transloco" (click)="$event.stopPropagation(); nextImage()">&rarr;</button>
+        <span class="image-lightbox__count">{{ (activeImage() % p.images.length) + 1 }} / {{ p.images.length }}</span>
+      }
+    </div>
   }
 }

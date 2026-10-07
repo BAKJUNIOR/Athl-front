@@ -292,6 +292,7 @@
     }
   },
   "projectDetail": {
+    "enlarge": "Agrandir la photo",
     "back": "Retour aux projets",
     "location": "Localisation",
     "typology": "Typologie",

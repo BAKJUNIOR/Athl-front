@@ -1,5 +1,5 @@
 // Fiche détail d'un projet (/projets/:slug).
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, HostListener, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { toSignal, toObservable } from '@angular/core/rxjs-interop';
@@ -91,6 +91,17 @@ export class ProjectDetailComponent {
     return p.images[this.activeImage() % p.images.length];
   });
 
+  // ── Agrandissement plein écran (clic sur la photo) ──
+  readonly lightboxOpen = signal(false);
+
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    if (!this.lightboxOpen()) return;
+    if (event.key === 'Escape') this.lightboxOpen.set(false);
+    else if (event.key === 'ArrowLeft') this.previousImage();
+    else if (event.key === 'ArrowRight') this.nextImage();
+  }
+
   previousImage(): void {
     const p = this.project();
     if (!p || !p.images.length) return;
@@ -138,6 +149,7 @@ export class ProjectDetailComponent {
       this.slug();
       this.activeImage.set(0);
       this.othersIndex.set(0);
+      this.lightboxOpen.set(false);
     });
   }
 }
