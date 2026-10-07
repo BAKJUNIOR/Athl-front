@@ -32,7 +32,8 @@ import { LanguageService } from '../../../../../core/services/language.service';
           </div>
         </div>
 
-        <div class="footer__col">
+        <!-- Masquée sur mobile : ces liens sont déjà dans le menu (voir .footer__col--company). -->
+        <div class="footer__col footer__col--company">
           <h3>{{ 'common.footer.companyTitle' | transloco }}</h3>
           <span class="footer__rule"></span>
           <nav class="footer__nav footer__nav--col">

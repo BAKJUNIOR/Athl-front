@@ -729,6 +729,7 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 /* ---------- Footer ---------- */
 .footer__grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 40px; align-items: start; }
 .footer__col h3 { margin: 0; font-size: 15px; font-weight: 600; color: var(--text); }
+@media (max-width: 720px) { .footer__col--company { display: none; } }
 .footer__rule { display: flex; gap: 4px; margin: 12px 0 18px; }
 .footer__rule::before, .footer__rule::after { content: ""; height: 3px; border-radius: 2px; }
 .footer__rule::before { width: 22px; background: var(--text); }
