@@ -1382,6 +1382,8 @@ html:not([data-theme='light']) .modal__card {
 }
 @media (max-width: 720px) {
   .wrap { padding: 0 20px; }
+  /* .wrap ci-dessus remet à zéro le padding vertical : on rétablit l'espace onglets / projets. */
+  .wrap.proj-showcase { padding-top: 28px; padding-bottom: 60px; }
   .hero { padding-top: 46px; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { width: 100%; }
