@@ -21,6 +21,8 @@ import { PartnersApi, PartnersSectionApiDto } from '../../domains/vitrine/infras
 import { setPartnersSection } from '../../domains/vitrine/infrastructure/data/partners.data';
 import { ContactPageApi, ContactPageApiDto } from '../../domains/vitrine/infrastructure/api/contact-page.api';
 import { setContactPage } from '../../domains/vitrine/infrastructure/data/contact-page.data';
+import { PageHeaderApi, PageHeaderApiDto } from '../../domains/vitrine/infrastructure/api/page-header.api';
+import { setPageHeaders } from '../../domains/vitrine/infrastructure/data/page-headers.data';
 import { PopupApi, PopupApiDto } from '../../domains/vitrine/infrastructure/api/popup.api';
 import { setPopups } from '../../domains/vitrine/infrastructure/data/popups.data';
 import { AnalyticsService } from '../services/analytics.service';
@@ -145,6 +147,14 @@ export function initializeContactPage(): Promise<void> {
   const api = inject(ContactPageApi);
   return firstValueFrom(api.get().pipe(catchError(() => of(null as ContactPageApiDto | null)))).then((content) => {
     setContactPage(content);
+  });
+}
+
+/** Même principe, pour les en-têtes des pages de liste (Services, Projets, Actualités…). */
+export function initializePageHeaders(): Promise<void> {
+  const api = inject(PageHeaderApi);
+  return firstValueFrom(api.list().pipe(catchError(() => of(null as PageHeaderApiDto[] | null)))).then((headers) => {
+    setPageHeaders(headers);
   });
 }
 

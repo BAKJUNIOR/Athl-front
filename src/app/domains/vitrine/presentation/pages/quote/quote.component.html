@@ -1,7 +1,7 @@
 <section class="phero">
-  <div class="phero__eyebrow" appReveal>{{ 'quote.eyebrow' | transloco }}</div>
-  <h1 [appReveal]="80">{{ 'quote.title' | transloco }}</h1>
-  <p [appReveal]="160">{{ 'quote.subtitle' | transloco }}</p>
+  <div class="phero__eyebrow" appReveal>{{ header().eyebrow || ('quote.eyebrow' | transloco) }}</div>
+  <h1 [appReveal]="80">{{ header().title || ('quote.title' | transloco) }}</h1>
+  <p [appReveal]="160">{{ header().subtitle || ('quote.subtitle' | transloco) }}</p>
 </section>
 
 <section class="devis-wrap">

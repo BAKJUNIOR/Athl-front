@@ -1,7 +1,7 @@
 <section class="phero">
-  <div class="about-block__eyebrow" appReveal><span></span>{{ 'team.page.eyebrow' | transloco }}</div>
-  <h1 [appReveal]="80">{{ 'team.page.title' | transloco }}</h1>
-  <p [appReveal]="160">{{ 'team.page.subtitle' | transloco }}</p>
+  <div class="about-block__eyebrow" appReveal><span></span>{{ header().eyebrow || ('team.page.eyebrow' | transloco) }}</div>
+  <h1 [appReveal]="80">{{ header().title || ('team.page.title' | transloco) }}</h1>
+  <p [appReveal]="160">{{ header().subtitle || ('team.page.subtitle' | transloco) }}</p>
 </section>
 
 <section class="team-page wrap">
