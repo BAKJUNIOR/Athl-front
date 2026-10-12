@@ -6,6 +6,7 @@ import { RevealDirective } from '../../components/reveal.directive';
 import { CtaBannerComponent } from '../../components/cta-banner/cta-banner.component';
 import { getNews, getNewsCategories } from '../../../infrastructure/data/news.data';
 import { LanguageService } from '../../../../../core/services/language.service';
+import { getPageHeader } from '../../../infrastructure/data/page-headers.data';
 
 const PAGE_SIZE = 4;
 
@@ -16,6 +17,9 @@ const PAGE_SIZE = 4;
 })
 export class NewsComponent {
   private readonly languageService = inject(LanguageService);
+
+  // En-tête de page éditable dans le BO ; champ vide -> texte par défaut i18n (voir le template).
+  readonly header = computed(() => getPageHeader('news', this.languageService.lang()));
 
   readonly allNews = computed(() => getNews(this.languageService.lang()));
   readonly categories = computed(() => getNewsCategories(this.languageService.lang()));

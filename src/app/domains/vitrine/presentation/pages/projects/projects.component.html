@@ -1,7 +1,7 @@
 <section class="phero">
-  <div class="phero__eyebrow" appReveal>{{ 'projects.eyebrow' | transloco }}</div>
-  <h1 [appReveal]="80">{{ 'projects.title' | transloco }}</h1>
-  <p [appReveal]="160">{{ 'projects.subtitle' | transloco }}</p>
+  <div class="phero__eyebrow" appReveal>{{ header().eyebrow || ('projects.eyebrow' | transloco) }}</div>
+  <h1 [appReveal]="80">{{ header().title || ('projects.title' | transloco) }}</h1>
+  <p [appReveal]="160">{{ header().subtitle || ('projects.subtitle' | transloco) }}</p>
 </section>
 
 <section class="wrap proj-services" appReveal>

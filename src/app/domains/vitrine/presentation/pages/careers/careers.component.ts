@@ -12,6 +12,7 @@ import { formatLocalizedDate } from '../../../../../core/utils/date.util';
 import { LanguageService } from '../../../../../core/services/language.service';
 import { ApplicationApi } from '../../../infrastructure/api/application.api';
 import { CloudinaryUploadService } from '../../../../../core/services/cloudinary-upload.service';
+import { getPageHeader } from '../../../infrastructure/data/page-headers.data';
 
 @Component({
   selector: 'app-careers',
@@ -20,6 +21,9 @@ import { CloudinaryUploadService } from '../../../../../core/services/cloudinary
 })
 export class CareersComponent {
   private readonly languageService = inject(LanguageService);
+
+  // En-tête de page éditable dans le BO ; champ vide -> texte par défaut i18n (voir le template).
+  readonly header = computed(() => getPageHeader('careers', this.languageService.lang()));
   private readonly transloco = inject(TranslocoService);
   private readonly applicationApi = inject(ApplicationApi);
   private readonly cloudinary = inject(CloudinaryUploadService);

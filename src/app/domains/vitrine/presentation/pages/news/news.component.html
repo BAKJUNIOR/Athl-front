@@ -1,8 +1,8 @@
 <section class="news-hero">
   <div class="wrap">
-    <div class="about-block__eyebrow" appReveal><span></span>{{ 'news.eyebrow' | transloco }}</div>
-    <h1 [appReveal]="80">{{ 'news.title' | transloco }}</h1>
-    <p [appReveal]="160">{{ 'news.subtitle' | transloco }}</p>
+    <div class="about-block__eyebrow" appReveal><span></span>{{ header().eyebrow || ('news.eyebrow' | transloco) }}</div>
+    <h1 [appReveal]="80">{{ header().title || ('news.title' | transloco) }}</h1>
+    <p [appReveal]="160">{{ header().subtitle || ('news.subtitle' | transloco) }}</p>
 
     <div class="news-featured" [appReveal]="220">
       @for (item of featured(); track item.slug) {

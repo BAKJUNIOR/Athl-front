@@ -6,6 +6,7 @@ import { getSearchIndex } from '../../../infrastructure/data/search-index.data';
 import { SearchCategory } from '../../../domain/search-result.entity';
 import { normalizeText } from '../../../../../core/utils/text.util';
 import { LanguageService } from '../../../../../core/services/language.service';
+import { getPageHeader } from '../../../infrastructure/data/page-headers.data';
 
 @Component({
   selector: 'app-search',
@@ -15,6 +16,9 @@ import { LanguageService } from '../../../../../core/services/language.service';
 export class SearchComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly languageService = inject(LanguageService);
+
+  // En-tête de page éditable dans le BO ; champ vide -> texte par défaut i18n (voir le template).
+  readonly header = computed(() => getPageHeader('search', this.languageService.lang()));
 
   readonly query = signal(this.route.snapshot.queryParamMap.get('q') ?? '');
 

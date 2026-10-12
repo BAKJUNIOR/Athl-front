@@ -11,6 +11,7 @@ import { QuoteApi } from '../../../infrastructure/api/quote.api';
 import { CloudinaryUploadService } from '../../../../../core/services/cloudinary-upload.service';
 import { getSiteContact } from '../../../infrastructure/data/site-contact.data';
 import { LanguageService } from '../../../../../core/services/language.service';
+import { getPageHeader } from '../../../infrastructure/data/page-headers.data';
 
 @Component({
   selector: 'app-quote',
@@ -22,6 +23,9 @@ export class QuoteComponent {
   private readonly quoteApi = inject(QuoteApi);
   private readonly cloudinary = inject(CloudinaryUploadService);
   private readonly languageService = inject(LanguageService);
+
+  // En-tête de page éditable dans le BO ; champ vide -> texte par défaut i18n (voir le template).
+  readonly header = computed(() => getPageHeader('quote', this.languageService.lang()));
 
   protected readonly contact = computed(() => getSiteContact(this.languageService.lang()));
 

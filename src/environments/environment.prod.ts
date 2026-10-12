@@ -43,6 +43,9 @@ export const environment = {
     contactPage: {
       get: 'api/v1/contact-page',
     },
+    pageHeaders: {
+      get: 'api/v1/page-headers',
+    },
     popups: {
       list: 'api/v1/popups',
     },

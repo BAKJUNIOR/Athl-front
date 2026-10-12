@@ -7,6 +7,7 @@ import { CtaBannerComponent } from '../../components/cta-banner/cta-banner.compo
 import { LanguageService } from '../../../../../core/services/language.service';
 import { getProjectsByService } from '../../../infrastructure/data/projects.data';
 import { getServices } from '../../../infrastructure/data/services.data';
+import { getPageHeader } from '../../../infrastructure/data/page-headers.data';
 
 @Component({
   selector: 'app-projects',
@@ -15,6 +16,9 @@ import { getServices } from '../../../infrastructure/data/services.data';
 })
 export class ProjectsComponent {
   private readonly languageService = inject(LanguageService);
+
+  // En-tête de page éditable dans le BO ; champ vide -> texte par défaut i18n (voir le template).
+  readonly header = computed(() => getPageHeader('projects', this.languageService.lang()));
 
   // Les 3 métiers réels (voir /api/v1/services), pas seulement ceux qui ont déjà un projet
   // publié : un onglet vide affiche "projects.empty" plutôt que de disparaître. Nom complet

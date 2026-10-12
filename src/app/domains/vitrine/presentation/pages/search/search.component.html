@@ -1,7 +1,7 @@
 <section class="phero">
-  <div class="phero__eyebrow">{{ 'search.eyebrow' | transloco }}</div>
-  <h1>{{ 'search.title' | transloco }}</h1>
-  <p>{{ 'search.subtitle' | transloco }}</p>
+  <div class="phero__eyebrow">{{ header().eyebrow || ('search.eyebrow' | transloco) }}</div>
+  <h1>{{ header().title || ('search.title' | transloco) }}</h1>
+  <p>{{ header().subtitle || ('search.subtitle' | transloco) }}</p>
 </section>
 
 <section class="search-page">

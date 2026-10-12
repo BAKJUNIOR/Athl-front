@@ -6,6 +6,7 @@ import { RevealDirective } from '../../components/reveal.directive';
 import { CtaBannerComponent } from '../../components/cta-banner/cta-banner.component';
 import { getServices } from '../../../infrastructure/data/services.data';
 import { LanguageService } from '../../../../../core/services/language.service';
+import { getPageHeader } from '../../../infrastructure/data/page-headers.data';
 
 @Component({
   selector: 'app-services',
@@ -14,6 +15,9 @@ import { LanguageService } from '../../../../../core/services/language.service';
 })
 export class ServicesComponent {
   private readonly languageService = inject(LanguageService);
+
+  // En-tête de page éditable dans le BO ; champ vide -> texte par défaut i18n (voir le template).
+  readonly header = computed(() => getPageHeader('services', this.languageService.lang()));
 
   readonly services = computed(() => getServices(this.languageService.lang()));
 }
