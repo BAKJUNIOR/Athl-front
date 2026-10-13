@@ -125,9 +125,7 @@
       }
     },
     "services": {
-      "eyebrow": "Ce que nous faisons",
-      "title": "Nos services",
-      "subtitle": "Du chantier à la logistique : quatre métiers pour mener vos projets de bout en bout."
+      "eyebrow": "Ce que nous faisons"
     },
     "pillars": {
       "title": "Nos 3 métiers",

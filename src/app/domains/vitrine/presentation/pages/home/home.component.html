@@ -56,8 +56,8 @@
   <div class="sites__head" appReveal>
     <div>
       <div class="about-block__eyebrow"><span></span>{{ 'home.services.eyebrow' | transloco }}</div>
-      <h2>{{ 'home.services.title' | transloco }}</h2>
-      <p class="lead">{{ 'home.services.subtitle' | transloco }}</p>
+      <h2>{{ servicesHeader().title || ('services.title' | transloco) }}</h2>
+      <p class="lead">{{ servicesHeader().subtitle || ('services.subtitle' | transloco) }}</p>
     </div>
   </div>
 

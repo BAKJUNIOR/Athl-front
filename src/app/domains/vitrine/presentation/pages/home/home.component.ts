@@ -9,6 +9,7 @@ import { TestimonialCarouselComponent } from '../../components/testimonial-carou
 import { getServices } from '../../../infrastructure/data/services.data';
 import { getFeaturedShots } from '../../../infrastructure/data/projects.data';
 import { getHomeHero, getHomePillar } from '../../../infrastructure/data/home-page.data';
+import { getPageHeader } from '../../../infrastructure/data/page-headers.data';
 import { LanguageService } from '../../../../../core/services/language.service';
 
 @Component({
@@ -30,6 +31,8 @@ export class HomeComponent {
   readonly pillarImport = computed(() => getHomePillar('import', this.languageService.lang()));
 
   readonly services = computed(() => getServices(this.languageService.lang()));
+  // Titre et texte du bloc Services : les mêmes que l'en-tête de la page /services (édité dans le BO).
+  readonly servicesHeader = computed(() => getPageHeader('services', this.languageService.lang()));
 
   // Projets mis en avant (case "Mis en avant sur l'accueil" cochée dans le BO) UNIQUEMENT —
   // pas de repli sur du contenu inventé : si rien n'est coché, la section entière est masquée
