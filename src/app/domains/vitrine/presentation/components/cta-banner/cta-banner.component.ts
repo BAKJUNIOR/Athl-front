@@ -24,7 +24,7 @@ import { LanguageService } from '../../../../../core/services/language.service';
         </div>
       }
     </div>
-    <div class="cta__media" [class.cta__media--contain]="mediaContain">
+    <div class="cta__media">
       <img [src]="mediaImage" [alt]="mediaAlt" loading="lazy" />
     </div>
   `,
@@ -40,8 +40,6 @@ export class CtaBannerComponent {
   @Input() showActions = true;
   @Input() mediaImage = 'images/proj-4.png';
   @Input() mediaAlt = 'Réalisation ATHL';
-  /** Image affichée en entier (illustration) au lieu d'être recadrée pour remplir le cadre (photo). */
-  @Input() mediaContain = false;
 
   protected telHref(phone: string): string {
     return `tel:${phone.replace(/\s+/g, '')}`;
