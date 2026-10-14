@@ -7,13 +7,28 @@ import { StatCounterComponent } from '../stat-counter/stat-counter.component';
 import { getAboutPage } from '../../../infrastructure/data/about-page.data';
 import { LanguageService } from '../../../../../core/services/language.service';
 import { parseVideoUrl, VideoSource } from '../../../../../core/utils/video-url.util';
+import { normalizeText } from '../../../../../core/utils/text.util';
 
 
-const TAB_ICONS = [
-  'M4 21V9l8-5 8 5v12M9 21v-6h6v6',
-  'M6 28l3.2-10.4A4 4 0 0 1 13 15h22a4 4 0 0 1 3.8 2.6L42 28',
-  'M3 10l9-5 9 5-9 5-9-5ZM3 10v7l9 5 9-5v-7M12 15v7',
-];
+// Icônes des onglets (tracés 24x24, style trait) choisies d'après le nom du métier saisi dans le BO,
+// pour suivre le métier même si l'ordre des onglets change ; repli sur la position sinon.
+const TAB_ICONS = {
+  // Casque de chantier
+  construction: 'M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2zM10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5M4 15v-3a6 6 0 0 1 6-6M14 6a6 6 0 0 1 6 6v3',
+  // Voiture
+  mobility: 'M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2M9 17h6M5 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0M15 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0',
+  // Cargo
+  import: 'M12 10.2V14M12 2v3M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6M19.4 20A11.6 11.6 0 0 0 21 14l-8.2-3.6a2 2 0 0 0-1.6 0L3 14a11.6 11.6 0 0 0 2.8 7.8M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1s1.2 1 2.5 1c2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1',
+} as const;
+const TAB_ICON_ORDER = [TAB_ICONS.construction, TAB_ICONS.mobility, TAB_ICONS.import];
+
+function tabIcon(title: string, index: number): string {
+  const t = normalizeText(title);
+  if (/construct|renov|batiment|building/.test(t)) return TAB_ICONS.construction;
+  if (/mobil|vtc|livraison|transport|delivery|ride/.test(t)) return TAB_ICONS.mobility;
+  if (/import|logisti|fret|freight/.test(t)) return TAB_ICONS.import;
+  return TAB_ICON_ORDER[index % TAB_ICON_ORDER.length];
+}
 
 @Component({
   selector: 'app-workforce-tabs',
@@ -58,9 +73,9 @@ const TAB_ICONS = [
               (click)="activeTab.set(i)"
             >
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path [attr.d]="tabIcons[i % tabIcons.length]" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <path [attr.d]="tabIcon(t.title, i)" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              {{ t.title }}
+              <span>{{ t.title }}</span>
             </button>
           }
         </div>
@@ -143,7 +158,7 @@ const TAB_ICONS = [
 export class WorkforceTabsComponent {
   private readonly languageService = inject(LanguageService);
 
-  readonly tabIcons = TAB_ICONS;
+  readonly tabIcon = tabIcon;
   readonly activeTab = signal(0);
 
   private readonly page = computed(() => getAboutPage(this.languageService.lang()));

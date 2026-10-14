@@ -389,14 +389,16 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 .about-block__eyebrow span { width: 26px; height: 2px; flex: 0 0 auto; background: var(--accent); }
 .about-block__content h2 { margin: 16px 0 0; }
 .about-block__content .lead { margin: 18px 0 0; }
-.about-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; }
+/* Les onglets restent sur une seule ligne, à parts égales : un nom long passe sur 2 lignes
+   dans son onglet au lieu de faire descendre l'onglet suivant. */
+.about-tabs { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 8px; margin: 26px 0 0; }
 .about-tab {
-  display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 99px; cursor: pointer;
-  font: inherit; font-size: 12.5px; font-weight: 500; color: var(--text-dim);
+  display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 14px; cursor: pointer; text-align: left;
+  font: inherit; font-size: 12.5px; font-weight: 500; line-height: 1.3; color: var(--text-dim);
   background: var(--surface); border: 1px solid var(--border-soft);
   transition: background-color .3s ease, color .3s ease, border-color .3s ease;
 }
-.about-tab svg { width: 17px; height: 17px; }
+.about-tab svg { flex: 0 0 auto; width: 18px; height: 18px; }
 .about-tab:hover { border-color: var(--border-hover-accent-strong); color: var(--text); }
 .about-tab.is-on { background: var(--accent); border-color: var(--accent); color: #fff; }
 .about-panel { margin-top: 18px; padding: 3px 0 3px 20px; border-left: 3px solid var(--accent); animation: panelIn .55s cubic-bezier(.22,.68,.24,1); }
@@ -1425,6 +1427,8 @@ html:not([data-theme='light']) .modal__card {
   .about-block__badge-num { font-size: 22px; }
   .about-block__small { width: 52%; }
   .about-block__lower { grid-template-columns: minmax(0, 1fr); }
+  .about-tabs { gap: 6px; }
+  .about-tab { flex-direction: column; justify-content: center; gap: 6px; padding: 10px 6px; font-size: 11.5px; text-align: center; }
   .about-block__video { width: 100%; height: 160px; }
   .news-hero { padding: 56px 0 46px; }
   .news-featured { grid-template-columns: minmax(0, 1fr); gap: 30px; }
