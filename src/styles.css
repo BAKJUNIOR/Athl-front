@@ -1387,7 +1387,11 @@ html:not([data-theme='light']) .modal__card {
 @media (max-width: 720px) {
   .wrap { padding: 0 20px; }
   /* .wrap ci-dessus remet à zéro le padding vertical : on rétablit l'espace onglets / projets. */
-  .wrap.proj-showcase { padding-top: 28px; padding-bottom: 60px; }
+  .wrap.proj-services { padding: 8px 0 0; }
+  .wrap.proj-showcase { padding: 28px 0 60px; }
+  /* Métiers sur une seule ligne, à parts égales ; un nom long passe sur 2 lignes dans son onglet. */
+  .proj-services__list { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; }
+  .proj-service-tab { justify-content: center; padding: 10px 6px; border-radius: 14px; font-size: 11.5px; line-height: 1.3; text-align: center; }
   .hero { padding-top: 46px; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { width: 100%; }
