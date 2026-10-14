@@ -690,6 +690,7 @@ h2 { margin: 0; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; font-wei
 /* Illustration (fond transparent) : sans cadre ni fond, elle se fond dans le bandeau et prend toute la place. */
 .cta__media--contain { height: 360px; padding: 0; background: none; border: none; border-radius: 0; }
 .cta__media--contain img { object-fit: contain; border-radius: 0; transform: translateY(-44px) scale(1.5); } /* le PNG a beaucoup de marge vide autour du dessin */
+@media (max-width: 720px) { .cta__media--contain { display: none; } } /* illustration masquée sur mobile */
 
 /* ---------- Nos partenaires (défilement infini) ---------- */
 .partners { padding: 30px 0 90px; }
