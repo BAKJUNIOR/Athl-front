@@ -22,8 +22,8 @@ const TAB_ICONS = {
 } as const;
 const TAB_ICON_ORDER = [TAB_ICONS.construction, TAB_ICONS.mobility, TAB_ICONS.import];
 
-// Onglet Import & logistique : pas de bloc statistiques sur le site.
-function hideStats(title: string): boolean {
+// Onglet Import & logistique : ni bloc statistiques ni numéro dans le badge sur le site.
+function isImport(title: string): boolean {
   return /import|logisti/.test(normalizeText(title));
 }
 
@@ -48,7 +48,9 @@ function tabIcon(title: string, index: number): string {
         </div>
         @for (t of activeTabList(); track t.number) {
           <div class="about-block__badge">
-            <div class="about-block__badge-num">{{ t.number }}</div>
+            @if (!isImport(t.title)) {
+              <div class="about-block__badge-num">{{ t.number }}</div>
+            }
             <div class="about-block__badge-label">{{ t.title }}</div>
           </div>
         }
@@ -99,7 +101,7 @@ function tabIcon(title: string, index: number): string {
           <div class="about-block__lower">
             <div class="about-block__lower-left">
               <!-- Statistiques masquées pour Import & logistique (elles restent saisissables dans le BO). -->
-              @if (!hideStats(t.title)) {
+              @if (!isImport(t.title)) {
               <div class="about-block__features">
                 @for (stat of t.stats.slice(0, 3); track stat.label) {
                   <div class="about-block__feature">
@@ -167,7 +169,7 @@ export class WorkforceTabsComponent {
   private readonly languageService = inject(LanguageService);
 
   readonly tabIcon = tabIcon;
-  readonly hideStats = hideStats;
+  readonly isImport = isImport;
   readonly activeTab = signal(0);
 
   private readonly page = computed(() => getAboutPage(this.languageService.lang()));
