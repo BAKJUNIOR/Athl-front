@@ -40,7 +40,7 @@ import { LanguageService } from '../../../../../core/services/language.service';
               <option value="">{{ 'quote.form.chooseService' | transloco }}</option>
               <option value="Réalisation de projets de construction">{{ 'common.services.construction' | transloco }}</option>
               <option value="Rénovation &amp; aménagement">{{ 'common.services.renovation' | transloco }}</option>
-              <option value="VTC, mobilité &amp; livraison">{{ 'common.services.mobility' | transloco }}</option>
+              <option value="VTC &amp; livraison">{{ 'common.services.mobility' | transloco }}</option>
               <option value="Importation de matériaux">{{ 'common.services.import' | transloco }}</option>
             </select>
           </div>

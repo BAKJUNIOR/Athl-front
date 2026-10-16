@@ -18,12 +18,12 @@ const FALLBACK: Record<Lang, AboutPageContent> = {
       eyebrow: 'Bienvenue chez ATHL',
       title: 'Nous assumons chaque projet. Nous livrons des résultats plus solides',
       lead:
-        "Africa Talent Habitat & Logistique réunit des professionnels expérimentés, des méthodes éprouvées et une culture de la responsabilité pour livrer des projets qui traversent le temps. De la construction et la rénovation à la mobilité et à l'importation de matériaux, nos équipes travaillent avec clarté, rigueur et savoir-faire.",
+        "Africa Talent Habitat & Logistique réunit des professionnels expérimentés, des méthodes éprouvées et une culture de la responsabilité pour livrer des projets qui traversent le temps. De la construction aux VTC & livraison et à l'importation de matériaux, nos équipes travaillent avec clarté, rigueur et savoir-faire.",
     },
     workforceTabs: [
       {
         number: '01',
-        title: 'Construction & rénovation',
+        title: 'Construction',
         image: 'images/team-review.jpg',
         heroImage: 'images/team-lead.png',
         lead: "L'expertise qui bâtit, la logistique qui accélère. ATHL vous accompagne de la construction à la livraison de vos matériaux et solutions de transport.",
@@ -36,7 +36,7 @@ const FALLBACK: Record<Lang, AboutPageContent> = {
       },
       {
         number: '02',
-        title: 'Mobilité, VTC & Livraison',
+        title: 'VTC & Livraison',
         image: 'images/pillar-mobility.jpg',
         heroImage: 'images/pillar-mobility.jpg',
         lead: "Construire l'avenir, accompagner le mouvement. Location de véhicules et solutions de mobilité pour particuliers et entreprises.",
@@ -64,21 +64,21 @@ const FALLBACK: Record<Lang, AboutPageContent> = {
     hero: {
       eyebrow: 'À propos',
       title: 'Africa Talent Habitat & Logistique',
-      lead: "L'expertise qui bâtit, la logistique qui accélère. Un groupe ivoirien qui réunit construction, rénovation, mobilité et importation de matériaux.",
+      lead: "L'expertise qui bâtit, la logistique qui accélère. Un groupe ivoirien qui réunit construction, VTC & livraison et importation de matériaux.",
     },
     pillarsSection: {
       eyebrow: 'Ce que nous faisons',
       title: 'Nos 3 métiers',
-      lead: "Un seul partenaire pour bâtir, approvisionner et avancer : construction & rénovation, mobilité, VTC & livraison, import & logistique.",
+      lead: "Un seul partenaire pour bâtir, approvisionner et avancer : construction, VTC & livraison, import & logistique.",
     },
     pillars: [
       {
-        title: 'Construction & rénovation',
+        title: 'Construction',
         image: 'images/chantier2.jpg',
         bullets: ['Construction', 'Rénovation & réhabilitation', 'Approvisionnement en matériaux', 'Gestion immobilière'],
       },
       {
-        title: 'Mobilité, VTC & Livraison',
+        title: 'VTC & Livraison',
         image: 'images/vtc-mobilite.jpg',
         bullets: ['Location courte et longue durée', 'Transport professionnel', 'Service VTC Premium', 'Gestion de flotte pour entreprises'],
       },
@@ -121,12 +121,12 @@ const FALLBACK: Record<Lang, AboutPageContent> = {
       eyebrow: 'Welcome to ATHL',
       title: 'We own every project. We deliver sturdier results',
       lead:
-        'Africa Talent Habitat & Logistics brings together experienced professionals, proven methods and a culture of accountability to deliver projects built to last. From construction and renovation to mobility and the import of materials, our teams work with clarity, rigour and know-how.',
+        'Africa Talent Habitat & Logistics brings together experienced professionals, proven methods and a culture of accountability to deliver projects built to last. From construction to ride-hailing & delivery and the import of materials, our teams work with clarity, rigour and know-how.',
     },
     workforceTabs: [
       {
         number: '01',
-        title: 'Construction & renovation',
+        title: 'Construction',
         image: 'images/team-review.jpg',
         heroImage: 'images/team-lead.png',
         lead: 'The expertise that builds, the logistics that accelerates. ATHL supports you from construction to delivering your materials and transport solutions.',
@@ -139,7 +139,7 @@ const FALLBACK: Record<Lang, AboutPageContent> = {
       },
       {
         number: '02',
-        title: 'Mobility, ride-hailing & delivery',
+        title: 'Ride-hailing & Delivery',
         image: 'images/pillar-mobility.jpg',
         heroImage: 'images/pillar-mobility.jpg',
         lead: 'Building the future, supporting the movement. Vehicle rental and mobility solutions for individuals and businesses.',
@@ -167,21 +167,21 @@ const FALLBACK: Record<Lang, AboutPageContent> = {
     hero: {
       eyebrow: 'About',
       title: 'Africa Talent Habitat & Logistics',
-      lead: 'The expertise that builds, the logistics that accelerate. An Ivorian group bringing together construction, renovation, mobility and the import of materials.',
+      lead: 'The expertise that builds, the logistics that accelerate. An Ivorian group bringing together construction, ride-hailing & delivery and the import of materials.',
     },
     pillarsSection: {
       eyebrow: 'What we do',
       title: 'Our 3 core businesses',
-      lead: 'One partner to build, supply and move forward: construction & renovation, mobility, ride-hailing & delivery, import & logistics.',
+      lead: 'One partner to build, supply and move forward: construction, ride-hailing & delivery, import & logistics.',
     },
     pillars: [
       {
-        title: 'Construction & renovation',
+        title: 'Construction',
         image: 'images/chantier2.jpg',
         bullets: ['Construction', 'Renovation & rehabilitation', 'Material supply', 'Property management'],
       },
       {
-        title: 'Mobility, ride-hailing & delivery',
+        title: 'Ride-hailing & Delivery',
         image: 'images/vtc-mobilite.jpg',
         bullets: ['Short and long-term rental', 'Professional transport', 'Premium ride-hailing service', 'Fleet management for businesses'],
       },

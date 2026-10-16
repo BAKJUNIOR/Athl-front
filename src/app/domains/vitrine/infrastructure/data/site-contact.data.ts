@@ -32,8 +32,8 @@ const FALLBACK: SiteContactApiDto = {
   linkedinUrl: 'https://www.linkedin.com/company/africa-talent-habitat-logistique-athl/',
   tiktokUrl: 'https://www.tiktok.com/@africatalentconsulting',
   contactEmail: 'contact@athl.com',
-  footerAboutFr: 'Africa Talent Habitat & Logistique — construction, rénovation, mobilité et importation de matériaux, portées par des équipes qualifiées.',
-  footerAboutEn: 'Africa Talent Habitat & Logistics — construction, renovation, mobility and import of materials, delivered by skilled teams.',
+  footerAboutFr: 'Africa Talent Habitat & Logistique — construction, VTC & livraison et importation de matériaux, portées par des équipes qualifiées.',
+  footerAboutEn: 'Africa Talent Habitat & Logistics — construction, ride-hailing & delivery and import of materials, delivered by skilled teams.',
   mapLocation: "Abidjan, Côte d'Ivoire",
 };
 

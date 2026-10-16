@@ -11,7 +11,7 @@
     "clearSearch": "Clear search",
     "chooseLanguage": "Choose language",
     "language": "Language",
-    "footerAbout": "Africa Talent Habitat & Logistics — construction, renovation, mobility and import of materials, delivered by skilled teams.",
+    "footerAbout": "Africa Talent Habitat & Logistics — construction, ride-hailing & delivery and import of materials, delivered by skilled teams.",
     "athlWorkAlt": "ATHL project",
     "footer": {
       "aboutTitle": "About ATHL",
@@ -58,7 +58,7 @@
     "services": {
       "construction": "Construction project delivery",
       "renovation": "Renovation & fit-out",
-      "mobility": "Ride-hailing, mobility & delivery",
+      "mobility": "Ride-hailing & delivery",
       "import": "Import of construction materials"
     },
     "cta": {
@@ -91,7 +91,7 @@
       "imageAlt": "Two managers on the construction site",
       "reviewAlt": "ATHL team reviewing progress on site",
       "title": "We own every project. We deliver sturdier results",
-      "lead": "Africa Talent Habitat & Logistics brings together experienced professionals, proven methods and a culture of accountability to deliver projects built to last. From construction and renovation to mobility and the import of materials, our teams work with clarity, rigour and know-how.",
+      "lead": "Africa Talent Habitat & Logistics brings together experienced professionals, proven methods and a culture of accountability to deliver projects built to last. From construction to ride-hailing & delivery and the import of materials, our teams work with clarity, rigour and know-how.",
       "quote": "Simplify your construction and logistics projects with a personal approach, from the first drawing to delivery.",
       "badgeLabel": "Sites delivered",
       "features": {
@@ -129,9 +129,9 @@
     },
     "pillars": {
       "title": "Our 3 core businesses",
-      "subtitle": "One partner to build, supply and move forward: construction & renovation, mobility, ride-hailing & delivery, import & logistics.",
+      "subtitle": "One partner to build, supply and move forward: construction, ride-hailing & delivery, import & logistics.",
       "btp": {
-        "title": "Construction & renovation",
+        "title": "Construction",
         "lead": "New builds, renovations, materials supply: our teams run your projects from first dig to handover.",
         "imageAlt": "ATHL construction site",
         "items": {
@@ -142,7 +142,7 @@
         }
       },
       "mobility": {
-        "title": "Mobility, ride-hailing & delivery",
+        "title": "Ride-hailing & Delivery",
         "lead": "Vehicles, drivers, deliveries: reliable mobility solutions for your trips, professional or personal.",
         "imageAlt": "ATHL driver behind the wheel, GPS mounted",
         "items": {
@@ -179,9 +179,9 @@
   "about": {
     "eyebrow": "About",
     "title": "Africa Talent Habitat & Logistics",
-    "subtitle": "The expertise that builds, the logistics that accelerate. An Ivorian group bringing together construction, renovation, mobility and the import of materials.",
+    "subtitle": "The expertise that builds, the logistics that accelerate. An Ivorian group bringing together construction, ride-hailing & delivery and the import of materials.",
     "imageAlt": "ATHL teams on site",
-    "lead": "ATHL brings together experienced professionals, proven methods and a culture of accountability to deliver projects built to last. From construction and renovation to mobility and the import of materials, our teams work with clarity, rigour and know-how.",
+    "lead": "ATHL brings together experienced professionals, proven methods and a culture of accountability to deliver projects built to last. From construction to ride-hailing & delivery and the import of materials, our teams work with clarity, rigour and know-how.",
     "meetTeam": "Meet our teams",
     "values": {
       "title": "What drives us",
@@ -241,7 +241,7 @@
   "news": {
     "eyebrow": "News",
     "title": "What's happening at ATHL",
-    "subtitle": "Completed sites, new partnerships, hiring campaigns: the latest updates from our construction, mobility and import-logistics teams.",
+    "subtitle": "Completed sites, new partnerships, hiring campaigns: the latest updates from our construction, ride-hailing & delivery and import-logistics teams.",
     "readMore": "Read more",
     "showMore": "Show more news",
     "backToList": "Back to all news",
@@ -281,7 +281,7 @@
   "projects": {
     "eyebrow": "Projects",
     "title": "What our teams deliver",
-    "subtitle": "Construction, import & logistics, mobility: a look at our delivered and ongoing projects, by business line.",
+    "subtitle": "Construction, ride-hailing & delivery, import & logistics: a look at our delivered and ongoing projects, by business line.",
     "empty": "No project for this business line yet.",
     "cta": {
       "title": "Have a project in mind?",
