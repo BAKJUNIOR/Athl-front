@@ -5,6 +5,7 @@
 import { signal } from '@angular/core';
 import { AboutPageApiDto } from '../api/about-page.api';
 import { Lang } from '../../../../core/services/language.service';
+import { sortByBusinessLine } from './business-lines';
 
 const ABOUT_PAGE = signal<AboutPageApiDto | null>(null);
 
@@ -285,7 +286,7 @@ export function getAboutPage(lang: Lang): AboutPageContent {
       lead: (en ? dto.workforceLeadEn : dto.workforceLeadFr) || fb.workforce.lead,
     },
     workforceTabs: dto.workforceTabs.length
-      ? dto.workforceTabs.map((t) => ({
+      ? sortByBusinessLine(dto.workforceTabs, (t) => [t.titleFr]).map((t) => ({
           number: t.number || '',
           title: (en ? t.titleEn : t.titleFr) || '',
           image: t.image || '',
@@ -312,7 +313,7 @@ export function getAboutPage(lang: Lang): AboutPageContent {
       lead: (en ? dto.pillarsLeadEn : dto.pillarsLeadFr) || fb.pillarsSection.lead,
     },
     pillars: dto.pillars.length
-      ? dto.pillars.map((p) => ({
+      ? sortByBusinessLine(dto.pillars, (p) => [p.titleFr]).map((p) => ({
           title: (en ? p.titleEn : p.titleFr) || '',
           image: p.image || '',
           bullets: [p.bullet1Fr && (en ? p.bullet1En : p.bullet1Fr), p.bullet2Fr && (en ? p.bullet2En : p.bullet2Fr), p.bullet3Fr && (en ? p.bullet3En : p.bullet3Fr), p.bullet4Fr && (en ? p.bullet4En : p.bullet4Fr)].filter((b): b is string => !!b),
