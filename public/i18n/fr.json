@@ -11,7 +11,7 @@
     "clearSearch": "Effacer la recherche",
     "chooseLanguage": "Choisir la langue",
     "language": "Langue",
-    "footerAbout": "Africa Talent Habitat & Logistique — construction, rénovation, mobilité et importation de matériaux, portées par des équipes qualifiées.",
+    "footerAbout": "Africa Talent Habitat & Logistique — construction, VTC & livraison et importation de matériaux, portées par des équipes qualifiées.",
     "athlWorkAlt": "Réalisation ATHL",
     "footer": {
       "aboutTitle": "À propos d'ATHL",
@@ -58,7 +58,7 @@
     "services": {
       "construction": "Réalisation de projets de construction",
       "renovation": "Rénovation & aménagement",
-      "mobility": "VTC, mobilité & livraison",
+      "mobility": "VTC & livraison",
       "import": "Importation de matériaux de construction"
     },
     "cta": {
@@ -91,7 +91,7 @@
       "imageAlt": "Deux responsables sur le chantier",
       "reviewAlt": "Équipe ATHL faisant le point sur un chantier",
       "title": "Nous assumons chaque projet. Nous livrons des résultats plus solides",
-      "lead": "Africa Talent Habitat & Logistique réunit des professionnels expérimentés, des méthodes éprouvées et une culture de la responsabilité pour livrer des projets qui traversent le temps. De la construction et la rénovation à la mobilité et à l'importation de matériaux, nos équipes travaillent avec clarté, rigueur et savoir-faire.",
+      "lead": "Africa Talent Habitat & Logistique réunit des professionnels expérimentés, des méthodes éprouvées et une culture de la responsabilité pour livrer des projets qui traversent le temps. De la construction aux VTC & livraison et à l'importation de matériaux, nos équipes travaillent avec clarté, rigueur et savoir-faire.",
       "quote": "Simplifiez vos projets de construction et de logistique grâce à un accompagnement personnalisé, du premier plan à la livraison.",
       "badgeLabel": "Chantiers livrés",
       "features": {
@@ -129,9 +129,9 @@
     },
     "pillars": {
       "title": "Nos 3 métiers",
-      "subtitle": "Un seul partenaire pour bâtir, approvisionner et avancer : construction & rénovation, mobilité, VTC & livraison, import & logistique.",
+      "subtitle": "Un seul partenaire pour bâtir, approvisionner et avancer : construction, VTC & livraison, import & logistique.",
       "btp": {
-        "title": "Construction & rénovation",
+        "title": "Construction",
         "lead": "Chantiers neufs, rénovations, approvisionnement : nos équipes mènent vos travaux du premier coup de pioche à la livraison.",
         "imageAlt": "Chantier de construction ATHL",
         "items": {
@@ -142,7 +142,7 @@
         }
       },
       "mobility": {
-        "title": "Mobilité, VTC & Livraison",
+        "title": "VTC & Livraison",
         "lead": "Véhicules, chauffeurs, livraisons : des solutions de mobilité fiables pour vos trajets, professionnels comme personnels.",
         "imageAlt": "Chauffeur ATHL au volant, GPS embarqué",
         "items": {
@@ -179,9 +179,9 @@
   "about": {
     "eyebrow": "À propos",
     "title": "Africa Talent Habitat & Logistique",
-    "subtitle": "L'expertise qui bâtit, la logistique qui accélère. Un groupe ivoirien qui réunit construction, rénovation, mobilité et importation de matériaux.",
+    "subtitle": "L'expertise qui bâtit, la logistique qui accélère. Un groupe ivoirien qui réunit construction, VTC & livraison et importation de matériaux.",
     "imageAlt": "Équipes ATHL sur le chantier",
-    "lead": "ATHL réunit des professionnels expérimentés, des méthodes éprouvées et une culture de la responsabilité pour livrer des projets qui traversent le temps. De la construction et la rénovation à la mobilité et à l'importation de matériaux, nos équipes travaillent avec clarté, rigueur et savoir-faire.",
+    "lead": "ATHL réunit des professionnels expérimentés, des méthodes éprouvées et une culture de la responsabilité pour livrer des projets qui traversent le temps. De la construction aux VTC & livraison et à l'importation de matériaux, nos équipes travaillent avec clarté, rigueur et savoir-faire.",
     "meetTeam": "Rencontrer nos équipes",
     "values": {
       "title": "Ce qui nous engage",
@@ -241,7 +241,7 @@
   "news": {
     "eyebrow": "Actualités",
     "title": "Ce qui se passe chez ATHL",
-    "subtitle": "Chantiers livrés, nouveaux partenariats, recrutements : les dernières nouvelles de nos équipes BTP, mobilité et import-logistique.",
+    "subtitle": "Chantiers livrés, nouveaux partenariats, recrutements : les dernières nouvelles de nos équipes construction, VTC & livraison et import-logistique.",
     "readMore": "Lire la suite",
     "showMore": "Voir plus d'actualités",
     "backToList": "Retour à toutes nos actualités",
@@ -281,7 +281,7 @@
   "projects": {
     "eyebrow": "Projets",
     "title": "Ce que nos équipes réalisent",
-    "subtitle": "Construction, import & logistique, mobilité : un aperçu de nos projets livrés et en cours, par métier.",
+    "subtitle": "Construction, VTC & livraison, import & logistique : un aperçu de nos projets livrés et en cours, par métier.",
     "empty": "Aucun projet pour ce métier pour l'instant.",
     "cta": {
       "title": "Un projet en tête ?",

@@ -1,4 +1,4 @@
-// Entité métier "Service" : une prestation proposée par ATHL (construction, rénovation, mobilité, import).
+// Entité métier "Service" : une prestation proposée par ATHL (construction, VTC & livraison, import & logistique).
 
 export interface ServicePrestation {
   title: string;
