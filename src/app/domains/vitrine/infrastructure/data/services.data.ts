@@ -164,7 +164,16 @@ export function mapServiceDetail(dto: ServiceDetailApi, lang: Lang): Service {
 
 export function getServices(lang: Lang): Service[] {
   const source = SUMMARIES_API_FAILED() ? FALLBACK_SERVICES : SUMMARIES();
-  return source.map((dto) => summaryToService(dto, lang));
+  // Toujours dans l'ordre du numéro saisi dans le BO (01, 02, 03), quel que soit l'ordre renvoyé
+  // par l'API ; un service sans numéro passe en dernier.
+  return [...source]
+    .sort((a, b) => serviceRank(a.number) - serviceRank(b.number))
+    .map((dto) => summaryToService(dto, lang));
+}
+
+function serviceRank(number: string | null | undefined): number {
+  const n = parseInt(number ?? '', 10);
+  return Number.isNaN(n) ? Number.MAX_SAFE_INTEGER : n;
 }
 
 export function nextService(slug: string, lang: Lang): Service {
